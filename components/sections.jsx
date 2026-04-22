@@ -108,6 +108,49 @@ const Icon = {
       <line x1="10" y1="14" x2="21" y2="3"/>
     </svg>
   ),
+  /** Passo “Como funciona”: análise do caso (prontuário + conferido) — evita lupa genérica */
+  CaseReview: ({ size = 24, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path
+        d="M10.5 3h3a1 1 0 0 1 1 1v1.5h3.5a1 1 0 0 1 1 1V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6.5a1 1 0 0 1 1-1H9.5V4a1 1 0 0 1 1-1Z"
+        stroke={color} strokeWidth="1.55" strokeLinejoin="round"
+      />
+      <path d="M8.5 10.5h7M8.5 13.5h7M8.5 16.5h4.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.45"/>
+      <circle cx="17" cy="9.5" r="3.25" fill="#fff" stroke={color} strokeWidth="1.45"/>
+      <path d="m15.4 9.5 1.35 1.35 2.9-2.9" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  /** Passo 03: burocracia — pilha de processos + carimbo “ok” */
+  PaperworkStack: ({ size = 24, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path
+        d="M6.5 10.5h11a1.5 1.5 0 0 1 1.5 1.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19v-7a1.5 1.5 0 0 1 1.5-1.5Z"
+        stroke={color} strokeWidth="1.5" strokeLinejoin="round" opacity="0.35"
+      />
+      <path
+        d="M5.5 8.5h12A1.5 1.5 0 0 1 19 10v8.5A1.5 1.5 0 0 1 17.5 20h-12A1.5 1.5 0 0 1 4 18.5V10a1.5 1.5 0 0 1 1.5-1.5Z"
+        stroke={color} strokeWidth="1.55" strokeLinejoin="round"
+      />
+      <path d="M8 13h9M8 16h6" stroke={color} strokeWidth="1.45" strokeLinecap="round" opacity="0.4"/>
+      <circle cx="17" cy="12" r="3.5" fill={color}/>
+      <path d="m15.2 12 1.3 1.2 2.5-2.8" stroke="#fff" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  /** Passo 04: valor creditado — comprovante + seta de entrada */
+  PayoutReceived: ({ size = 24, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path
+        d="M4.5 11.5h15a1.25 1.25 0 0 1 1.25 1.25v6.5a1.25 1.25 0 0 1-1.25 1.25h-15A1.25 1.25 0 0 1 3.25 19.25v-6.5a1.25 1.25 0 0 1 1.25-1.25Z"
+        stroke={color} strokeWidth="1.5" strokeLinejoin="round"
+      />
+      <path d="M7 14.5h10M7 17h6" stroke={color} strokeWidth="1.35" strokeLinecap="round" opacity="0.38"/>
+      <path
+        d="M12 4.25v5.75M9.25 7.25 12 4.5l2.75 2.75"
+        stroke={color} strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round"
+      />
+      <path d="m9.25 19.75 2.25-2.25 3.25 3.25" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
 };
 
 // ─── Logo AQU4TRO ──────────────────────────────────────────────
@@ -357,9 +400,9 @@ function Problema({ primary }) {
 function ComoFunciona({ primary, accent }) {
   const steps = [
     { n: '01', t: 'Você conta o que aconteceu', d: <>Pelo <strong>WhatsApp</strong>, em <strong>minutos</strong>. Tudo <strong>online</strong>, sem sair de casa.</>, icon: Icon.Whatsapp },
-    { n: '02', t: 'Analisamos seu caso', d: <>Um <strong>especialista</strong> avalia <strong>gratuitamente</strong> se você tem direito e qual o caminho.</>, icon: Icon.Search },
-    { n: '03', t: 'Cuidamos de toda burocracia', d: <><strong>Documentos, laudos, protocolos</strong> — fazemos <strong>tudo por você</strong>.</>, icon: Icon.Doc },
-    { n: '04', t: 'Você recebe sua indenização', d: <>Acompanhamento do início ao fim, com <strong>transparência total</strong>.</>, icon: Icon.Award },
+    { n: '02', t: 'Analisamos seu caso', d: <>Um <strong>especialista</strong> avalia <strong>gratuitamente</strong> se você tem direito e qual o caminho.</>, icon: Icon.CaseReview },
+    { n: '03', t: 'Cuidamos de toda burocracia', d: <><strong>Documentos, laudos, protocolos</strong> — fazemos <strong>tudo por você</strong>.</>, icon: Icon.PaperworkStack },
+    { n: '04', t: 'Você recebe sua indenização', d: <>Acompanhamento do início ao fim, com <strong>transparência total</strong>.</>, icon: Icon.PayoutReceived },
   ];
   return (
     <section style={{ padding: '40px 22px 36px', background: '#F7F9FC' }}>

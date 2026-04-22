@@ -730,14 +730,24 @@ function CTAFinal({ primary, accent }) {
         <path d="M10 90 Q 50 10, 90 90" stroke="#fff" strokeWidth="1" fill="none"/>
       </svg>
       <div style={{ position: 'relative', textAlign: 'center' }}>
-        <div style={{ display: 'inline-flex', marginBottom: 12 }}>
+        <div style={{ display: 'inline-flex', marginBottom: 16 }}>
           <div style={{
-            width: 54, height: 54, borderRadius: 14,
-            background: 'rgba(255,255,255,.1)',
-            border: '1px solid rgba(255,255,255,.2)',
+            width: 60, height: 60, borderRadius: 20,
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))',
+            border: '1px solid rgba(255,255,255,.25)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
+            backdropFilter: 'blur(12px)',
+            boxShadow: '0 12px 24px rgba(0,0,0,0.2)',
           }}>
-            <Icon.Shield size={28} color={accent}/>
+            <span style={{ 
+              fontFamily: 'Poppins, sans-serif', 
+              fontWeight: 900, 
+              fontSize: 28, 
+              color: accent,
+              textShadow: `0 0 20px ${accent}60`,
+              letterSpacing: '-1px',
+              transform: 'translateY(-1px)'
+            }}>A4</span>
           </div>
         </div>
         <h2 style={{

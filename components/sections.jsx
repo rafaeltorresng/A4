@@ -890,7 +890,7 @@ function SectionLabel({ label, primary }) {
 function FloatingCTA() {
   return (
     <a href={WHATSAPP_URL} className="btn-shine" style={{
-      position: 'absolute', right: 16, bottom: 24, zIndex: 30,
+      position: 'fixed', right: 16, bottom: 24, zIndex: 30,
       width: 54, height: 54, borderRadius: 999,
       background: '#25D366',
       display: 'flex', alignItems: 'center', justifyContent: 'center',

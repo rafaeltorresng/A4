@@ -8,17 +8,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <style>
-  html, body { margin: 0; padding: 0; height: 100%; background: #EEF2F7; }
+  html, body { margin: 0; padding: 0; min-height: 100%; background: #EEF2F7; }
   body {
     font-family: 'DM Sans', system-ui, sans-serif;
-    display: flex; align-items: center; justify-content: center;
     min-height: 100dvh;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   #stage {
     position: relative;
-    width: 100vw; height: 100dvh;
-    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
   }
   /* Background pattern */
   body::before {
@@ -30,16 +29,14 @@
       #EEF2F7;
     z-index: 0;
   }
-  #root { 
-    position: relative; z-index: 1; 
-    transition: transform 0.3s ease;
+  #root {
+    position: relative; z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04);
   }
-  /* Ajuste de escala para mobile */
-  @media (max-height: 900px) { #root { transform: scale(0.9); } }
-  @media (max-height: 800px) { #root { transform: scale(0.8); } }
-  @media (max-height: 700px) { #root { transform: scale(0.7); } }
-  @media (max-width: 450px) { #root { transform: scale(0.85); } }
-  @media (max-width: 380px) { #root { transform: scale(0.75); } }
   @keyframes pulse {
     0%, 100% { transform: scale(1); box-shadow: 0 10px 24px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.2); }
     50% { transform: scale(1.06); box-shadow: 0 14px 32px rgba(37,211,102,.55), 0 2px 6px rgba(0,0,0,.2); }
@@ -127,10 +124,9 @@
   };
 </script>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script type="text/babel" src="ios-frame.jsx"></script>
 <script type="text/babel" src="components/sections.jsx"></script>
 
 <script type="text/babel">
@@ -153,14 +149,13 @@
     }, []);
 
     return (
-      <IOSDevice dark={false} showHomeIndicator={true}>
-        <div className="scroll-area" style={{
-          position: 'absolute', inset: 0,
-          overflowY: 'auto', overflowX: 'hidden',
+      <>
+        <div style={{
+          position: 'relative',
+          minHeight: '100dvh',
           background: '#f5f5f5',
           WebkitOverflowScrolling: 'touch',
         }}>
-          <IOSStatusBar dark={false}/>
           <TopBar primary={primary}/>
           <div data-screen-label="Landing">
             <div className="reveal"><Hero primary={primary} accent={accent} heroTone={heroTone}/></div>
@@ -174,10 +169,10 @@
             <div className="reveal"><CTAFinal primary={primary} accent={accent}/></div>
             <Footer primary={primary} accent={accent}/>
           </div>
-          <div style={{ height: 80 }}/>
+          <div style={{ height: 96 }}/>
         </div>
         <FloatingCTA/>
-      </IOSDevice>
+      </>
     );
   }
 

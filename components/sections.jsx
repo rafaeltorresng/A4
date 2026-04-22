@@ -184,7 +184,7 @@ function TopBar({ primary }) {
           display: 'inline-flex', alignItems: 'center', gap: 6,
           background: '#25D366', color: '#fff',
           padding: '8px 14px', borderRadius: 999,
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 11,
+          fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 11,
           textDecoration: 'none', boxShadow: '0 4px 12px rgba(37,211,102,.25)',
         }}>
           <Icon.Whatsapp size={14} /> WhatsApp
@@ -226,7 +226,7 @@ function Hero({ primary, accent, heroTone }) {
           background: 'rgba(255,255,255,.08)',
           backdropFilter: 'blur(12px)',
           border: '1px solid rgba(255,255,255,.12)',
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 10,
+          fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 10,
           letterSpacing: '.12em', textTransform: 'uppercase',
           color: '#fff',
           boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
@@ -247,7 +247,7 @@ function Hero({ primary, accent, heroTone }) {
         </h1>
 
         <p style={{
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 400,
+          fontFamily: 'DM Sans, sans-serif', fontWeight: 400,
           fontSize: 14, lineHeight: 1.55, margin: '14px 0 0',
           color: 'rgba(255,255,255,.88)', maxWidth: 320,
         }}>
@@ -268,7 +268,7 @@ function Hero({ primary, accent, heroTone }) {
 
         <div style={{
           marginTop: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-          fontFamily: 'Montserrat, sans-serif', fontSize: 11, color: 'rgba(255,255,255,.75)',
+          fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'rgba(255,255,255,.75)',
         }}>
           <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: 999, background: '#4ADE80' }}/>
           Atendimento agora · Resposta em minutos
@@ -294,7 +294,7 @@ function Hero({ primary, accent, heroTone }) {
               <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 22, color: accent }}>
                 <Counter target={big}/>
               </div>
-              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 10, lineHeight: 1.25, color: 'rgba(255,255,255,.85)', whiteSpace: 'pre-line', marginTop: 2 }}>{small}</div>
+              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, lineHeight: 1.25, color: 'rgba(255,255,255,.85)', whiteSpace: 'pre-line', marginTop: 2 }}>{small}</div>
             </div>
           ))}
         </div>
@@ -312,16 +312,16 @@ function Problema({ primary }) {
     'Perdi documentos ou não fiz boletim de ocorrência.',
   ];
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
+    <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
       <SectionLabel label="O que você está sentindo" primary={primary}/>
       <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+        fontFamily: 'Poppins, sans-serif', fontWeight: 500,
         fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63',
-        letterSpacing: '-.03em',
+        letterSpacing: '-0.01em',
       }}>
         Dúvidas comuns após<br/><span style={{ color: primary }}>um acidente.</span>
       </h2>
-      <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.55, color: '#4B5563', margin: '8px 0 18px' }}>
+      <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.55, color: '#4B5563', margin: '8px 0 18px' }}>
         Você não está sozinho. Talvez esteja pensando:
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -342,7 +342,7 @@ function Problema({ primary }) {
               boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
             }}>{i + 1}</div>
             <p style={{
-              fontFamily: 'Montserrat, sans-serif', fontSize: 13, lineHeight: 1.5,
+              fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.5,
               color: '#1F2937', margin: 0, fontWeight: 500,
             }}>"{t}"</p>
           </div>
@@ -366,9 +366,9 @@ function ComoFunciona({ primary, accent }) {
       <div style={{ textAlign: 'center', marginBottom: 30 }}>
         <SectionLabel label="Como funciona" primary={primary}/>
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
           fontSize: 32, lineHeight: 1.05, margin: '14px 0 0', color: '#0F2E63',
-          letterSpacing: '-.04em',
+          letterSpacing: '-0.01em',
         }}>
           Sua jornada para<br/><span style={{ color: primary }}>a indenização.</span>
         </h2>
@@ -427,7 +427,7 @@ function ComoFunciona({ primary, accent }) {
                   color: '#0F2E63', margin: 0, lineHeight: 1.3,
                 }}>{s.t}</h3>
                 <p style={{
-                  fontFamily: 'Montserrat, sans-serif', fontSize: 13, lineHeight: 1.55,
+                  fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.55,
                   color: '#6B7280', margin: '8px 0 0',
                 }}>{s.d}</p>
               </div>
@@ -449,12 +449,12 @@ function Especialidades({ primary, accent }) {
     { icon: Icon.Clock, t: 'Casos DPVAT (Legado)', d: 'Ainda atendemos indenizações para acidentes ocorridos antes da mudança na legislação de 2025.' },
   ];
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
+    <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
       <SectionLabel label="Especialidades" primary={primary}/>
       <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+        fontFamily: 'Poppins, sans-serif', fontWeight: 500,
         fontSize: 28, lineHeight: 1.1, margin: '14px 0 24px', color: '#0F2E63',
-        letterSpacing: '-.03em',
+        letterSpacing: '-0.01em',
       }}>
         Onde nossa equipe<br/><span style={{ color: primary }}>pode te ajudar.</span>
       </h2>
@@ -497,7 +497,7 @@ function Especialidades({ primary, accent }) {
                 color: '#0F2E63', margin: 0, lineHeight: 1.25,
               }}>{s.t}</h3>
               <p style={{
-                fontFamily: 'Montserrat, sans-serif', fontSize: 11, lineHeight: 1.45,
+                fontFamily: 'DM Sans, sans-serif', fontSize: 11, lineHeight: 1.45,
                 color: '#6B7280', margin: '6px 0 0',
               }}>{s.d}</p>
             </div>
@@ -521,9 +521,9 @@ function ProvaSocial({ primary, accent }) {
       <div style={{ padding: '0 22px' }}>
         <SectionLabel label="Quem confiou" primary={primary}/>
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
           fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63',
-          letterSpacing: '-.03em',
+          letterSpacing: '-0.01em',
         }}>
           Histórias reais de<br/><span style={{ color: primary }}>quem confiou.</span>
         </h2>
@@ -540,7 +540,7 @@ function ProvaSocial({ primary, accent }) {
         {[['4,4mil', 'seguidores'], ['423', 'casos no Insta'], ['98%', 'satisfação']].map(([b, s], i) => (
           <div key={i} style={{ textAlign: 'center' }}>
             <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 18, color: accent }}>{b}</div>
-            <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 10, color: 'rgba(255,255,255,.75)', marginTop: 2 }}>{s}</div>
+            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, color: 'rgba(255,255,255,.75)', marginTop: 2 }}>{s}</div>
           </div>
         ))}
       </div>
@@ -561,7 +561,7 @@ function ProvaSocial({ primary, accent }) {
             {Array.from({ length: depos[active].stars }).map((_, i) => <Icon.Star key={i}/>)}
           </div>
           <p style={{
-            fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.6,
+            fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.6,
             color: '#1F2937', margin: 0, fontWeight: 500,
           }}>
             {depos[active].text}
@@ -576,7 +576,7 @@ function ProvaSocial({ primary, accent }) {
             }}>{depos[active].name[0]}</div>
             <div>
               <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: '#0F2E63' }}>{depos[active].name}</div>
-              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 11, color: '#6B7280', fontWeight: 500 }}>{depos[active].role}</div>
+              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#6B7280', fontWeight: 500 }}>{depos[active].role}</div>
             </div>
           </div>
         </div>
@@ -615,10 +615,10 @@ function InstagramBanner({ primary, accent }) {
         </div>
         <div style={{ textAlign: 'left' }}>
           <div style={{ 
-            fontFamily: 'Montserrat', fontWeight: 700, fontSize: 12, color: '#0F2E63', lineHeight: 1 
+            fontFamily: 'DM Sans', fontWeight: 700, fontSize: 12, color: '#0F2E63', lineHeight: 1 
           }}>@a4servicosdetransito</div>
           <div style={{ 
-            fontFamily: 'Montserrat', fontWeight: 500, fontSize: 10, color: '#6B7280', marginTop: 2
+            fontFamily: 'DM Sans', fontWeight: 500, fontSize: 10, color: '#6B7280', marginTop: 2
           }}>Casos reais atualizados hoje</div>
         </div>
         <Icon.ExternalLink size={14} color="#9CA3AF"/>
@@ -650,20 +650,20 @@ function QuemSomos({ primary, accent }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
           <span style={{ width: 4, height: 4, borderRadius: 999, background: accent }}/>
           <div style={{
-            fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10,
+            fontFamily: 'DM Sans, sans-serif', fontWeight: 600, fontSize: 10,
             letterSpacing: '.25em', textTransform: 'uppercase',
             color: accent,
           }}>Quem somos</div>
         </div>
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
           fontSize: 30, lineHeight: 1.1, margin: '14px 0 0',
-          letterSpacing: '-.03em',
+          letterSpacing: '-0.01em',
         }}>
           14 anos lutando pelo<br/><span style={{ color: accent }}>seu direito.</span>
         </h2>
         <p style={{
-          fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.55,
+          fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.55,
           color: 'rgba(255,255,255,.85)', margin: '14px 0 0',
         }}>
           Nascemos em Recife com uma missão: transformar a dor de um acidente em reparação justa. Somos uma equipe especializada em indenizações, não uma seguradora nem um órgão público. Trabalhamos por você, do primeiro contato até o dia em que o dinheiro entra na sua conta.
@@ -680,14 +680,14 @@ function QuemSomos({ primary, accent }) {
               padding: '8px 0', borderBottom: i < values.length - 1 ? '1px solid rgba(255,255,255,.1)' : 'none',
             }}>
               <Icon.Check size={18} color={accent}/>
-              <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 13, color: '#fff' }}>{v}</span>
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: '#fff' }}>{v}</span>
             </div>
           ))}
         </div>
 
         <div style={{
           marginTop: 18, display: 'flex', alignItems: 'center', gap: 8,
-          fontFamily: 'Montserrat, sans-serif', fontSize: 12, color: 'rgba(255,255,255,.8)',
+          fontFamily: 'DM Sans, sans-serif', fontSize: 12, color: 'rgba(255,255,255,.8)',
         }}>
           <Icon.Pin size={14} color={accent}/> Recife, PE · Atendemos todo o Brasil
         </div>
@@ -710,12 +710,12 @@ function FAQ({ primary }) {
     { q: 'Atendem fora de Recife?', a: 'Atendemos em todo o Brasil, 100% online. Já representamos clientes em todos os estados.' },
   ];
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
+    <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
       <SectionLabel label="Dúvidas frequentes" primary={primary}/>
       <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+        fontFamily: 'Poppins, sans-serif', fontWeight: 500,
         fontSize: 28, lineHeight: 1.1, margin: '14px 0 22px', color: '#0F2E63',
-        letterSpacing: '-.03em',
+        letterSpacing: '-0.01em',
       }}>
         Perguntas que ouvimos<br/><span style={{ color: primary }}>todos os dias.</span>
       </h2>
@@ -745,7 +745,7 @@ function FAQ({ primary }) {
               <div style={{ padding: '0 18px 18px' }}>
                 <div style={{ height: 1, background: 'rgba(0,0,0,0.05)', marginBottom: 14 }}/>
                 <p style={{
-                  fontFamily: 'Montserrat, sans-serif', fontSize: 12.5, lineHeight: 1.6,
+                  fontFamily: 'DM Sans, sans-serif', fontSize: 12.5, lineHeight: 1.6,
                   color: '#6B7280', margin: 0, fontWeight: 500,
                 }}>{f.a}</p>
               </div>
@@ -791,15 +791,15 @@ function CTAFinal({ primary, accent }) {
           </div>
         </div>
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
           fontSize: 28, lineHeight: 1.1, margin: 0,
-          letterSpacing: '-.015em',
+          letterSpacing: '-0.01em',
         }}>
           Seu direito,<br/>
           <span style={{ color: accent }}>nossa prioridade.</span>
         </h2>
         <p style={{
-          fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.55,
+          fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.55,
           color: 'rgba(255,255,255,.85)', margin: '12px auto 0', maxWidth: 300,
         }}>
           Conte sua história agora. Em poucos minutos você sabe se tem direito — sem compromisso, sem custo.
@@ -820,7 +820,7 @@ function CTAFinal({ primary, accent }) {
           display: 'inline-flex', alignItems: 'center', gap: 8,
           marginTop: 14, padding: '10px 14px',
           color: '#fff', textDecoration: 'none',
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 13,
+          fontFamily: 'DM Sans, sans-serif', fontWeight: 600, fontSize: 13,
           borderBottom: '1px dashed rgba(255,255,255,.4)',
         }}>
           <Icon.Phone size={14} color={accent}/> (81) 99714-0111
@@ -836,7 +836,7 @@ function Footer({ primary, accent }) {
     <footer style={{ padding: '24px 22px 28px', background: '#0A1F45', color: 'rgba(255,255,255,.7)' }}>
       <Logo size={18} color="#fff" accent={accent}/>
       <p style={{
-        fontFamily: 'Montserrat, sans-serif', fontSize: 11.5, lineHeight: 1.5,
+        fontFamily: 'DM Sans, sans-serif', fontSize: 11.5, lineHeight: 1.5,
         margin: '14px 0 0', color: 'rgba(255,255,255,.6)',
       }}>
         A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Atuamos como facilitadores entre você e os responsáveis pelo pagamento. Não somos seguradora nem órgão público.
@@ -861,7 +861,7 @@ function Footer({ primary, accent }) {
       </div>
       <div style={{
         marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,.1)',
-        fontFamily: 'Montserrat, sans-serif', fontSize: 10.5, color: 'rgba(255,255,255,.45)',
+        fontFamily: 'DM Sans, sans-serif', fontSize: 10.5, color: 'rgba(255,255,255,.45)',
       }}>
         © 2026 A QU4TRO. Todos os direitos reservados.
       </div>
@@ -871,7 +871,7 @@ function Footer({ primary, accent }) {
 
 const linkStyle = {
   color: '#FFC431', textDecoration: 'none',
-  fontFamily: 'Montserrat, sans-serif', fontSize: 12, fontWeight: 600,
+  fontFamily: 'DM Sans, sans-serif', fontSize: 12, fontWeight: 600,
 };
 
 // ─── Helper: SectionLabel ─────────────────────────────────────
@@ -886,7 +886,7 @@ function SectionLabel({ label, primary }) {
       }}>
         <span style={{ width: 4, height: 4, borderRadius: 999, background: primary }}/>
         <span style={{
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 9,
+          fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 9,
           letterSpacing: '.12em', textTransform: 'uppercase', color: primary,
         }}>{label}</span>
       </div>

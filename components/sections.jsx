@@ -284,7 +284,7 @@ function Hero({ primary, accent, heroTone }) {
           {[
             ['14', 'anos de\nexperiência'],
             ['+5mil', 'vítimas\nindenizadas'],
-            ['100%', 'atendimento\nonline'],
+            ['100%', 'foco em\nresultados'],
           ].map(([big, small], i) => (
             <div key={i} style={{
               padding: '12px 8px', textAlign: 'center',
@@ -442,10 +442,10 @@ function ComoFunciona({ primary, accent }) {
 // ─── Especialidades ───────────────────────────────────────────
 function Especialidades({ primary, accent }) {
   const services = [
-    { icon: Icon.App, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito.', tag: 'NOVO' },
-    { icon: Icon.Car, t: 'Processos contra Terceiros', d: 'Acidentes causados por outros condutores. Cobrança direta ou judicial.' },
-    { icon: Icon.Shield, t: 'DPVAT', d: 'Seguro obrigatório para vítimas de acidente. Morte, invalidez ou despesas médicas.' },
-    { icon: Icon.Doc, t: 'Resgate de Documentos', d: 'Ajudamos a reconstruir boletim, laudos e histórico médico.' },
+    { icon: Icon.App, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas do aplicativo.', tag: 'NOVO' },
+    { icon: Icon.Car, t: 'Processos contra Terceiros', d: 'Danos materiais, morais e estéticos causados por outros condutores. Cobrança direta ou judicial.' },
+    { icon: Icon.Shield, t: 'Seguro de Passageiro (APP)', d: 'Acionamento de apólices privadas para invalidez ou despesas médicas em viagens de aplicativo.' },
+    { icon: Icon.Clock, t: 'Casos DPVAT (Legado)', d: 'Ainda atendemos indenizações para acidentes ocorridos antes da mudança na legislação de 2025.' },
   ];
   return (
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
@@ -511,9 +511,9 @@ function Especialidades({ primary, accent }) {
 function ProvaSocial({ primary, accent }) {
   const [active, setActive] = React.useState(0);
   const depos = [
-    { name: 'Juliana M.', role: 'Passageira de Uber · Recife, PE', text: 'Fui atropelada dentro do aplicativo e nem sabia que tinha direito. A equipe cuidou de tudo, e em poucos meses recebi minha indenização. Atendimento humano desde o começo.', stars: 5 },
-    { name: 'Carlos R.', role: 'Motorista · Olinda, PE', text: 'Tinha medo de cair em golpe. Fui recebido com clareza, me explicaram cada etapa. Hoje indico para qualquer colega motorista.', stars: 5 },
-    { name: 'Dona Helena', role: 'Familiar de vítima · São Paulo, SP', text: 'Perdi meu irmão em um acidente e não sabia nem por onde começar. A A QU4TRO me acolheu e garantiu o DPVAT da família.', stars: 5 },
+    { name: 'Juliana M.', role: 'Passageira de Uber · Recife, PE', text: 'Fui atropelada em uma viagem de app e nem sabia que tinha direito a seguro. A equipe cuidou de tudo e recebi minha indenização em poucos meses.', stars: 5 },
+    { name: 'Carlos R.', role: 'Motorista · Olinda, PE', text: 'Tinha medo de burocracia por causa das mudanças na lei. Fui recebido com clareza, me explicaram o que ainda era possível e o que mudou. Nota dez!', stars: 5 },
+    { name: 'Dona Helena', role: 'Familiar de vítima · São Paulo, SP', text: 'Perdi meu irmão em um acidente antigo e não sabia como receber. A A QU4TRO me acolheu e garantiu o direito da nossa família mesmo anos depois.', stars: 5 },
   ];
   return (
     <section style={{ padding: '38px 0 30px', background: '#F7F9FC' }}>
@@ -700,12 +700,12 @@ function FAQ({ primary }) {
   const [open, setOpen] = React.useState(0);
   const faqs = [
     { q: 'Preciso pagar algo adiantado?', a: 'Não. Nosso trabalho é remunerado só quando você recebe. Sem taxa de cadastro, sem mensalidade, sem pegadinha.' },
-    { q: 'Quanto tempo demora?', a: 'Depende do tipo de caso. DPVAT costuma sair em 3 a 6 meses. Processos contra terceiros variam, mas você acompanha cada etapa em tempo real.' },
-    { q: 'Posso receber mesmo se a culpa foi minha?', a: 'Em muitos casos, sim — principalmente no DPVAT e em acidentes envolvendo aplicativos. Analisamos seu caso gratuitamente para te dar uma resposta segura.' },
+    { q: 'Quanto tempo demora?', a: 'Depende do tipo de caso. Indenizações via seguro de aplicativo costumam sair em poucos meses. Processos contra terceiros variam conforme a complexidade, mas você acompanha cada etapa em tempo real.' },
+    { q: 'Posso receber mesmo se a culpa foi minha?', a: 'Em muitos casos, sim — especialmente em acidentes envolvendo aplicativos (Uber, 99, iFood), onde passageiros e motoristas têm coberturas específicas independente da culpa. Analisamos seu caso gratuitamente para te dar uma resposta segura.' },
     { q: 'E se eu não tiver boletim de ocorrência?', a: 'A gente ajuda a reconstruir. Laudo médico, testemunhas e registros de aplicativo também servem como prova.' },
     { q: 'Passageiro de Uber/99 também tem direito?', a: 'Sim. Motoristas e passageiros de aplicativo têm cobertura específica — inclusive quando o acidente é culpa do condutor.' },
     { q: 'Qual o valor da indenização?', a: 'Varia conforme o tipo de lesão, gravidade e caso. Já conseguimos valores de R$ 3 mil a mais de R$ 100 mil. Te damos uma estimativa realista logo no primeiro contato.' },
-    { q: 'DPVAT ainda existe?', a: 'Sim. O DPVAT foi reformulado, mas continua garantindo indenização para vítimas de acidente de trânsito em todo o país.' },
+    { q: 'DPVAT ainda existe?', a: 'Com a regulamentação de 2025, o seguro obrigatório mudou. Atualmente, focamos em indenizações via aplicativos e processos contra terceiros, mas ainda atendemos casos DPVAT para acidentes ocorridos antes da nova lei.' },
     { q: 'Atendem fora de Recife?', a: 'Atendemos em todo o Brasil, 100% online. Já representamos clientes em todos os estados.' },
   ];
   return (

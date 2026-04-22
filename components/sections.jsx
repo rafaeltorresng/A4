@@ -543,10 +543,38 @@ function ComoFunciona({ primary, accent }) {
 }
 
 
+// ─── Faixa de marcas (card Indenização via App) ───────────────
+/** Logos em `uploads/brands/` — ver README da pasta; substitua 99.svg pelo oficial quando tiver. */
+function PartnerBrandStrip() {
+  const logoH = 22;
+  const img = { height: logoH, width: 'auto', display: 'block' };
+  return (
+    <div style={{ marginTop: 12 }}>
+      <div
+        style={{
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center',
+          gap: 14, rowGap: 10,
+        }}
+        aria-label="Plataformas de mobilidade mencionadas no texto"
+      >
+        <img src="uploads/brands/uber.svg" alt="Uber" style={img} decoding="async" />
+        <img src="uploads/brands/99.svg" alt="99" style={img} decoding="async" />
+        <img src="uploads/brands/ifood.svg" alt="iFood" style={img} decoding="async" />
+      </div>
+      <p style={{
+        fontFamily: 'DM Sans, sans-serif', fontSize: 9, lineHeight: 1.35,
+        color: '#9CA3AF', margin: '8px 0 0',
+      }}>
+        Marcas exibidas pertencem aos respectivos titulares.
+      </p>
+    </div>
+  );
+}
+
 // ─── Especialidades ───────────────────────────────────────────
 function Especialidades({ primary, accent }) {
   const services = [
-    { icon: Icon.RideshareClaim, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas do aplicativo.', tag: 'NOVO' },
+    { icon: Icon.RideshareClaim, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas do aplicativo.', tag: 'NOVO', brandStrip: true },
     { icon: Icon.ThirdPartyCollision, t: 'Processos contra Terceiros', d: 'Danos materiais, morais e estéticos causados por outros condutores. Cobrança direta ou judicial.' },
     { icon: Icon.PassengerTripCover, t: 'Seguro de Passageiro (APP)', d: 'Acionamento de apólices privadas para invalidez ou despesas médicas em viagens de aplicativo.' },
     { icon: Icon.LegacyPolicyArchive, t: 'Casos DPVAT (Legado)', d: 'Ainda atendemos indenizações para acidentes ocorridos antes da mudança na legislação de 2025.' },
@@ -561,7 +589,7 @@ function Especialidades({ primary, accent }) {
       }}>
         Onde nossa equipe<br/><span style={{ color: primary }}>pode te ajudar.</span>
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, alignItems: 'start' }}>
         {services.map((s, i) => {
           const I = s.icon;
           return (
@@ -571,7 +599,7 @@ function Especialidades({ primary, accent }) {
               background: 'rgba(247, 249, 252, 0.8)',
               backdropFilter: 'blur(8px)',
               border: '1px solid #E5E7EB',
-              minHeight: 160,
+              minHeight: s.brandStrip ? undefined : 160,
               display: 'flex', flexDirection: 'column',
               boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
               transition: 'transform 0.2s ease, box-shadow 0.2s ease',
@@ -603,6 +631,7 @@ function Especialidades({ primary, accent }) {
                 fontFamily: 'DM Sans, sans-serif', fontSize: 11, lineHeight: 1.45,
                 color: '#6B7280', margin: '6px 0 0',
               }}>{s.d}</p>
+              {s.brandStrip ? <PartnerBrandStrip/> : null}
             </div>
           );
         })}

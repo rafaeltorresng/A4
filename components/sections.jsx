@@ -285,7 +285,7 @@ function Hero({ primary, accent, heroTone }) {
           {[
             ['14', 'anos de\nexperiência'],
             ['+5mil', 'vítimas\nindenizadas'],
-            ['100%', 'foco em\nresultados'],
+            ['100%', 'atendimento\non-line'],
           ].map(([big, small], i) => (
             <div key={i} style={{
               padding: '12px 8px', textAlign: 'center',

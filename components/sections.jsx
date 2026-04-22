@@ -101,6 +101,13 @@ const Icon = {
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
     </svg>
   ),
+  ExternalLink: ({ size = 14, color = '#9CA3AF' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  ),
 };
 
 // ─── Logo AQU4TRO ──────────────────────────────────────────────
@@ -588,6 +595,37 @@ function ProvaSocial({ primary, accent }) {
   );
 }
 
+// ─── Instagram Banner (Minimalist) ────────────────────────────
+function InstagramBanner({ primary, accent }) {
+  return (
+    <section style={{ padding: '0 22px 38px', textAlign: 'center', background: '#F7F9FC' }}>
+      <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 10,
+        padding: '12px 20px', borderRadius: 999,
+        background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)',
+        textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Icon.Instagram size={20} color="#0F2E63"/>
+          <span style={{ 
+            width: 6, height: 6, borderRadius: 999, 
+            background: '#4ADE80', boxShadow: '0 0 8px rgba(74, 222, 128, 0.4)'
+          }} className="pulse-dot"/>
+        </div>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ 
+            fontFamily: 'Montserrat', fontWeight: 700, fontSize: 12, color: '#0F2E63', lineHeight: 1 
+          }}>@a4servicosdetransito</div>
+          <div style={{ 
+            fontFamily: 'Montserrat', fontWeight: 500, fontSize: 10, color: '#6B7280', marginTop: 2
+          }}>Casos reais atualizados hoje</div>
+        </div>
+        <Icon.ExternalLink size={14} color="#9CA3AF"/>
+      </a>
+    </section>
+  );
+}
+
 // ─── Quem somos ───────────────────────────────────────────────
 function QuemSomos({ primary, accent }) {
   const values = [
@@ -865,4 +903,4 @@ function FloatingCTA() {
   );
 }
 
-Object.assign(window, { Hero, Problema, ComoFunciona, Especialidades, ProvaSocial, QuemSomos, FAQ, CTAFinal, Footer, TopBar, FloatingCTA, Icon, Logo });
+Object.assign(window, { Hero, Problema, ComoFunciona, Especialidades, ProvaSocial, QuemSomos, FAQ, CTAFinal, Footer, TopBar, FloatingCTA, InstagramBanner, Icon, Logo });

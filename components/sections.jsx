@@ -151,6 +151,66 @@ const Icon = {
       <path d="m9.25 19.75 2.25-2.25 3.25 3.25" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   ),
+  /** Especialidade: indenização via app — celular + rota de corrida + cobertura ok */
+  RideshareClaim: ({ size = 26, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <rect x="6" y="3.25" width="11.5" height="17.5" rx="2.35" stroke={color} strokeWidth="1.45"/>
+      <path d="M9.25 6.25h5.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.32"/>
+      <path
+        d="M9.5 16.25c1.4-2.5 3.4-4 6.25-4.75"
+        stroke={color} strokeWidth="1.35" strokeLinecap="round" fill="none"
+      />
+      <circle cx="9.5" cy="16.25" r="1.25" fill={color}/>
+      <circle cx="15.75" cy="11.5" r="1.15" fill={color} opacity="0.55"/>
+      <circle cx="18.25" cy="5.75" r="2.4" fill="#fff" stroke={color} strokeWidth="1.35"/>
+      <path d="m16.85 5.75 1.05.95 1.9-1.85" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9.75 18.75h4.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" opacity="0.42"/>
+    </svg>
+  ),
+  /** Especialidade: terceiros — dois veículos + ponto de conflito */
+  ThirdPartyCollision: ({ size = 26, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path
+        d="M3.5 17.2h6.2l.9-3.1a.85.85 0 01.8-.6h.9a.85.85 0 01.8.6l.9 3.1h1.4"
+        stroke={color} strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round"
+      />
+      <path d="M5.2 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
+      <path d="M8.8 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
+      <path
+        d="M14.1 17.2h6.2l.9-3.1a.85.85 0 01.8-.6h.9a.85.85 0 01.8.6l.9 3.1h1.35"
+        stroke={color} strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round"
+      />
+      <path d="M15.8 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
+      <path d="M19.4 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
+      <path d="M11.2 11.5 12.8 13 14.4 11.5" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="12.8" cy="9.8" r="1.15" fill={color}/>
+    </svg>
+  ),
+  /** Especialidade: seguro passageiro app — tela de viagem + cruz médica */
+  PassengerTripCover: ({ size = 26, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <rect x="4.75" y="5.25" width="14.5" height="13.5" rx="2.15" stroke={color} strokeWidth="1.45"/>
+      <path d="M7.75 9.25h8.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.35"/>
+      <circle cx="12" cy="12.35" r="2.35" stroke={color} strokeWidth="1.35" fill="none"/>
+      <path d="M12 10.6v3.5M10.25 12.35h3.5" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
+      <path d="M8.25 16.5h7.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.38"/>
+      <circle cx="18.35" cy="8.15" r="2.55" fill="#fff" stroke={color} strokeWidth="1.3"/>
+      <path d="M18.35 6.85v2.6M17.05 8.15h2.6" stroke={color} strokeWidth="1.15" strokeLinecap="round"/>
+    </svg>
+  ),
+  /** Especialidade: DPVAT legado — arquivo + tempo / legislação anterior */
+  LegacyPolicyArchive: ({ size = 26, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path
+        d="M5 6.5h5l1.2 1.4H19a1.2 1.2 0 011.2 1.2v9.6a1.2 1.2 0 01-1.2 1.2H5a1.2 1.2 0 01-1.2-1.2V7.7A1.2 1.2 0 015 6.5Z"
+        stroke={color} strokeWidth="1.45" strokeLinejoin="round"
+      />
+      <path d="M7.5 12h8M7.5 15h5.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" opacity="0.4"/>
+      <circle cx="17.2" cy="9.3" r="3.6" fill="#fff" stroke={color} strokeWidth="1.35"/>
+      <path d="M17.2 7.4v2.35l1.55.9" stroke={color} strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M14.8 18.2h4.8" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.35"/>
+    </svg>
+  ),
 };
 
 // ─── Logo AQU4TRO ──────────────────────────────────────────────
@@ -486,10 +546,10 @@ function ComoFunciona({ primary, accent }) {
 // ─── Especialidades ───────────────────────────────────────────
 function Especialidades({ primary, accent }) {
   const services = [
-    { icon: Icon.App, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas do aplicativo.', tag: 'NOVO' },
-    { icon: Icon.Car, t: 'Processos contra Terceiros', d: 'Danos materiais, morais e estéticos causados por outros condutores. Cobrança direta ou judicial.' },
-    { icon: Icon.Shield, t: 'Seguro de Passageiro (APP)', d: 'Acionamento de apólices privadas para invalidez ou despesas médicas em viagens de aplicativo.' },
-    { icon: Icon.Clock, t: 'Casos DPVAT (Legado)', d: 'Ainda atendemos indenizações para acidentes ocorridos antes da mudança na legislação de 2025.' },
+    { icon: Icon.RideshareClaim, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas do aplicativo.', tag: 'NOVO' },
+    { icon: Icon.ThirdPartyCollision, t: 'Processos contra Terceiros', d: 'Danos materiais, morais e estéticos causados por outros condutores. Cobrança direta ou judicial.' },
+    { icon: Icon.PassengerTripCover, t: 'Seguro de Passageiro (APP)', d: 'Acionamento de apólices privadas para invalidez ou despesas médicas em viagens de aplicativo.' },
+    { icon: Icon.LegacyPolicyArchive, t: 'Casos DPVAT (Legado)', d: 'Ainda atendemos indenizações para acidentes ocorridos antes da mudança na legislação de 2025.' },
   ];
   return (
     <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>

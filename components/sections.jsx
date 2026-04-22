@@ -761,70 +761,62 @@ function FAQ({ primary }) {
 function CTAFinal({ primary, accent }) {
   return (
     <section style={{
-      padding: '40px 22px 36px',
-      background: `linear-gradient(180deg, #0F2E63 0%, ${primary} 100%)`,
+      padding: '50px 22px 40px',
+      background: '#0F2E63',
       color: '#fff', position: 'relative', overflow: 'hidden',
+      textAlign: 'center'
     }}>
-      <svg style={{ position: 'absolute', left: -40, bottom: -40, opacity: .12 }} width="220" height="220" viewBox="0 0 100 100">
-        <path d="M20 80 Q 50 20, 80 80" stroke={accent} strokeWidth="2" fill="none"/>
-        <path d="M10 90 Q 50 10, 90 90" stroke="#fff" strokeWidth="1" fill="none"/>
-      </svg>
-      <div style={{ position: 'relative', textAlign: 'center' }}>
-        <div style={{ display: 'inline-flex', marginBottom: 16 }}>
-          <div style={{
-            width: 60, height: 60, borderRadius: 20,
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))',
-            border: '1px solid rgba(255,255,255,.25)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            backdropFilter: 'blur(12px)',
-            boxShadow: '0 12px 24px rgba(0,0,0,0.2)',
-          }}>
-            <span style={{ 
-              fontFamily: 'Poppins, sans-serif', 
-              fontWeight: 900, 
-              fontSize: 28, 
-              color: accent,
-              textShadow: `0 0 20px ${accent}60`,
-              letterSpacing: '-1px',
-              transform: 'translateY(-1px)'
-            }}>A4</span>
-          </div>
+      {/* Decorative subtle glow */}
+      <div style={{
+        position: 'absolute', top: '-20%', left: '50%', transform: 'translateX(-50%)',
+        width: '80%', height: '80%',
+        background: `radial-gradient(circle, ${primary}44 0%, transparent 70%)`,
+        pointerEvents: 'none'
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ marginBottom: 20 }}>
+          <Logo size={22} stacked={false} color="#fff" accent={accent} />
         </div>
+
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-          fontSize: 28, lineHeight: 1.1, margin: 0,
-          letterSpacing: '-0.01em',
+          fontFamily: 'DM Sans, sans-serif', fontWeight: 500,
+          fontSize: 32, lineHeight: 1.1, margin: '0 auto 16px',
+          letterSpacing: '-0.02em', maxWidth: 280
         }}>
           Seu direito,<br/>
           <span style={{ color: accent }}>nossa prioridade.</span>
         </h2>
+
         <p style={{
-          fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.55,
-          color: 'rgba(255,255,255,.85)', margin: '12px auto 0', maxWidth: 300,
+          fontFamily: 'DM Sans, sans-serif', fontSize: 15, lineHeight: 1.6,
+          color: 'rgba(255,255,255,0.7)', margin: '0 auto 28px', maxWidth: 300,
         }}>
-          Conte sua história agora. Em poucos minutos você sabe se tem direito — sem compromisso, sem custo.
+          Conte sua história agora. Em poucos minutos você sabe se tem direito — sem compromisso e sem custo.
         </p>
 
-        <a href={WHATSAPP_URL} className="btn-shine" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-          marginTop: 22, padding: '17px 20px',
-          background: '#25D366', color: '#fff',
-          borderRadius: 14, textDecoration: 'none',
-          fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16,
-          boxShadow: '0 10px 28px rgba(37,211,102,.4)',
-        }}>
-          <Icon.Whatsapp size={22}/> Falar agora no WhatsApp
-        </a>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+          <a href={WHATSAPP_URL} className="btn-shine" style={{
+            width: '100%', maxWidth: 280,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+            padding: '18px 24px',
+            background: '#25D366', color: '#fff',
+            borderRadius: 16, textDecoration: 'none',
+            fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 16,
+            boxShadow: '0 12px 24px rgba(37,211,102,0.25)',
+          }}>
+            <Icon.Whatsapp size={22}/> Falar com especialista
+          </a>
 
-        <a href="tel:+5581997140111" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
-          marginTop: 14, padding: '10px 14px',
-          color: '#fff', textDecoration: 'none',
-          fontFamily: 'DM Sans, sans-serif', fontWeight: 600, fontSize: 13,
-          borderBottom: '1px dashed rgba(255,255,255,.4)',
-        }}>
-          <Icon.Phone size={14} color={accent}/> (81) 99714-0111
-        </a>
+          <a href="tel:+5581997140111" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
+            fontFamily: 'DM Sans, sans-serif', fontWeight: 500, fontSize: 14,
+            transition: 'color 0.2s',
+          }}>
+            <Icon.Phone size={16} color="rgba(255,255,255,0.4)"/> Ou ligue: (81) 99714-0111
+          </a>
+        </div>
       </div>
     </section>
   );

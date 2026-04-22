@@ -222,13 +222,14 @@ function Hero({ primary, accent, heroTone }) {
         {/* Eyebrow */}
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          padding: '8px 14px', borderRadius: 999,
-          background: 'rgba(255,255,255,.1)',
+          padding: '6px 12px', borderRadius: 999,
+          background: 'rgba(255,255,255,.08)',
           backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,.2)',
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10,
-          letterSpacing: '.15em', textTransform: 'uppercase',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+          border: '1px solid rgba(255,255,255,.12)',
+          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 10,
+          letterSpacing: '.12em', textTransform: 'uppercase',
+          color: '#fff',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
         }}>
           <span style={{ width: 6, height: 6, borderRadius: 999, background: accent, boxShadow: `0 0 10px ${accent}` }}/>
           Especialistas em indenização
@@ -314,11 +315,11 @@ function Problema({ primary }) {
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
       <SectionLabel label="O que você está sentindo" primary={primary}/>
       <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-        fontSize: 24, lineHeight: 1.2, margin: '10px 0 4px', color: '#0F2E63',
-        letterSpacing: '-.01em',
+        fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+        fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63',
+        letterSpacing: '-.03em',
       }}>
-        Depois de um acidente,<br/>a cabeça fica cheia de dúvidas.
+        Dúvidas comuns após<br/><span style={{ color: primary }}>um acidente.</span>
       </h2>
       <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.55, color: '#4B5563', margin: '8px 0 18px' }}>
         Você não está sozinho. Talvez esteja pensando:
@@ -366,10 +367,10 @@ function ComoFunciona({ primary, accent }) {
         <SectionLabel label="Como funciona" primary={primary}/>
         <h2 style={{
           fontFamily: 'Poppins, sans-serif', fontWeight: 800,
-          fontSize: 28, lineHeight: 1.15, margin: '12px 0 0', color: '#0F2E63',
-          letterSpacing: '-.02em',
+          fontSize: 32, lineHeight: 1.05, margin: '14px 0 0', color: '#0F2E63',
+          letterSpacing: '-.04em',
         }}>
-          Sua jornada para<br/>a indenização.
+          Sua jornada para<br/><span style={{ color: primary }}>a indenização.</span>
         </h2>
       </div>
 
@@ -451,11 +452,11 @@ function Especialidades({ primary, accent }) {
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
       <SectionLabel label="Especialidades" primary={primary}/>
       <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-        fontSize: 24, lineHeight: 1.2, margin: '10px 0 20px', color: '#0F2E63',
-        letterSpacing: '-.01em',
+        fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+        fontSize: 28, lineHeight: 1.1, margin: '14px 0 24px', color: '#0F2E63',
+        letterSpacing: '-.03em',
       }}>
-        Em que a gente atua.
+        Onde nossa equipe<br/><span style={{ color: primary }}>pode te ajudar.</span>
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         {services.map((s, i) => {
@@ -520,11 +521,11 @@ function ProvaSocial({ primary, accent }) {
       <div style={{ padding: '0 22px' }}>
         <SectionLabel label="Quem confiou" primary={primary}/>
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-          fontSize: 24, lineHeight: 1.2, margin: '10px 0 4px', color: '#0F2E63',
-          letterSpacing: '-.01em',
+          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63',
+          letterSpacing: '-.03em',
         }}>
-          Histórias reais de<br/>quem foi indenizado.
+          Histórias reais de<br/><span style={{ color: primary }}>quem confiou.</span>
         </h2>
       </div>
 
@@ -655,11 +656,11 @@ function QuemSomos({ primary, accent }) {
           }}>Quem somos</div>
         </div>
         <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-          fontSize: 26, lineHeight: 1.15, margin: '10px 0 0',
-          letterSpacing: '-.01em',
+          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontSize: 30, lineHeight: 1.1, margin: '14px 0 0',
+          letterSpacing: '-.03em',
         }}>
-          14 anos lutando<br/>pelo direito da vítima.
+          14 anos lutando pelo<br/><span style={{ color: accent }}>seu direito.</span>
         </h2>
         <p style={{
           fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.55,
@@ -712,11 +713,11 @@ function FAQ({ primary }) {
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
       <SectionLabel label="Dúvidas frequentes" primary={primary}/>
       <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-        fontSize: 24, lineHeight: 1.2, margin: '10px 0 18px', color: '#0F2E63',
-        letterSpacing: '-.01em',
+        fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+        fontSize: 28, lineHeight: 1.1, margin: '14px 0 22px', color: '#0F2E63',
+        letterSpacing: '-.03em',
       }}>
-        Perguntas que a gente<br/>ouve todo dia.
+        Perguntas que ouvimos<br/><span style={{ color: primary }}>todos os dias.</span>
       </h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         {faqs.map((f, i) => (
@@ -877,11 +878,18 @@ const linkStyle = {
 function SectionLabel({ label, primary }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-      <span style={{ width: 4, height: 4, borderRadius: 999, background: primary }}/>
-      <span style={{
-        fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10,
-        letterSpacing: '.2em', textTransform: 'uppercase', color: primary,
-      }}>{label}</span>
+      <div style={{
+        display: 'inline-flex', alignItems: 'center', gap: 6,
+        padding: '5px 10px', borderRadius: 6,
+        background: `${primary}08`,
+        border: `1px solid ${primary}15`,
+      }}>
+        <span style={{ width: 4, height: 4, borderRadius: 999, background: primary }}/>
+        <span style={{
+          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 9,
+          letterSpacing: '.12em', textTransform: 'uppercase', color: primary,
+        }}>{label}</span>
+      </div>
     </div>
   );
 }

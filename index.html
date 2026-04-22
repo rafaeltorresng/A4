@@ -12,12 +12,12 @@
   body {
     font-family: 'Montserrat', system-ui, sans-serif;
     display: flex; align-items: center; justify-content: center;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
   }
   #stage {
     position: relative;
-    width: 100vw; height: 100vh;
+    width: 100vw; height: 100dvh;
     display: flex; align-items: center; justify-content: center;
   }
   /* Background pattern */
@@ -30,7 +30,16 @@
       #EEF2F7;
     z-index: 0;
   }
-  #root { position: relative; z-index: 1; }
+  #root { 
+    position: relative; z-index: 1; 
+    transition: transform 0.3s ease;
+  }
+  /* Ajuste de escala para mobile */
+  @media (max-height: 900px) { #root { transform: scale(0.9); } }
+  @media (max-height: 800px) { #root { transform: scale(0.8); } }
+  @media (max-height: 700px) { #root { transform: scale(0.7); } }
+  @media (max-width: 450px) { #root { transform: scale(0.85); } }
+  @media (max-width: 380px) { #root { transform: scale(0.75); } }
   @keyframes pulse {
     0%, 100% { transform: scale(1); box-shadow: 0 10px 24px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.2); }
     50% { transform: scale(1.06); box-shadow: 0 14px 32px rgba(37,211,102,.55), 0 2px 6px rgba(0,0,0,.2); }
@@ -165,7 +174,7 @@
             <div className="reveal"><CTAFinal primary={primary} accent={accent}/></div>
             <Footer primary={primary} accent={accent}/>
           </div>
-          <div style={{ height: 20 }}/>
+          <div style={{ height: 80 }}/>
         </div>
         <FloatingCTA/>
       </IOSDevice>

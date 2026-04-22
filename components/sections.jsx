@@ -1,13 +1,12 @@
 // AQU4TRO — Seções da landing page
 
-const WHATSAPP_URL = 'https://wa.me/5581997140111?text=Ol%C3%A1%2C%20sofri%20um%20acidente%20e%20gostaria%20de%20falar%20com%20um%20especialista.';
+const WHATSAPP_URL = 'https://wa.me/5581997140111?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista.';
 
 // ─── Ícones (outline, 24px) ─────────────────────────────────────
 const Icon = {
   Whatsapp: ({ size = 22, color = '#fff' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.67 1.45 5.18L2 22l4.95-1.41A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Z" stroke={color} strokeWidth="1.6" strokeLinejoin="round"/>
-      <path d="M8.5 8c.3-.5.9-.5 1.3-.1.3.3.8 1.2 1 1.7.1.3 0 .6-.2.8l-.5.5c-.2.2-.2.4-.1.6.4 1 1.3 1.9 2.3 2.3.2.1.4 0 .6-.1l.5-.5c.2-.2.5-.3.8-.2.5.2 1.4.7 1.7 1 .4.4.4 1-.1 1.3-.8.6-1.8.9-2.8.7-2.1-.3-4.3-2.5-4.6-4.6-.2-1 .1-2 .7-2.7Z" fill={color}/>
+    <svg width={size} height={size} viewBox="0 0 16 16" fill={color}>
+      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
     </svg>
   ),
   Phone: ({ size = 18, color = '#1E4FA1' }) => (
@@ -83,6 +82,25 @@ const Icon = {
       <path d="M4 7h16M4 12h16M4 17h16" stroke={color} strokeWidth="2" strokeLinecap="round"/>
     </svg>
   ),
+  Search: ({ size = 20, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2"/>
+      <path d="m20 20-3-3" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  ),
+  Award: ({ size = 20, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke={color} strokeWidth="2"/>
+      <path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  Instagram: ({ size = 20, color = '#fff' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>
+  ),
 };
 
 // ─── Logo AQU4TRO ──────────────────────────────────────────────
@@ -101,24 +119,66 @@ function Logo({ size = 20, stacked = true, color = '#1E4FA1', accent = '#FFC431'
   );
 }
 
+// ─── Componente de Contador (Motion) ──────────────────────────
+function Counter({ target, duration = 2000 }) {
+  const [count, setCount] = React.useState(0);
+  const elementRef = React.useRef(null);
+  const hasAnimated = React.useRef(false);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !hasAnimated.current) {
+        hasAnimated.current = true;
+        let start = 0;
+        const endValue = parseInt(target.replace(/\D/g, ''));
+        if (isNaN(endValue)) {
+          setCount(target);
+          return;
+        }
+        const increment = endValue / (duration / 16);
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= endValue) {
+            setCount(endValue);
+            clearInterval(timer);
+          } else {
+            setCount(Math.floor(start));
+          }
+        }, 16);
+        // Ensure cleanup if component unmounts
+        return () => clearInterval(timer);
+      }
+    }, { threshold: 0.5 });
+
+    if (elementRef.current) observer.observe(elementRef.current);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  const suffix = target.replace(/[0-9]/g, '').replace('+', '');
+  const prefix = target.startsWith('+') ? '+' : '';
+  
+  return <span ref={elementRef}>{prefix}{count}{suffix}</span>;
+}
+
+
 // ─── Top bar (fixa dentro do telefone) ─────────────────────────
 function TopBar({ primary }) {
   return (
     <div style={{
       position: 'sticky', top: 0, zIndex: 10,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '12px 18px', background: 'rgba(255,255,255,.92)',
-      backdropFilter: 'blur(10px)',
-      borderBottom: '1px solid #E5E7EB',
+      padding: '12px 18px', background: 'rgba(255,255,255,.75)',
+      backdropFilter: 'blur(15px) saturate(160%)',
+      borderBottom: '1px solid rgba(229,231,235,.5)',
     }}>
       <Logo size={17} stacked={true} color={primary} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <a href={WHATSAPP_URL} style={{
+        <a href={WHATSAPP_URL} className="btn-shine" style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
           background: '#25D366', color: '#fff',
-          padding: '8px 12px', borderRadius: 999,
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 12,
-          textDecoration: 'none', boxShadow: '0 4px 10px rgba(37,211,102,.3)',
+          padding: '8px 14px', borderRadius: 999,
+          fontFamily: 'Montserrat, sans-serif', fontWeight: 700, fontSize: 11,
+          textDecoration: 'none', boxShadow: '0 4px 12px rgba(37,211,102,.25)',
         }}>
           <Icon.Whatsapp size={14} /> WhatsApp
         </a>
@@ -130,43 +190,40 @@ function TopBar({ primary }) {
 // ─── Hero ─────────────────────────────────────────────────────
 function Hero({ primary, accent, heroTone }) {
   // heroTone: 'road' | 'human'
-  const isHuman = heroTone === 'human';
   return (
-    <section style={{ position: 'relative', color: '#fff', overflow: 'hidden' }}>
-      {/* Imagem de fundo */}
+    <section style={{ position: 'relative', color: '#fff', overflow: 'hidden', minHeight: 480, display: 'flex', alignItems: 'center' }}>
+      {/* Background Image with Overlay */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: isHuman
-          ? `linear-gradient(135deg, ${primary} 0%, #0F2E63 100%)`
-          : `linear-gradient(180deg, rgba(15,46,99,.55) 0%, ${primary} 85%)`,
+        backgroundImage: 'url("uploads/hero-bg.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}>
-        {/* Placeholder "imagem" — textura sutil */}
-        <svg width="100%" height="100%" style={{ position: 'absolute', inset: 0, opacity: .25, mixBlendMode: 'screen' }}>
-          <defs>
-            <pattern id="roadGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M0 40L40 0" stroke="#fff" strokeWidth=".5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#roadGrid)"/>
-        </svg>
-        {/* Curvas sugerindo estrada / movimento */}
-        <svg width="100%" height="100%" viewBox="0 0 390 560" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, opacity: .35 }}>
-          <path d="M-20 560 Q 100 300, 200 250 T 410 60" stroke="#fff" strokeWidth="1" fill="none" opacity=".3"/>
-          <path d="M-50 560 Q 120 320, 220 270 T 420 90" stroke={accent} strokeWidth="1.5" fill="none" opacity=".6"/>
-        </svg>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: `linear-gradient(180deg, rgba(15, 46, 99, 0.7) 0%, ${primary}ee 100%)`,
+        }} />
       </div>
+
+      {/* Modern curves overlay */}
+      <svg width="100%" height="100%" viewBox="0 0 390 560" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, opacity: .4, pointerEvents: 'none' }}>
+        <path d="M-20 560 Q 100 300, 200 250 T 410 60" stroke="#fff" strokeWidth="0.5" fill="none" opacity=".2"/>
+        <path d="M-50 560 Q 120 320, 220 270 T 420 90" stroke={accent} strokeWidth="1" fill="none" opacity=".4"/>
+      </svg>
 
       <div style={{ position: 'relative', padding: '28px 22px 26px' }}>
         {/* Eyebrow */}
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          padding: '6px 12px', borderRadius: 999,
-          background: 'rgba(255,255,255,.15)',
-          border: '1px solid rgba(255,255,255,.25)',
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10.5,
+          padding: '8px 14px', borderRadius: 999,
+          background: 'rgba(255,255,255,.1)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255,255,255,.2)',
+          fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10,
           letterSpacing: '.15em', textTransform: 'uppercase',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
         }}>
-          <span style={{ width: 6, height: 6, borderRadius: 999, background: accent }}/>
+          <span style={{ width: 6, height: 6, borderRadius: 999, background: accent, boxShadow: `0 0 10px ${accent}` }}/>
           Especialistas em indenização
         </div>
 
@@ -190,7 +247,7 @@ function Hero({ primary, accent, heroTone }) {
         </p>
 
         {/* CTA principal */}
-        <a href={WHATSAPP_URL} style={{
+        <a href={WHATSAPP_URL} className="btn-shine" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
           marginTop: 22, padding: '16px 20px',
           background: '#25D366', color: '#fff',
@@ -205,7 +262,7 @@ function Hero({ primary, accent, heroTone }) {
           marginTop: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
           fontFamily: 'Montserrat, sans-serif', fontSize: 11, color: 'rgba(255,255,255,.75)',
         }}>
-          <span style={{ width: 6, height: 6, borderRadius: 999, background: '#4ADE80', boxShadow: '0 0 0 4px rgba(74,222,128,.25)' }}/>
+          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: 999, background: '#4ADE80' }}/>
           Atendimento agora · Resposta em minutos
         </div>
 
@@ -226,7 +283,9 @@ function Hero({ primary, accent, heroTone }) {
               padding: '12px 8px', textAlign: 'center',
               borderRight: i < 2 ? '1px solid rgba(255,255,255,.12)' : 'none',
             }}>
-              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 22, color: accent }}>{big}</div>
+              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 22, color: accent }}>
+                <Counter target={big}/>
+              </div>
               <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 10, lineHeight: 1.25, color: 'rgba(255,255,255,.85)', whiteSpace: 'pre-line', marginTop: 2 }}>{small}</div>
             </div>
           ))}
@@ -261,35 +320,27 @@ function Problema({ primary }) {
         {items.map((t, i) => (
           <div key={i} style={{
             display: 'flex', alignItems: 'flex-start', gap: 12,
-            padding: '14px 14px', borderRadius: 12,
-            background: '#F7F9FC', border: '1px solid #E5E7EB',
+            padding: '16px 16px', borderRadius: 16,
+            background: 'rgba(247, 249, 252, 0.4)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(229, 231, 235, 0.6)',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
           }}>
             <div style={{
-              flexShrink: 0, width: 28, height: 28, borderRadius: 999,
+              flexShrink: 0, width: 28, height: 28, borderRadius: 9,
               background: '#fff', border: '1px solid #E5E7EB',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: primary,
+              boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
             }}>{i + 1}</div>
             <p style={{
-              fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.5,
-              color: '#1F2937', margin: 0,
+              fontFamily: 'Montserrat, sans-serif', fontSize: 13, lineHeight: 1.5,
+              color: '#1F2937', margin: 0, fontWeight: 500,
             }}>"{t}"</p>
           </div>
         ))}
       </div>
-      <div style={{
-        marginTop: 18, padding: '14px 14px', borderRadius: 12,
-        background: '#FFFBEB', border: '1px solid #FEF3C7',
-        display: 'flex', gap: 10, alignItems: 'flex-start',
-      }}>
-        <Icon.Alert/>
-        <p style={{
-          fontFamily: 'Montserrat, sans-serif', fontSize: 12.5, lineHeight: 1.45,
-          color: '#0F2E63', margin: 0,
-        }}>
-          <strong>Atenção:</strong> o prazo para pedir DPVAT é de <strong>3 anos</strong> e para ação contra terceiros até <strong>5 anos</strong>. Cada dia conta.
-        </p>
-      </div>
+
     </section>
   );
 }
@@ -297,54 +348,89 @@ function Problema({ primary }) {
 // ─── Como funciona ────────────────────────────────────────────
 function ComoFunciona({ primary, accent }) {
   const steps = [
-    { n: '01', t: 'Você conta o que aconteceu', d: 'Pelo WhatsApp, em minutos. Tudo online, sem sair de casa.' },
-    { n: '02', t: 'Analisamos seu caso', d: 'Um especialista avalia gratuitamente se você tem direito e qual o caminho.' },
-    { n: '03', t: 'Cuidamos de toda burocracia', d: 'Documentos, laudos, protocolos — fazemos tudo por você.' },
-    { n: '04', t: 'Você recebe sua indenização', d: 'Acompanhamento do início ao fim, com transparência total.' },
+    { n: '01', t: 'Você conta o que aconteceu', d: <>Pelo <strong>WhatsApp</strong>, em <strong>minutos</strong>. Tudo <strong>online</strong>, sem sair de casa.</>, icon: Icon.Whatsapp },
+    { n: '02', t: 'Analisamos seu caso', d: <>Um <strong>especialista</strong> avalia <strong>gratuitamente</strong> se você tem direito e qual o caminho.</>, icon: Icon.Search },
+    { n: '03', t: 'Cuidamos de toda burocracia', d: <><strong>Documentos, laudos, protocolos</strong> — fazemos <strong>tudo por você</strong>.</>, icon: Icon.Doc },
+    { n: '04', t: 'Você recebe sua indenização', d: <>Acompanhamento do início ao fim, com <strong>transparência total</strong>.</>, icon: Icon.Award },
   ];
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#F7F9FC' }}>
-      <SectionLabel number="03" label="Como funciona" primary={primary}/>
-      <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-        fontSize: 24, lineHeight: 1.2, margin: '10px 0 22px', color: '#0F2E63',
-        letterSpacing: '-.01em',
-      }}>
-        Do primeiro contato<br/>até o pagamento.
-      </h2>
+    <section style={{ padding: '40px 22px 36px', background: '#F7F9FC' }}>
+      <div style={{ textAlign: 'center', marginBottom: 30 }}>
+        <SectionLabel number="03" label="Como funciona" primary={primary}/>
+        <h2 style={{
+          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
+          fontSize: 28, lineHeight: 1.15, margin: '12px 0 0', color: '#0F2E63',
+          letterSpacing: '-.02em',
+        }}>
+          Sua jornada para<br/>a indenização.
+        </h2>
+      </div>
+
       <div style={{ position: 'relative' }}>
-        {/* Linha conectora */}
+        {/* Glow Line Connector */}
         <div style={{
-          position: 'absolute', left: 22, top: 22, bottom: 22,
-          width: 2, background: `repeating-linear-gradient(to bottom, ${primary} 0 4px, transparent 4px 8px)`,
-          opacity: .3,
+          position: 'absolute', left: 24, top: 20, bottom: 20,
+          width: 3, background: `linear-gradient(to bottom, ${primary}10, ${primary}, ${accent}, ${primary}10)`,
+          borderRadius: 4,
+          boxShadow: `0 0 15px ${primary}30`,
         }}/>
-        {steps.map((s, i) => (
-          <div key={i} style={{ display: 'flex', gap: 16, marginBottom: i === steps.length - 1 ? 0 : 18, position: 'relative' }}>
-            <div style={{
-              flexShrink: 0, width: 44, height: 44, borderRadius: 999,
-              background: primary, color: '#fff',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13,
-              boxShadow: `0 6px 16px ${primary}40`,
-              border: `3px solid #F7F9FC`,
-            }}>{s.n}</div>
-            <div style={{ paddingTop: 2 }}>
-              <h3 style={{
-                fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 15,
-                color: '#0F2E63', margin: 0, lineHeight: 1.3,
-              }}>{s.t}</h3>
-              <p style={{
-                fontFamily: 'Montserrat, sans-serif', fontSize: 13, lineHeight: 1.5,
-                color: '#4B5563', margin: '4px 0 0',
-              }}>{s.d}</p>
+
+        {steps.map((s, i) => {
+          const StepIcon = s.icon;
+          return (
+            <div key={i} className="reveal" style={{ 
+              display: 'flex', gap: 24, marginBottom: i === steps.length - 1 ? 0 : 24, 
+              position: 'relative',
+              animationDelay: `${i * 0.15}s`
+            }}>
+              {/* Step Circle with Icon background */}
+              <div style={{
+                flexShrink: 0, width: 50, height: 50, borderRadius: 16,
+                background: '#fff', 
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 8px 20px rgba(15,46,99,.08)',
+                border: '1px solid #E5E7EB',
+                zIndex: 2,
+                position: 'relative',
+              }}>
+                <div style={{
+                  position: 'absolute', left: -5, right: -5, top: -5,
+                  width: 20, height: 20, borderRadius: 999,
+                  background: primary, color: '#fff',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 10, fontWeight: 800, fontFamily: 'Poppins',
+                  border: '2px solid #F7F9FC',
+                }}>{s.n}</div>
+                <StepIcon color={primary} size={24} />
+              </div>
+
+              {/* Step Card */}
+              <div style={{ 
+                flex: 1, paddingTop: 2, paddingBottom: 4,
+                background: 'rgba(255,255,255,0.4)',
+                padding: '16px 20px',
+                borderRadius: 20,
+                border: '1px solid rgba(255,255,255,0.6)',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
+              }}>
+                <h3 style={{
+                  fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16,
+                  color: '#0F2E63', margin: 0, lineHeight: 1.3,
+                }}>{s.t}</h3>
+                <p style={{
+                  fontFamily: 'Montserrat, sans-serif', fontSize: 13, lineHeight: 1.55,
+                  color: '#6B7280', margin: '8px 0 0',
+                }}>{s.d}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
 }
+
 
 // ─── Especialidades ───────────────────────────────────────────
 function Especialidades({ primary, accent }) {
@@ -364,40 +450,47 @@ function Especialidades({ primary, accent }) {
       }}>
         Em que a gente atua.
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         {services.map((s, i) => {
           const I = s.icon;
           return (
             <div key={i} style={{
               position: 'relative',
-              padding: '16px 14px 14px', borderRadius: 14,
-              background: '#F7F9FC', border: '1px solid #E5E7EB',
-              minHeight: 140,
+              padding: '20px 16px', borderRadius: 18,
+              background: 'rgba(247, 249, 252, 0.8)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid #E5E7EB',
+              minHeight: 160,
+              display: 'flex', flexDirection: 'column',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
             }}>
               {s.tag && (
                 <span style={{
-                  position: 'absolute', top: 10, right: 10,
-                  fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 8.5,
-                  letterSpacing: '.15em',
-                  padding: '3px 6px', borderRadius: 4,
+                  position: 'absolute', top: 12, right: 12,
+                  fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 8,
+                  letterSpacing: '.12em',
+                  padding: '3px 7px', borderRadius: 6,
                   background: accent, color: '#0F2E63',
+                  boxShadow: `0 4px 10px ${accent}40`,
                 }}>{s.tag}</span>
               )}
               <div style={{
-                width: 40, height: 40, borderRadius: 10,
+                width: 44, height: 44, borderRadius: 12,
                 background: '#fff', border: '1px solid #E5E7EB',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: 10,
+                marginBottom: 12,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
               }}>
                 <I color={primary}/>
               </div>
               <h3 style={{
-                fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13.5,
+                fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13,
                 color: '#0F2E63', margin: 0, lineHeight: 1.25,
               }}>{s.t}</h3>
               <p style={{
-                fontFamily: 'Montserrat, sans-serif', fontSize: 11.5, lineHeight: 1.4,
-                color: '#4B5563', margin: '6px 0 0',
+                fontFamily: 'Montserrat, sans-serif', fontSize: 11, lineHeight: 1.45,
+                color: '#6B7280', margin: '6px 0 0',
               }}>{s.d}</p>
             </div>
           );
@@ -447,30 +540,35 @@ function ProvaSocial({ primary, accent }) {
       {/* Card de depoimento */}
       <div style={{ padding: '0 22px' }}>
         <div style={{
-          padding: '18px 18px 16px', background: '#fff', borderRadius: 14,
-          border: '1px solid #E5E7EB', position: 'relative',
-          boxShadow: '0 4px 14px rgba(15,46,99,.06)',
+          padding: '24px 22px 20px', 
+          background: 'rgba(255, 255, 255, 0.6)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          borderRadius: 24,
+          border: '1px solid rgba(255, 255, 255, 0.8)', 
+          position: 'relative',
+          boxShadow: '0 10px 30px rgba(15,46,99,.08)',
         }}>
-          <div style={{ position: 'absolute', top: 12, right: 14 }}><Icon.Quote color={primary}/></div>
-          <div style={{ display: 'flex', gap: 2, marginBottom: 10 }}>
+          <div style={{ position: 'absolute', top: 16, right: 18 }}><Icon.Quote color={primary}/></div>
+          <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>
             {Array.from({ length: depos[active].stars }).map((_, i) => <Icon.Star key={i}/>)}
           </div>
           <p style={{
-            fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.55,
-            color: '#1F2937', margin: 0,
+            fontFamily: 'Montserrat, sans-serif', fontSize: 13.5, lineHeight: 1.6,
+            color: '#1F2937', margin: 0, fontWeight: 500,
           }}>
             {depos[active].text}
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 14, paddingTop: 12, borderTop: '1px solid #F1F5F9' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 18, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,.05)' }}>
             <div style={{
-              width: 36, height: 36, borderRadius: 999,
+              width: 40, height: 40, borderRadius: 14,
               background: `linear-gradient(135deg, ${primary}, #0F2E63)`,
               color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13,
+              fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14,
+              boxShadow: `0 4px 10px ${primary}40`,
             }}>{depos[active].name[0]}</div>
             <div>
-              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: '#0F2E63' }}>{depos[active].name}</div>
-              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 11, color: '#6B7280' }}>{depos[active].role}</div>
+              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: '#0F2E63' }}>{depos[active].name}</div>
+              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 11, color: '#6B7280', fontWeight: 500 }}>{depos[active].role}</div>
             </div>
           </div>
         </div>
@@ -499,15 +597,18 @@ function QuemSomos({ primary, accent }) {
     'Acompanhamento até o pagamento',
   ];
   return (
-    <section style={{ padding: '40px 22px 36px', background: primary, color: '#fff', position: 'relative', overflow: 'hidden' }}>
-      {/* Textura suave */}
-      <svg style={{ position: 'absolute', right: -60, top: -60, opacity: .1 }} width="240" height="240" viewBox="0 0 240 240">
-        <circle cx="120" cy="120" r="118" stroke="#fff" strokeWidth="1" fill="none"/>
-        <circle cx="120" cy="120" r="80" stroke="#fff" strokeWidth="1" fill="none"/>
-        <circle cx="120" cy="120" r="42" stroke="#fff" strokeWidth="1" fill="none"/>
-      </svg>
+    <section style={{ padding: '0', background: primary, color: '#fff', position: 'relative', overflow: 'hidden' }}>
+      {/* Background Image with Overlay */}
+      <div style={{ width: '100%', height: 240, position: 'relative' }}>
+        <img src="uploads/about-us.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: `linear-gradient(0deg, ${primary} 0%, transparent 100%)`,
+        }} />
+      </div>
 
-      <div style={{ position: 'relative' }}>
+      <div style={{ padding: '0 22px 36px', position: 'relative', marginTop: -40 }}>
+
         <div style={{
           display: 'inline-block',
           fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10.5,
@@ -578,29 +679,34 @@ function FAQ({ primary }) {
       }}>
         Perguntas que a gente<br/>ouve todo dia.
       </h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         {faqs.map((f, i) => (
           <div key={i} style={{
-            borderRadius: 12, border: '1px solid #E5E7EB',
-            background: open === i ? '#F7F9FC' : '#fff',
-            overflow: 'hidden', transition: 'background .2s',
+            borderRadius: 16, 
+            border: '1px solid rgba(229, 231, 235, 0.6)',
+            background: open === i ? 'rgba(247, 249, 252, 0.6)' : 'rgba(255, 255, 255, 0.4)',
+            backdropFilter: 'blur(10px)',
+            boxShadow: open === i ? '0 8px 25px rgba(0,0,0,0.05)' : 'none',
+            overflow: 'hidden', transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
           }}>
             <button onClick={() => setOpen(open === i ? -1 : i)} style={{
-              width: '100%', padding: '14px 14px',
-              display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'space-between',
+              width: '100%', padding: '18px 18px',
+              display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between',
               background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left',
             }}>
               <span style={{
-                fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: 13.5,
-                color: '#0F2E63', lineHeight: 1.3,
+                fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: 13,
+                color: open === i ? primary : '#0F2E63', lineHeight: 1.4,
+                transition: 'color 0.3s ease',
               }}>{f.q}</span>
-              <Icon.Chevron open={open === i} color={primary}/>
+              <Icon.Chevron open={open === i} color={open === i ? primary : '#6B7280'}/>
             </button>
             {open === i && (
-              <div style={{ padding: '0 14px 14px' }}>
+              <div style={{ padding: '0 18px 18px' }}>
+                <div style={{ height: 1, background: 'rgba(0,0,0,0.05)', marginBottom: 14 }}/>
                 <p style={{
-                  fontFamily: 'Montserrat, sans-serif', fontSize: 13, lineHeight: 1.55,
-                  color: '#4B5563', margin: 0,
+                  fontFamily: 'Montserrat, sans-serif', fontSize: 12.5, lineHeight: 1.6,
+                  color: '#6B7280', margin: 0, fontWeight: 500,
                 }}>{f.a}</p>
               </div>
             )}
@@ -649,7 +755,7 @@ function CTAFinal({ primary, accent }) {
           Conte sua história agora. Em poucos minutos você sabe se tem direito — sem compromisso, sem custo.
         </p>
 
-        <a href={WHATSAPP_URL} style={{
+        <a href={WHATSAPP_URL} className="btn-shine" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
           marginTop: 22, padding: '17px 20px',
           background: '#25D366', color: '#fff',
@@ -685,11 +791,22 @@ function Footer({ primary, accent }) {
       }}>
         A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Atuamos como facilitadores entre você e os responsáveis pelo pagamento. Não somos seguradora nem órgão público.
       </p>
-      <div style={{ marginTop: 14, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-        <a href={WHATSAPP_URL} style={linkStyle}>WhatsApp</a>
-        <span style={{ color: 'rgba(255,255,255,.25)' }}>·</span>
-        <a href="https://www.instagram.com/a4servicosdetransito" style={linkStyle}>Instagram</a>
-        <span style={{ color: 'rgba(255,255,255,.25)' }}>·</span>
+      <div style={{ marginTop: 20, display: 'flex', gap: 14, alignItems: 'center' }}>
+        <a href={WHATSAPP_URL} className="footer-icon" style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          width: 32, height: 32, borderRadius: 8, background: 'rgba(255,255,255,.05)',
+          border: '1px solid rgba(255,255,255,.1)', transition: 'all 0.2s',
+        }}>
+          <Icon.Whatsapp size={18} color="#fff"/>
+        </a>
+        <a href="https://www.instagram.com/a4servicosdetransito" className="footer-icon" style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          width: 32, height: 32, borderRadius: 8, background: 'rgba(255,255,255,.05)',
+          border: '1px solid rgba(255,255,255,.1)', transition: 'all 0.2s',
+        }}>
+          <Icon.Instagram size={18} color="#fff"/>
+        </a>
+        <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,.1)', margin: '0 4px' }}/>
         <a href="#" style={linkStyle}>Política de Privacidade</a>
       </div>
       <div style={{
@@ -727,7 +844,7 @@ function SectionLabel({ number, label, primary }) {
 // ─── Floating WhatsApp button ─────────────────────────────────
 function FloatingCTA() {
   return (
-    <a href={WHATSAPP_URL} style={{
+    <a href={WHATSAPP_URL} className="btn-shine" style={{
       position: 'absolute', right: 16, bottom: 24, zIndex: 30,
       width: 54, height: 54, borderRadius: 999,
       background: '#25D366',

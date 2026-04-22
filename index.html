@@ -39,6 +39,69 @@
   .scroll-area::-webkit-scrollbar { width: 0; }
   .scroll-area { scrollbar-width: none; }
 
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes dotPulse {
+    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+    70% { transform: scale(1.1); opacity: 0.8; box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+  }
+
+  .pulse-dot {
+    animation: dotPulse 2s infinite;
+  }
+
+  @keyframes shine {
+    0% { left: -100%; transition: none; }
+    20% { left: 100%; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    100% { left: 100%; }
+  }
+
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .btn-shine:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
+  }
+
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+    transform: skewX(-25deg);
+    animation: shine 4s infinite;
+  }
+
+  .reveal strong {
+    color: #1E4FA1; /* Alinhado com o Brand Kit */
+    font-weight: 700;
+  }
+
+  .footer-icon:hover {
+    background: rgba(255,255,255,0.15) !important;
+    transform: translateY(-2px);
+  }
+
+
+
+
+
+
 
 </style>
 </head>
@@ -67,6 +130,19 @@
   function App() {
     const { primary, accent, heroTone } = CONFIG;
 
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      return () => observer.disconnect();
+    }, []);
+
     return (
       <IOSDevice dark={false} showHomeIndicator={true}>
         <div className="scroll-area" style={{
@@ -78,14 +154,14 @@
           <IOSStatusBar dark={false}/>
           <TopBar primary={primary}/>
           <div data-screen-label="Landing">
-            <Hero primary={primary} accent={accent} heroTone={heroTone}/>
-            <Problema primary={primary}/>
-            <ComoFunciona primary={primary} accent={accent}/>
-            <Especialidades primary={primary} accent={accent}/>
-            <ProvaSocial primary={primary} accent={accent}/>
-            <QuemSomos primary={primary} accent={accent}/>
-            <FAQ primary={primary}/>
-            <CTAFinal primary={primary} accent={accent}/>
+            <div className="reveal"><Hero primary={primary} accent={accent} heroTone={heroTone}/></div>
+            <div className="reveal"><Problema primary={primary}/></div>
+            <div className="reveal"><ComoFunciona primary={primary} accent={accent}/></div>
+            <div className="reveal"><Especialidades primary={primary} accent={accent}/></div>
+            <div className="reveal"><ProvaSocial primary={primary} accent={accent}/></div>
+            <div className="reveal"><QuemSomos primary={primary} accent={accent}/></div>
+            <div className="reveal"><FAQ primary={primary}/></div>
+            <div className="reveal"><CTAFinal primary={primary} accent={accent}/></div>
             <Footer primary={primary} accent={accent}/>
           </div>
           <div style={{ height: 20 }}/>

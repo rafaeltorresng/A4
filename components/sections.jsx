@@ -305,7 +305,7 @@ function Problema({ primary }) {
   ];
   return (
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
-      <SectionLabel number="02" label="O que você está sentindo" primary={primary}/>
+      <SectionLabel label="O que você está sentindo" primary={primary}/>
       <h2 style={{
         fontFamily: 'Poppins, sans-serif', fontWeight: 700,
         fontSize: 24, lineHeight: 1.2, margin: '10px 0 4px', color: '#0F2E63',
@@ -356,7 +356,7 @@ function ComoFunciona({ primary, accent }) {
   return (
     <section style={{ padding: '40px 22px 36px', background: '#F7F9FC' }}>
       <div style={{ textAlign: 'center', marginBottom: 30 }}>
-        <SectionLabel number="03" label="Como funciona" primary={primary}/>
+        <SectionLabel label="Como funciona" primary={primary}/>
         <h2 style={{
           fontFamily: 'Poppins, sans-serif', fontWeight: 800,
           fontSize: 28, lineHeight: 1.15, margin: '12px 0 0', color: '#0F2E63',
@@ -442,7 +442,7 @@ function Especialidades({ primary, accent }) {
   ];
   return (
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
-      <SectionLabel number="04" label="Especialidades" primary={primary}/>
+      <SectionLabel label="Especialidades" primary={primary}/>
       <h2 style={{
         fontFamily: 'Poppins, sans-serif', fontWeight: 700,
         fontSize: 24, lineHeight: 1.2, margin: '10px 0 20px', color: '#0F2E63',
@@ -511,7 +511,7 @@ function ProvaSocial({ primary, accent }) {
   return (
     <section style={{ padding: '38px 0 30px', background: '#F7F9FC' }}>
       <div style={{ padding: '0 22px' }}>
-        <SectionLabel number="05" label="Quem confiou" primary={primary}/>
+        <SectionLabel label="Quem confiou" primary={primary}/>
         <h2 style={{
           fontFamily: 'Poppins, sans-serif', fontWeight: 700,
           fontSize: 24, lineHeight: 1.2, margin: '10px 0 4px', color: '#0F2E63',
@@ -608,13 +608,14 @@ function QuemSomos({ primary, accent }) {
       </div>
 
       <div style={{ padding: '0 22px 36px', position: 'relative', marginTop: -40 }}>
-
-        <div style={{
-          display: 'inline-block',
-          fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10.5,
-          letterSpacing: '.25em', textTransform: 'uppercase',
-          color: accent,
-        }}>06 · Quem somos</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+          <span style={{ width: 4, height: 4, borderRadius: 999, background: accent }}/>
+          <div style={{
+            fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10,
+            letterSpacing: '.25em', textTransform: 'uppercase',
+            color: accent,
+          }}>Quem somos</div>
+        </div>
         <h2 style={{
           fontFamily: 'Poppins, sans-serif', fontWeight: 700,
           fontSize: 26, lineHeight: 1.15, margin: '10px 0 0',
@@ -671,7 +672,7 @@ function FAQ({ primary }) {
   ];
   return (
     <section style={{ padding: '38px 22px 30px', background: '#fff' }}>
-      <SectionLabel number="07" label="Dúvidas frequentes" primary={primary}/>
+      <SectionLabel label="Dúvidas frequentes" primary={primary}/>
       <h2 style={{
         fontFamily: 'Poppins, sans-serif', fontWeight: 700,
         fontSize: 24, lineHeight: 1.2, margin: '10px 0 18px', color: '#0F2E63',
@@ -835,16 +836,12 @@ const linkStyle = {
 };
 
 // ─── Helper: SectionLabel ─────────────────────────────────────
-function SectionLabel({ number, label, primary }) {
+function SectionLabel({ label, primary }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+      <span style={{ width: 4, height: 4, borderRadius: 999, background: primary }}/>
       <span style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 11,
-        padding: '3px 7px', borderRadius: 4,
-        background: primary, color: '#fff', letterSpacing: '.1em',
-      }}>{number}</span>
-      <span style={{
-        fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10.5,
+        fontFamily: 'Montserrat, sans-serif', fontWeight: 600, fontSize: 10,
         letterSpacing: '.2em', textTransform: 'uppercase', color: primary,
       }}>{label}</span>
     </div>

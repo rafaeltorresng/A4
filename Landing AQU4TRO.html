@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A QU4TRO · Landing Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #EEF2F7; }
+  body {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  #stage {
+    position: relative;
+    width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Background pattern */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(30,79,161,.06), transparent 55%),
+      radial-gradient(circle at 85% 85%, rgba(255,196,49,.08), transparent 55%),
+      #EEF2F7;
+    z-index: 0;
+  }
+  #root { position: relative; z-index: 1; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 24px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.2); }
+    50% { transform: scale(1.06); box-shadow: 0 14px 32px rgba(37,211,102,.55), 0 2px 6px rgba(0,0,0,.2); }
+  }
+  /* Scrollbar dentro do iPhone */
+  .scroll-area::-webkit-scrollbar { width: 0; }
+  .scroll-area { scrollbar-width: none; }
+
+  /* Tweaks panel */
+  #tweaks {
+    position: fixed; right: 18px; bottom: 18px; z-index: 100;
+    width: 300px; background: #fff; border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(15,46,99,.18), 0 2px 8px rgba(0,0,0,.06);
+    border: 1px solid #E5E7EB;
+    font-family: 'Montserrat', sans-serif;
+    display: none;
+    overflow: hidden;
+  }
+  #tweaks.active { display: block; }
+  #tweaks h4 {
+    margin: 0; padding: 14px 16px;
+    font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px;
+    color: #0F2E63; background: #F7F9FC; border-bottom: 1px solid #E5E7EB;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  #tweaks .body { padding: 14px 16px; display: flex; flex-direction: column; gap: 14px; }
+  #tweaks label { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: .1em; }
+  #tweaks .swatches { display: flex; gap: 8px; margin-top: 6px; }
+  #tweaks .sw {
+    width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
+    border: 2px solid transparent; transition: transform .15s;
+  }
+  #tweaks .sw.active { border-color: #0F2E63; transform: scale(1.08); }
+  #tweaks .segs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+  #tweaks .seg {
+    padding: 8px; border-radius: 8px; border: 1px solid #E5E7EB;
+    background: #fff; cursor: pointer; font-size: 12px; font-weight: 600;
+    font-family: 'Montserrat'; color: #4B5563;
+  }
+  #tweaks .seg.active { background: #0F2E63; color: #fff; border-color: #0F2E63; }
+
+  /* Hint button when tweaks off */
+  #tweak-hint {
+    position: fixed; right: 18px; bottom: 18px; z-index: 99;
+    padding: 10px 14px; border-radius: 999px;
+    background: #0F2E63; color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 11.5px;
+    letter-spacing: .05em;
+    box-shadow: 0 6px 18px rgba(15,46,99,.25);
+    opacity: .5; pointer-events: none;
+    transition: opacity .2s;
+  }
+</style>
+</head>
+<body>
+<div id="stage"><div id="root"></div></div>
+
+<div id="tweak-hint">Ative "Tweaks" na barra superior</div>
+
+<div id="tweaks">
+  <h4>Tweaks <span style="font-weight:500;font-size:11px;color:#6B7280;">Landing AQU4TRO</span></h4>
+  <div class="body">
+    <div>
+      <label>Cor primária</label>
+      <div class="swatches" id="sw-primary"></div>
+    </div>
+    <div>
+      <label>Cor de destaque</label>
+      <div class="swatches" id="sw-accent"></div>
+    </div>
+    <div>
+      <label>Tom do Hero</label>
+      <div class="segs" id="seg-tone">
+        <div class="seg" data-val="road">Estrada (esperança)</div>
+        <div class="seg" data-val="human">Humano (acolhedor)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "primary": "#1E4FA1",
+    "accent": "#FFC431",
+    "heroTone": "human"
+  }/*EDITMODE-END*/;
+  window.__tweaks = { ...TWEAK_DEFAULTS };
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="components/sections.jsx"></script>
+
+<script type="text/babel">
+  const { useState, useEffect, useRef } = React;
+
+  function App() {
+    const [tweaks, setTweaks] = useState(window.__tweaks);
+
+    useEffect(() => {
+      const handler = (e) => {
+        const d = e.data || {};
+        if (d.type === '__activate_edit_mode') {
+          document.getElementById('tweaks').classList.add('active');
+          document.getElementById('tweak-hint').style.display = 'none';
+        }
+        if (d.type === '__deactivate_edit_mode') {
+          document.getElementById('tweaks').classList.remove('active');
+        }
+        if (d.type === '__tweak_update') {
+          const next = { ...window.__tweaks, ...d.edits };
+          window.__tweaks = next;
+          setTweaks(next);
+          window.parent.postMessage({ type: '__edit_mode_set_keys', edits: d.edits }, '*');
+        }
+      };
+      window.addEventListener('message', handler);
+      window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+      // Setup tweak panel UI
+      const primaries = ['#1E4FA1', '#0F2E63', '#0E7A4A', '#8B1A3A', '#1F2937'];
+      const accents = ['#FFC431', '#F59E0B', '#FFFFFF', '#FB7185', '#A7F3D0'];
+      const mkSwatch = (id, list, key) => {
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        list.forEach(c => {
+          const s = document.createElement('div');
+          s.className = 'sw' + (window.__tweaks[key] === c ? ' active' : '');
+          s.style.background = c;
+          if (c === '#FFFFFF') s.style.border = '2px solid #E5E7EB';
+          s.onclick = () => window.postMessage({ type: '__tweak_update', edits: { [key]: c } }, '*');
+          el.appendChild(s);
+        });
+      };
+      const renderTweaks = () => {
+        mkSwatch('sw-primary', primaries, 'primary');
+        mkSwatch('sw-accent', accents, 'accent');
+        document.querySelectorAll('#seg-tone .seg').forEach(s => {
+          s.classList.toggle('active', s.dataset.val === window.__tweaks.heroTone);
+          s.onclick = () => window.postMessage({ type: '__tweak_update', edits: { heroTone: s.dataset.val } }, '*');
+        });
+      };
+      renderTweaks();
+
+      const obs = new MutationObserver(renderTweaks);
+      return () => { window.removeEventListener('message', handler); obs.disconnect(); };
+    }, []);
+
+    useEffect(() => {
+      // Re-render tweak panel active states
+      document.querySelectorAll('#sw-primary .sw').forEach(s => {
+        s.classList.toggle('active', s.style.backgroundColor === hexToRgb(tweaks.primary));
+      });
+      document.querySelectorAll('#sw-accent .sw').forEach(s => {
+        s.classList.toggle('active', s.style.backgroundColor === hexToRgb(tweaks.accent));
+      });
+      document.querySelectorAll('#seg-tone .seg').forEach(s => {
+        s.classList.toggle('active', s.dataset.val === tweaks.heroTone);
+      });
+    }, [tweaks]);
+
+    function hexToRgb(hex) {
+      const h = hex.replace('#','');
+      const r = parseInt(h.substring(0,2),16);
+      const g = parseInt(h.substring(2,4),16);
+      const b = parseInt(h.substring(4,6),16);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    const { primary, accent, heroTone } = tweaks;
+
+    return (
+      <IOSDevice dark={false} showHomeIndicator={true}>
+        <div className="scroll-area" style={{
+          position: 'absolute', inset: 0,
+          overflowY: 'auto', overflowX: 'hidden',
+          background: '#fff',
+          WebkitOverflowScrolling: 'touch',
+        }}>
+          <IOSStatusBar dark={false}/>
+          <TopBar primary={primary}/>
+          <div data-screen-label="Landing">
+            <Hero primary={primary} accent={accent} heroTone={heroTone}/>
+            <Problema primary={primary}/>
+            <ComoFunciona primary={primary} accent={accent}/>
+            <Especialidades primary={primary} accent={accent}/>
+            <ProvaSocial primary={primary} accent={accent}/>
+            <QuemSomos primary={primary} accent={accent}/>
+            <FAQ primary={primary}/>
+            <CTAFinal primary={primary} accent={accent}/>
+            <Footer primary={primary} accent={accent}/>
+          </div>
+          <div style={{ height: 20 }}/>
+        </div>
+        <FloatingCTA/>
+      </IOSDevice>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

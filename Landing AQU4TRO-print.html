@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<title>A QU4TRO · Landing Page (Print)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 12mm; }
+  html, body { margin: 0; padding: 0; background: #EEF2F7; }
+  body {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .doc {
+    max-width: 440px; margin: 24px auto; background: #fff;
+    box-shadow: 0 10px 40px rgba(15,46,99,.12);
+    border-radius: 16px; overflow: hidden;
+  }
+  /* Keep sections from splitting awkwardly */
+  #root > div > section,
+  #root > div > footer { break-inside: avoid; }
+
+  @media print {
+    body { background: #fff; }
+    .doc { margin: 0 auto; box-shadow: none; border-radius: 0; max-width: 100%; }
+    /* Hide floating elements */
+    .floating-cta { display: none !important; }
+  }
+  @keyframes pulse { 0%,100%{} }
+</style>
+</head>
+<body>
+<div class="doc"><div id="root"></div></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/sections.jsx"></script>
+
+<script type="text/babel">
+  const primary = '#1E4FA1';
+  const accent = '#FFC431';
+  const heroTone = 'human';
+
+  function PrintApp() {
+    return (
+      <div>
+        <TopBar primary={primary}/>
+        <Hero primary={primary} accent={accent} heroTone={heroTone}/>
+        <Problema primary={primary}/>
+        <ComoFunciona primary={primary} accent={accent}/>
+        <Especialidades primary={primary} accent={accent}/>
+        <ProvaSocial primary={primary} accent={accent}/>
+        <QuemSomos primary={primary} accent={accent}/>
+        <FAQ primary={primary}/>
+        <CTAFinal primary={primary} accent={accent}/>
+        <Footer primary={primary} accent={accent}/>
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<PrintApp/>);
+
+  // Auto-print after fonts + JSX ready
+  (async () => {
+    try { await document.fonts.ready; } catch(e){}
+    setTimeout(() => {
+      // Expand all FAQ items for print: click any collapsed FAQ button
+      document.querySelectorAll('button').forEach(b => {
+        const svg = b.querySelector('svg');
+        if (svg && svg.style.transform !== 'rotate(180deg)' && b.textContent && b.textContent.length > 8) {
+          // Heuristic: FAQ buttons have long question text
+          const parent = b.closest('div[style*="border-radius: 12px"]');
+          if (parent && /\?$/.test(b.textContent.trim())) b.click();
+        }
+      });
+      setTimeout(() => window.print(), 400);
+    }, 900);
+  })();
+</script>
+</body>
+</html>

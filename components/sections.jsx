@@ -545,6 +545,36 @@ function ComoFunciona({ primary, accent }) {
 
 // ─── Faixa de marcas (card Indenização via App) ───────────────
 /** Logos em `uploads/brands/` — ver README da pasta; substitua 99.svg pelo oficial quando tiver. */
+/** Marca 99: evita `<text>` em SVG externo (não renderiza em `<img>`). Troque pelo asset oficial da 99 quando tiver o kit. */
+function Brand99Mark({ height = 22 }) {
+  const padX = Math.round(height * 0.36);
+  return (
+    <span
+      role="img"
+      aria-label="99"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height,
+        minWidth: height * 1.45,
+        padding: `0 ${padX}px`,
+        borderRadius: Math.max(6, Math.round(height * 0.28)),
+        background: '#FFDD00',
+        boxSizing: 'border-box',
+        fontFamily: '"Poppins", system-ui, sans-serif',
+        fontWeight: 800,
+        fontSize: Math.round(height * 0.58),
+        lineHeight: 1,
+        letterSpacing: '-0.04em',
+        color: '#1A1A1A',
+      }}
+    >
+      99
+    </span>
+  );
+}
+
 function PartnerBrandStrip() {
   const logoH = 22;
   const img = { height: logoH, width: 'auto', display: 'block' };
@@ -558,7 +588,7 @@ function PartnerBrandStrip() {
         aria-label="Plataformas de mobilidade mencionadas no texto"
       >
         <img src="uploads/brands/uber.svg" alt="Uber" style={img} decoding="async" />
-        <img src="uploads/brands/99.svg" alt="99" style={img} decoding="async" />
+        <Brand99Mark height={logoH} />
         <img src="uploads/brands/ifood.svg" alt="iFood" style={img} decoding="async" />
       </div>
       <p style={{

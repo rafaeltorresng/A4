@@ -247,17 +247,17 @@ function ComoFunciona({ primary, accent }) {
 
 function InstagramBanner({ primary = '#0F2E63' }) {
   return (
-    <section style={{ padding: '0 22px 38px', textAlign: 'center', background: '#F7F9FC' }}>
-      <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '12px 20px', borderRadius: 999, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <Icon.Instagram size={20} color={primary}/>
-          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: 999, background: '#4ADE80' }}/>
+    <section style={{ padding: '0 22px 42px', textAlign: 'center', background: '#F7F9FC' }}>
+      <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{ display: 'inline-flex', alignItems: 'center', gap: 14, padding: '16px 26px', borderRadius: 999, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', textDecoration: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.06)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Icon.Instagram size={24} color={primary}/>
+          <span className="pulse-dot" style={{ width: 7, height: 7, borderRadius: 999, background: '#4ADE80' }}/>
         </div>
         <div style={{ textAlign: 'left' }}>
-          <div style={{ fontFamily: 'DM Sans', fontWeight: 700, fontSize: 12, color: '#0F2E63', lineHeight: 1 }}>@a4servicosdetransito</div>
-          <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: 10, color: '#6B7280', marginTop: 2 }}>Casos reais atualizados hoje</div>
+          <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: '#0F2E63', lineHeight: 1 }}>@a4servicosdetransito</div>
+          <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: 11, color: '#6B7280', marginTop: 3 }}>Casos reais atualizados hoje</div>
         </div>
-        <Icon.ExternalLink size={14} color="#9CA3AF"/>
+        <Icon.ExternalLink size={16} color="#FFC431"/>
       </a>
     </section>
   );

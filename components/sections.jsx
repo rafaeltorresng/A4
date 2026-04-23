@@ -80,12 +80,19 @@ function Problema({ primary }) {
     <section style={{ padding: '0 0 40px', background: '#fff', overflow: 'hidden' }}>
       <Ticker items={[
         'Não sei se tenho direito', 
+        'Quanto vou receber?',
         'Perdi meus documentos', 
         'Burocracia excessiva', 
+        'Acidente com moto',
+        'Uber / 99 / iFood',
         'Não fiz boletim de ocorrência',
         'A culpa foi minha?',
         'O prazo já passou?',
-        'O veículo não tinha seguro'
+        'Invalidez permanente',
+        'Gastos com hospital',
+        'Danos morais e materiais',
+        'O veículo não tinha seguro',
+        'Preciso de advogado?'
       ]} />
       
       <div style={{ padding: '38px 22px 0' }}>

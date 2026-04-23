@@ -145,7 +145,7 @@ function Especialidades({ primary, accent }) {
     { icon: Icon.Rideshare, t:'Indenização via App', d:'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas.', tag:'NOVO', brandStrip: true },
     { icon: Icon.ThirdParty, t:'Processos contra Terceiros', d:'Danos materiais, morais e estéticos causados por outros condutores.' },
     { icon: Icon.Passenger,  t:'Seguro de Passageiro (APP)', d:'Acionamento de apólices privadas para invalidez ou despesas médicas.' },
-    { icon: Icon.Legacy,     t:'Casos DPVAT (Legado)', d:'Atendimentos para acidentes ocorridos antes da mudança na legislação de 2025.' },
+    { icon: Icon.Legacy,     t:'Casos DPVAT (Legado)', d:'Atendimentos para casos ocorridos até 14/11/2023, devido à mudança na legislação.' },
   ];
   return (
     <section style={{ padding:'38px 22px 30px', background:'#fff' }}>

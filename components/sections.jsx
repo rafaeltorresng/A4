@@ -357,7 +357,11 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
 
 function Footer({ accent }) {
   return (
-    <footer style={{ padding:'24px 22px 28px', background:'#0A1F45', color:'rgba(255,255,255,.7)' }}>
+    <footer style={{ 
+      padding:'40px 22px calc(80px + env(safe-area-inset-bottom))', 
+      background:'#0A1F45', 
+      color:'rgba(255,255,255,.7)' 
+    }}>
       <Logo size={18} color="#fff" accent={accent} variant="reduced"/>
       <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11.5, lineHeight:1.5, margin:'14px 0 0', color:'rgba(255,255,255,.6)' }}>
         A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.

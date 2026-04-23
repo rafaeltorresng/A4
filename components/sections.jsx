@@ -404,7 +404,7 @@ function FounderProfile({ primary, accent }) {
               zIndex: 1,
               fontStyle: 'italic'
             }}>
-              "Sou eu quem acompanha a operação de perto. Minha missão é garantir que você não seja enrolado pela burocracia e receba cada centavo do que é seu por direito. Aqui, tratamos seu caso com <span style={{ color: primary, fontWeight: 700 }}>máxima transparência e prioridade</span>."
+              "Sou eu quem acompanha a operação de perto. Minha missão é garantir que você receba sua indenização corretamente, com menos burocracia. Aqui, tratamos seu caso com <span style={{ color: primary, fontWeight: 700 }}>máxima transparência e prioridade</span>."
             </p>
           </div>
         </div>

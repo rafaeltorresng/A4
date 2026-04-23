@@ -341,3 +341,232 @@
   justify-content: center;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+
+/* ============================================================
+   DESKTOP RESPONSIVENESS (1024px+)
+   ============================================================ */
+@media (min-width: 1024px) {
+  /* Typography Scale Overrides */
+  :root {
+    --fs-h1: 52px;
+    --fs-h2: 42px;
+    --fs-lead: 18px;
+    --fs-body: 16px;
+  }
+
+  /* Global Container Behavior */
+  #root {
+    max-width: none !important;
+    box-shadow: none !important;
+  }
+
+  .container-desktop {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+  }
+
+  /* TopBar */
+  [style*="sticky"] {
+    padding: 16px 60px !important;
+  }
+
+  /* Section Hero */
+  .section-hero-wrapper {
+    min-height: 650px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .hero-content {
+    padding: 60px 40px !important;
+    display: grid !important;
+    grid-template-columns: 1.2fr 0.8fr !important;
+    grid-template-areas: 
+      "label stats"
+      "title stats"
+      "desc stats"
+      "cta stats"
+      "badge stats" !important;
+    gap: 0 60px !important;
+    align-items: center !important;
+    text-align: left !important;
+  }
+
+  .hero-label { grid-area: label; width: fit-content !important; margin-bottom: 20px !important; }
+  .hero-title { grid-area: title; font-size: 56px !important; line-height: 1.1 !important; margin-bottom: 20px !important; }
+  .hero-description { grid-area: desc; font-size: 18px !important; max-width: 500px !important; margin: 0 0 24px !important; }
+  .hero-cta { grid-area: cta; width: fit-content !important; padding: 18px 36px !important; font-size: 17px !important; margin: 0 !important; }
+  .hero-badge { grid-area: badge; margin: 16px 0 0 !important; width: fit-content !important; }
+  .hero-stats { 
+    grid-area: stats; 
+    grid-template-columns: 1fr !important; 
+    gap: 12px !important; 
+    background: rgba(255,255,255,0.05) !important;
+    padding: 24px !important;
+    border-radius: 24px !important;
+    margin-top: 0 !important;
+  }
+  .hero-stats > div { 
+    border-right: none !important; 
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 12px 0 !important;
+    text-align: left !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  .hero-stats > div:last-child { border-bottom: none !important; }
+  .hero-stats > div > div:first-child { font-size: 28px !important; }
+  .hero-stats > div > div:last-child { font-size: 12px !important; text-align: left !important; }
+
+  /* Especialidades */
+  .section-especialidades > section {
+    padding: 80px 0 !important;
+  }
+
+  .section-especialidades h2 { font-size: 42px !important; margin-bottom: 40px !important; }
+
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .service-card {
+    min-height: 180px !important;
+    padding: 24px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+  .service-card .icon-box-premium { margin-bottom: 12px !important; }
+  .service-card h3 { font-size: 15px !important; margin-bottom: 4px !important; }
+  .service-card p { font-size: 13px !important; margin-top: 4px !important; }
+
+  /* Como Funciona - Grid layout */
+  .section-comofunciona > section {
+    padding: 80px 0 !important;
+  }
+
+  .section-comofunciona .accordion {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+    margin: 40px auto 0 !important;
+  }
+
+  .section-comofunciona .acc-item {
+    border: 1px solid var(--neutral-200) !important;
+    border-radius: 20px !important;
+    background: #fff !important;
+    padding: 24px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 240px !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: var(--transition-main) !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  .section-comofunciona .acc-item:hover { transform: translateY(-6px) !important; box-shadow: var(--shadow-lg) !important; }
+
+  .section-comofunciona .acc-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    padding: 0 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+  }
+
+  .section-comofunciona .acc-arrow { display: none !important; }
+  
+  .section-comofunciona .acc-num { 
+    font-size: 2.5rem !important; 
+    opacity: 0.15 !important; 
+    position: absolute !important; 
+    top: 15px !important; 
+    right: 20px !important; 
+    color: var(--brand-blue) !important;
+    width: auto !important;
+    font-weight: 900 !important;
+  }
+
+  .section-comofunciona .acc-icon-box {
+    background: var(--brand-blue) !important;
+    transform: none !important;
+    margin-bottom: 8px !important;
+  }
+  .section-comofunciona .acc-icon-box svg { stroke: #fff !important; }
+
+  .section-comofunciona .acc-title-txt { 
+    font-size: 1.15rem !important; 
+    color: var(--brand-blue-deep) !important;
+    line-height: 1.3 !important;
+  }
+
+  .section-comofunciona .acc-body {
+    max-height: none !important;
+    padding: 12px 0 0 0 !important;
+    opacity: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+  }
+  .section-comofunciona .acc-body p { font-size: 13.5px !important; margin: 0 !important; }
+  .section-comofunciona .acc-pill { 
+    margin-top: auto !important; 
+    width: fit-content !important;
+    padding: 4px 12px !important;
+  }
+
+  /* Problema */
+  .section-problema > section {
+    padding: 80px 0 !important;
+  }
+  .section-problema h2 { font-size: 42px !important; text-align: center !important; margin-bottom: 40px !important; }
+  .section-problema .chat-container { max-width: 700px !important; margin: 0 auto !important; }
+
+  /* Quem Somos */
+  .section-quemsomos > section {
+    padding: 100px 0 !important;
+  }
+
+  .about-content {
+    padding: 0 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .about-title { font-size: 44px !important; }
+  .about-description { font-size: 18px !important; max-width: 700px !important; }
+  .about-values { max-width: 600px !important; padding: 24px !important; }
+
+  /* Instagram */
+  .section-instagram-profile { padding: 60px 0 !important; }
+  .section-instagram-profile .insta-card {
+    max-width: 650px !important;
+    margin-bottom: 40px !important;
+  }
+
+  /* FAQ */
+  .section-faq > section {
+    padding: 80px 0 !important;
+  }
+  .section-faq h2 { font-size: 42px !important; text-align: center !important; }
+  .section-faq .acc-title-txt { font-size: 17px !important; }
+
+  /* CTA Final */
+  .section-ctafinal > section { padding: 100px 0 !important; }
+  .section-ctafinal > section > div {
+    max-width: 1100px !important;
+    padding: 80px 60px !important;
+    border-radius: 40px !important;
+  }
+  .section-ctafinal h2 { font-size: 44px !important; }
+  .section-ctafinal p { font-size: 17px !important; max-width: 500px !important; }
+
+  /* Footer */
+  footer { padding: 80px 60px !important; }
+  footer > div:first-of-type { max-width: 1200px !important; margin: 0 auto 40px !important; }
+  footer p { font-size: 14px !important; max-width: 1200px !important; margin: 0 auto !important; }
+}

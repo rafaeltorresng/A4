@@ -13,7 +13,7 @@ function TopBar({ primary }) {
 
 function Hero({ primary, accent }) {
   return (
-    <section style={{ position:'relative', color:'#fff', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center' }}>
+    <section className="section-hero-wrapper" style={{ position:'relative', color:'#fff', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center' }}>
       <div style={{ position:'absolute', inset:0, backgroundImage:'url("assets/hero-bg.png")', backgroundSize:'cover', backgroundPosition:'center' }}>
         <div style={{ position:'absolute', inset:0, background:`linear-gradient(180deg, rgba(15,46,99,0.7) 0%, ${primary}ee 100%)` }}/>
       </div>
@@ -21,21 +21,18 @@ function Hero({ primary, accent }) {
         <path d="M-20 560 Q 100 300, 200 250 T 410 60" stroke="#fff" strokeWidth="0.5" fill="none" opacity=".2"/>
         <path d="M-50 560 Q 120 320, 220 270 T 420 90" stroke={accent} strokeWidth="1" fill="none" opacity=".4"/>
       </svg>
-      <div style={{ position:'relative', padding:'28px 22px 26px' }}>
-        <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'6px 12px', borderRadius:999, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.12)', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:10, letterSpacing:'.12em', textTransform:'uppercase', color:'#fff' }}>
-          <span style={{ width:6, height:6, borderRadius:999, background:accent, boxShadow:`0 0 10px ${accent}` }}/> Especialistas em indenização
-        </div>
-        <h1 style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-.01em' }}>
+      <div className="hero-content container-desktop" style={{ position:'relative', padding:'28px 22px 26px', width: '100%' }}>
+        <h1 className="hero-title" style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-.01em' }}>
           Sofreu um acidente<br/>de trânsito?<br/>
           <span style={{ color:accent }}>Você tem direito</span><br/>à indenização.
         </h1>
-        <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
+        <p className="hero-description" style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
           Resolvemos toda a burocracia para você receber o valor máximo da sua indenização, sem custos adiantados.
         </p>
-        <a href={WA_URL} className="btn-shine" style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
+        <a href={WA_URL} className="btn-shine hero-cta" style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
           <Icon.Whatsapp size={22}/> Falar com um especialista
         </a>
-        <div style={{ 
+        <div className="hero-badge" style={{ 
           marginTop:14, 
           display:'flex', 
           alignItems:'center', 
@@ -55,7 +52,7 @@ function Hero({ primary, accent }) {
           <span className="pulse-dot" style={{ width:7, height:7, borderRadius:999, background:'#4ADE80', boxShadow:'0 0 12px #4ADE80' }}/> 
           Tire sua dúvida de graça agora
         </div>
-        <div style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
+        <div className="hero-stats" style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
           {[['14','anos de\nexperiência'],['+5mil','vítimas\npagas'],['100%','atendimento\ndigital']].map(([b,s],i)=>(
             <div key={i} style={{ padding:'12px 8px', textAlign:'center', borderRight: i<2?'1px solid rgba(255,255,255,.12)':'none' }}>
               <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:22, color:accent }}><Counter target={b}/></div>
@@ -94,7 +91,7 @@ function Problema({ primary }) {
   ];
 
   return (
-    <section style={{ padding: '0 0 40px', background: '#fff', overflow: 'hidden' }}>
+    <section style={{ padding: '0 0 40px', overflow: 'hidden' }}>
       <Ticker items={[
         'Não sei se tenho direito', 
         'Quanto vou receber?',
@@ -113,8 +110,7 @@ function Problema({ primary }) {
       ]} />
       
       <div style={{ padding: '38px 22px 0' }}>
-        <SectionLabel label="Dúvidas comuns" primary={primary}/>
-        <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
+        <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '0 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
           Você não precisa lidar com<br/><span style={{ color: primary }}>isso sozinho.</span>
         </h2>
 
@@ -172,24 +168,24 @@ function Especialidades({ primary, accent }) {
     { icon: Icon.Legacy,     t:'Casos DPVAT', d:'Atendimentos para casos ocorridos até 14/11/2023, devido à mudança na legislação.' },
   ];
   return (
-    <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
-      <SectionLabel label="Especialidades" primary={primary}/>
-      <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-        Como garantimos sua<br/><span style={{ color:primary }}>indenização.</span>
-      </h2>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
-        {services.map((s,i)=>{ const I = s.icon; return (
-          <div key={i} className="card-premium" style={{ 
-            position:'relative', 
-            padding:'22px 16px', 
-            borderRadius:20, 
-            background:'#fff', 
-            border:'1.5px solid #e4eaff', 
-            minHeight: s.brandStrip ? undefined : 160, 
-            display:'flex', 
-            flexDirection:'column', 
-            boxShadow:'0 4px 24px rgba(15, 34, 117, 0.07)',
-          }}>
+    <section style={{ padding:'38px 0 30px' }}>
+      <div className="container-desktop" style={{ padding: '0 22px' }}>
+        <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'0 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+          Como garantimos sua<br/><span style={{ color:primary }}>indenização.</span>
+        </h2>
+        <div className="services-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+          {services.map((s,i)=>{ const I = s.icon; return (
+            <div key={i} className="card-premium service-card" style={{ 
+              position:'relative', 
+              padding:'22px 16px', 
+              borderRadius:20, 
+              background:'#fff', 
+              border:'1.5px solid #e4eaff', 
+              minHeight: s.brandStrip ? undefined : 160, 
+              display:'flex', 
+              flexDirection:'column', 
+              boxShadow:'0 4px 24px rgba(15, 34, 117, 0.07)',
+            }}>
             {s.tag && <span style={{ position:'absolute', top:12, right:12, fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:8, letterSpacing:'.12em', padding:'3px 8px', borderRadius:6, background:accent, color:'#0F2E63' }}>{s.tag}</span>}
             
             <div className="icon-box-premium" style={{ 
@@ -218,6 +214,7 @@ function Especialidades({ primary, accent }) {
             {s.brandStrip && <PartnerBrandStrip/>}
           </div>
         );})}
+        </div>
       </div>
     </section>
   );
@@ -232,38 +229,39 @@ function ComoFunciona({ primary, accent }) {
     { n:'04', t:'Pagamento na sua conta', d:'Acompanhamento total até o recebimento do valor da sua indenização.', icon: Icon.PayoutReceived, pill: 'Transparência total' },
   ];
   return (
-    <section style={{ padding:'40px 22px 36px', background:'#F7F9FC' }}>
-      <div style={{ textAlign:'center', marginBottom:30 }}>
-        <SectionLabel label="Como funciona" primary={primary}/>
-        <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.05, margin:'14px 0 0', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-          Como funciona<br/><span style={{ color:primary }}>o processo.</span>
-        </h2>
-      </div>
-      
-      <div className="accordion">
-        {steps.map((s,i)=>{ 
-          const I = s.icon; 
-          const isOpen = active === i;
-          return (
-            <div key={i} className={`acc-item ${isOpen ? 'open' : ''}`}>
-              <div className="acc-header" onClick={() => setActive(isOpen ? -1 : i)}>
-                <span className="acc-num">{s.n}</span>
-                <div className="acc-icon-box">
-                  <I color={isOpen ? "#fff" : primary} size={22}/>
+    <section style={{ padding:'40px 0 36px' }}>
+      <div className="container-desktop" style={{ padding: '0 22px' }}>
+        <div style={{ textAlign:'center', marginBottom:30 }}>
+          <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.05, margin:'0', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+            Como funciona<br/><span style={{ color:primary }}>o processo.</span>
+          </h2>
+        </div>
+        
+        <div className="accordion">
+          {steps.map((s,i)=>{ 
+            const I = s.icon; 
+            const isOpen = active === i;
+            return (
+              <div key={i} className={`acc-item ${isOpen ? 'open' : ''}`}>
+                <div className="acc-header" onClick={() => setActive(isOpen ? -1 : i)}>
+                  <span className="acc-num">{s.n}</span>
+                  <div className="acc-icon-box">
+                    <I color={isOpen ? "#fff" : primary} size={22}/>
+                  </div>
+                  <span className="acc-title-txt">{s.t}</span>
+                  <span className="acc-arrow">+</span>
                 </div>
-                <span className="acc-title-txt">{s.t}</span>
-                <span className="acc-arrow">+</span>
+                <div className="acc-body">
+                  <p>{s.d}</p>
+                  <span className="acc-pill">
+                    <span style={{ width:5, height:5, borderRadius:999, background:primary }}/>
+                    {s.pill}
+                  </span>
+                </div>
               </div>
-              <div className="acc-body">
-                <p>{s.d}</p>
-                <span className="acc-pill">
-                  <span style={{ width:5, height:5, borderRadius:999, background:primary }}/>
-                  {s.pill}
-                </span>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -271,7 +269,7 @@ function ComoFunciona({ primary, accent }) {
 
 function InstagramBanner({ primary = '#0F2E63' }) {
   return (
-    <section style={{ padding: '0 22px 32px', textAlign: 'center', background: '#F7F9FC' }}>
+    <section style={{ padding: '0 22px 32px', textAlign: 'center' }}>
       <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{ display: 'inline-flex', alignItems: 'center', gap: 14, padding: '16px 26px', borderRadius: 999, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', textDecoration: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.06)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Icon.Instagram size={24} color={primary}/>
@@ -290,63 +288,65 @@ function InstagramBanner({ primary = '#0F2E63' }) {
 function InstagramProfilePreview() {
   const instaUrl = "https://www.instagram.com/a4servicosdetransito";
   return (
-    <section style={{ padding: '0 22px 50px', background: '#F7F9FC', textAlign: 'center' }}>
-      <a href={instaUrl} target="_blank" rel="noopener noreferrer" className="insta-card" style={{ 
-        position: 'relative', 
-        borderRadius: 24, 
-        overflow: 'hidden', 
-        background: 'rgba(255,255,255,0.4)',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255,255,255,0.6)',
-        padding: 10,
-        boxShadow: '0 12px 35px rgba(0,0,0,0.06)',
-        maxWidth: 440,
-        margin: '0 auto'
-      }}>
-        <img 
-          src="assets/insta-profile.png" 
-          style={{ width: '100%', height: 'auto', borderRadius: 16, display: 'block' }}
-        />
-        
-        {/* Overlay Hover */}
-        <div className="insta-overlay" style={{ 
-          position: 'absolute', 
-          inset: 10, 
-          borderRadius: 16,
-          background: 'rgba(15, 46, 99, 0.2)',
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          backdropFilter: 'blur(2px)'
+    <section className="section-instagram-profile" style={{ padding: '0 0 50px', textAlign: 'center' }}>
+      <div className="container-desktop" style={{ padding: '0 22px' }}>
+        <a href={instaUrl} target="_blank" rel="noopener noreferrer" className="insta-card" style={{ 
+          position: 'relative', 
+          borderRadius: 24, 
+          overflow: 'hidden', 
+          background: 'rgba(255,255,255,0.4)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255,255,255,0.6)',
+          padding: 10,
+          boxShadow: '0 12px 35px rgba(0,0,0,0.06)',
+          maxWidth: 440,
+          margin: '0 auto'
         }}>
-          <div className="insta-glass-icon">
-            <Icon.ExternalLink size={24} color="#fff" />
+          <img 
+            src="assets/insta-profile.png" 
+            style={{ width: '100%', height: 'auto', borderRadius: 16, display: 'block' }}
+          />
+          
+          {/* Overlay Hover */}
+          <div className="insta-overlay" style={{ 
+            position: 'absolute', 
+            inset: 10, 
+            borderRadius: 16,
+            background: 'rgba(15, 46, 99, 0.2)',
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            backdropFilter: 'blur(2px)'
+          }}>
+            <div className="insta-glass-icon">
+              <Icon.ExternalLink size={24} color="#fff" />
+            </div>
           </div>
+        </a>
+        
+        <div style={{ marginTop: 26 }}>
+          <h3 style={{ 
+            fontFamily: 'Poppins, sans-serif', 
+            fontWeight: 800, 
+            fontSize: 20, 
+            margin: 0,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.6
+          }}>
+            <span style={{ background: '#FFC431', color: '#0F2E63', padding: '6px 16px', borderRadius: 12 }}>Resultados Reais</span>
+          </h3>
+          <p style={{ 
+            fontFamily: 'DM Sans, sans-serif', 
+            fontSize: 14, 
+            color: '#1E4FA1', 
+            marginTop: 8,
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+            opacity: 0.9
+          }}>
+            Acompanhe nosso trabalho diário no Instagram.
+          </p>
         </div>
-      </a>
-      
-      <div style={{ marginTop: 26 }}>
-        <h3 style={{ 
-          fontFamily: 'Poppins, sans-serif', 
-          fontWeight: 800, 
-          fontSize: 20, 
-          margin: 0,
-          letterSpacing: '-0.02em',
-          lineHeight: 1.6
-        }}>
-          <span style={{ background: '#FFC431', color: '#0F2E63', padding: '6px 16px', borderRadius: 12 }}>Resultados Reais</span>
-        </h3>
-        <p style={{ 
-          fontFamily: 'DM Sans, sans-serif', 
-          fontSize: 14, 
-          color: '#1E4FA1', 
-          marginTop: 8,
-          fontWeight: 600,
-          letterSpacing: '-0.01em',
-          opacity: 0.9
-        }}>
-          Acompanhe nosso trabalho diário no Instagram.
-        </p>
       </div>
     </section>
   );
@@ -355,23 +355,18 @@ function InstagramProfilePreview() {
 function QuemSomos({ primary, accent }) {
   const values = ['Sem custos adiantados','Atendimento 100% digital','Transparência total','Acompanhamento até o pagamento'];
   return (
-    <section style={{ padding:0, background:primary, color:'#fff', position:'relative', overflow:'hidden' }}>
-      <div style={{ width:'100%', height:240, position:'relative' }}>
-        <img src="assets/about-us.png" style={{ width:'100%', height:'100%', objectFit:'cover' }}/>
-        <div style={{ position:'absolute', inset:0, background:`linear-gradient(0deg, ${primary} 10%, transparent 100%)` }}/>
-      </div>
-      <div style={{ padding:'0 22px 36px', position:'relative', marginTop:-40 }}>
-        <div style={{ position:'absolute', top:14, right:22, filter:'drop-shadow(0 8px 20px rgba(0,0,0,0.15))' }}>
-          <LogoMark size={54} color="#1E4FA1" accent={accent}/>
+    <section style={{ padding:'50px 0 40px', background:primary, color:'#fff', position:'relative', overflow:'hidden' }}>
+      <div className="container-desktop about-content" style={{ padding:'0 22px', position:'relative' }}>
+        <div style={{ marginBottom: 20 }}>
+          <Logo size={20} stacked={false} color="#fff" accent={accent}/>
         </div>
-        <SectionLabel label="Quem somos" primary={accent}/>
-        <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-0.01em' }}>
+        <h2 className="about-title" style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:30, lineHeight:1.1, margin:'0', letterSpacing:'-0.01em' }}>
           14 anos de experiência<br/><span style={{ color:accent }}>em indenizações.</span>
         </h2>
-        <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13.5, lineHeight:1.55, color:'rgba(255,255,255,.85)', margin:'14px 0 0' }}>
+        <p className="about-description" style={{ fontFamily:'DM Sans, sans-serif', fontSize:13.5, lineHeight:1.55, color:'rgba(255,255,255,.85)', margin:'14px 0 0' }}>
           Especialistas em transformar a complexidade de um acidente em uma reparação justa. Somos uma assessoria técnica independente, não uma seguradora nem um órgão público.
         </p>
-        <div style={{ marginTop:20, padding:'16px', background:'rgba(255,255,255,.08)', borderRadius:12, border:'1px solid rgba(255,255,255,.14)' }}>
+        <div className="about-values" style={{ marginTop:20, padding:'16px', background:'rgba(255,255,255,.08)', borderRadius:12, border:'1px solid rgba(255,255,255,.14)' }}>
           {values.map((v,i)=>(
             <div key={i} style={{ display:'flex', alignItems:'center', gap:10, padding:'8px 0', borderBottom: i<values.length-1?'1px solid rgba(255,255,255,.1)':'none' }}>
               <Icon.Check size={18} color={accent}/>
@@ -379,7 +374,7 @@ function QuemSomos({ primary, accent }) {
             </div>
           ))}
         </div>
-        <div style={{ marginTop:18, display:'flex', alignItems:'center', gap:8, fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,.8)' }}>
+        <div className="about-pin" style={{ marginTop:18, display:'flex', alignItems:'center', gap:8, fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,.8)' }}>
           <Icon.Pin size={14} color={accent}/> Recife, PE · Atendemos todo o Brasil
         </div>
       </div>
@@ -400,27 +395,28 @@ function FAQ({ primary }) {
     { q:'Atendem fora de Recife?', a:'Atendemos em todo o Brasil. O processo é 100% digital e seguro.' },
   ];
   return (
-    <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
-      <SectionLabel label="FAQ" primary={primary}/>
-      <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-        Dúvidas frequentes sobre<br/><span style={{ color:primary }}>seu direito.</span>
-      </h2>
-      
-      <div className="accordion">
-        {faqs.map((f,i)=>{ 
-          const isOpen = active === i;
-          return (
-            <div key={i} className={`acc-item ${isOpen ? 'open' : ''}`} style={{ borderTop: i===0?'none':'1px solid var(--neutral-200)' }}>
-              <div className="acc-header" onClick={() => setActive(isOpen ? -1 : i)} style={{ padding: isOpen ? '20px 0 12px' : '18px 0' }}>
-                <span className="acc-title-txt" style={{ fontSize: '14px', color: isOpen ? primary : '#0F2E63' }}>{f.q}</span>
-                <span className="acc-arrow" style={{ fontSize: '20px' }}>+</span>
+    <section style={{ padding:'38px 0 30px' }}>
+      <div className="container-desktop" style={{ padding: '0 22px' }}>
+        <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'0 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+          Dúvidas frequentes sobre<br/><span style={{ color:primary }}>seu direito.</span>
+        </h2>
+        
+        <div className="accordion">
+          {faqs.map((f,i)=>{ 
+            const isOpen = active === i;
+            return (
+              <div key={i} className={`acc-item ${isOpen ? 'open' : ''}`} style={{ borderTop: i===0?'none':'1px solid var(--neutral-200)' }}>
+                <div className="acc-header" onClick={() => setActive(isOpen ? -1 : i)} style={{ padding: isOpen ? '20px 0 12px' : '18px 0' }}>
+                  <span className="acc-title-txt" style={{ fontSize: '14px', color: isOpen ? primary : '#0F2E63' }}>{f.q}</span>
+                  <span className="acc-arrow" style={{ fontSize: '20px' }}>+</span>
+                </div>
+                <div className="acc-body" style={{ padding: isOpen ? '0 0 20px 0' : '0' }}>
+                  <p style={{ fontSize: '13px', color: '#6B7280' }}>{f.a}</p>
+                </div>
               </div>
-              <div className="acc-body" style={{ padding: isOpen ? '0 0 20px 0' : '0' }}>
-                <p style={{ fontSize: '13px', color: '#6B7280' }}>{f.a}</p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -428,19 +424,20 @@ function FAQ({ primary }) {
 
 function CTAFinal({ primary = '#0F2E63', accent }) {
   return (
-    <section style={{ padding:'20px 18px 60px', background:'#fff' }}>
-      <div style={{ 
-        maxWidth: 440, 
-        margin: '0 auto',
-        padding:'48px 24px', 
-        background: primary, 
-        color:'#fff', 
-        borderRadius: 32,
-        position:'relative', 
-        overflow:'hidden', 
-        textAlign:'center',
-        boxShadow: '0 20px 50px rgba(15, 46, 99, 0.2)'
-      }}>
+    <section style={{ padding:'20px 0 60px' }}>
+      <div className="container-desktop" style={{ padding: '0 22px' }}>
+        <div style={{ 
+          maxWidth: 440, 
+          margin: '0 auto',
+          padding:'48px 24px', 
+          background: primary, 
+          color:'#fff', 
+          borderRadius: 32,
+          position:'relative', 
+          overflow:'hidden', 
+          textAlign:'center',
+          boxShadow: '0 20px 50px rgba(15, 46, 99, 0.2)'
+        }}>
         {/* Aura decorativa de fundo */}
         <div style={{ position:'absolute', top:'-10%', right:'-10%', width:180, height:180, background:accent, borderRadius:'50%', opacity:0.12, filter:'blur(40px)', pointerEvents:'none' }}/>
         <div style={{ position:'absolute', bottom:'-5%', left:'-5%', width:120, height:120, background:accent, borderRadius:'50%', opacity:0.06, filter:'blur(30px)', pointerEvents:'none' }}/>
@@ -462,6 +459,7 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
               <Icon.Phone size={14} color="rgba(255,255,255,0.3)"/> Ou ligue: (81) 99714-0111
             </a>
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -82,6 +82,11 @@ const Icon = {
       <line x1="9" y1="15" x2="15" y2="15" />
     </svg>
   ),
+  Mail: ({ size = 18, color = '#1E4FA1' }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+    </svg>
+  ),
 };
 
 function Logo({ size = 20, stacked = true, color = '#1E4FA1', accent = '#FFC431', variant = 'full' }) {

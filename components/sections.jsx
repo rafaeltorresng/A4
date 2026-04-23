@@ -508,6 +508,10 @@ function Footer({ accent }) {
             <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, lineHeight:1.6, margin:'16px 0 0', color:'rgba(255,255,255,.4)', maxWidth:400 }}>
               Assessoria técnica independente especializada em indenizações por acidente de trânsito. Transformamos burocracia em resultados.
             </p>
+            <div style={{ marginTop: 16, display:'flex', alignItems:'center', gap:10 }}>
+              <Icon.Mail size={16} color={accent}/>
+              <a href="mailto:a4atende@gmail.com" style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, color:'rgba(255,255,255,0.6)', textDecoration:'none' }}>a4atende@gmail.com</a>
+            </div>
           </div>
           
           {/* Coluna 2: Suporte Jurídico (Responsável) */}

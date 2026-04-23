@@ -153,9 +153,9 @@ function FAQ() {
   ];
   return (
     <section style={{ padding:'38px 22px 30px', background:'#f5f5f5' }}>
-      <SectionLabel label="Dúvidas frequentes"/>
+      <SectionLabel label="FAQ"/>
       <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 22px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-        Perguntas que ouvimos<br/><span style={{ color:'#1E4FA1' }}>todos os dias.</span>
+        Dúvidas frequentes sobre<br/><span style={{ color:'#1E4FA1' }}>seu direito.</span>
       </h2>
       <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
         {faqs.map((f,i)=>(

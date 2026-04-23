@@ -308,9 +308,9 @@ function FAQ({ primary }) {
   ];
   return (
     <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
-      <SectionLabel label="Dúvidas frequentes" primary={primary}/>
+      <SectionLabel label="FAQ" primary={primary}/>
       <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-        Perguntas que ouvimos<br/><span style={{ color:primary }}>todos os dias.</span>
+        Dúvidas frequentes sobre<br/><span style={{ color:primary }}>seu direito.</span>
       </h2>
       
       <div className="accordion">

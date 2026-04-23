@@ -310,6 +310,10 @@ function FAQ({ primary }) {
   const faqs = [
     { q:'Preciso pagar algo adiantado?', a:'Não. Cobramos apenas uma porcentagem do valor que você efetivamente receber. Sem taxas de cadastro ou mensalidades.' },
     { q:'Quanto tempo demora?', a:'Varia conforme o caso. Indenizações via seguro de aplicativo costumam ser processadas em poucos meses.' },
+    { q:'Quais documentos são necessários?', a:'Basicamente RG, CPF, comprovante de residência e o Boletim de Ocorrência (se houver). Caso falte algo, nós te orientamos.' },
+    { q:'Qual o prazo máximo para pedir?', a:'Geralmente você tem até 3 anos após o acidente. No entanto, quanto antes você iniciar o processo, mais rápido recebe.' },
+    { q:'Preciso ir a algum tribunal?', a:'Quase nunca. A maioria dos nossos casos é resolvida de forma administrativa e 100% digital, sem você sair de casa.' },
+    { q:'Fui atendido pelo SUS, tenho direito?', a:'Com certeza. O atendimento público não anula seu direito à indenização por danos físicos, invalidez ou despesas médicas.' },
     { q:'Posso receber mesmo se a culpa foi minha?', a:'Sim. Passageiros de apps e motoristas (em certas coberturas) têm direito independente da culpa no acidente.' },
     { q:'Atendem fora de Recife?', a:'Atendemos em todo o Brasil. O processo é 100% digital e seguro.' },
   ];

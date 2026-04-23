@@ -299,7 +299,7 @@ function QuemSomos({ primary, accent }) {
 }
 
 function FAQ({ primary }) {
-  const [open, setOpen] = React.useState(0);
+  const [active, setActive] = React.useState(0);
   const faqs = [
     { q:'Preciso pagar algo adiantado?', a:'Não. Nosso trabalho é remunerado só quando você recebe. Sem taxa de cadastro, sem mensalidade, sem pegadinha.' },
     { q:'Quanto tempo demora?', a:'Depende do tipo de caso. Indenizações via seguro de aplicativo costumam sair em poucos meses.' },
@@ -307,26 +307,27 @@ function FAQ({ primary }) {
     { q:'Atendem fora de Recife?', a:'Atendemos em todo o Brasil, 100% online. Já representamos clientes em todos os estados.' },
   ];
   return (
-    <section style={{ padding:'38px 22px 30px', background:'#f5f5f5' }}>
+    <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
       <SectionLabel label="Dúvidas frequentes" primary={primary}/>
-      <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 22px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+      <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
         Perguntas que ouvimos<br/><span style={{ color:primary }}>todos os dias.</span>
       </h2>
-      <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
-        {faqs.map((f,i)=>(
-          <div key={i} style={{ borderRadius:16, border:'1px solid rgba(229,231,235,.6)', background: open===i?'rgba(247,249,252,.6)':'rgba(255,255,255,.4)', boxShadow: open===i?'0 8px 25px rgba(0,0,0,.05)':'none', overflow:'hidden', transition:'all .3s' }}>
-            <button onClick={()=>setOpen(open===i?-1:i)} style={{ width:'100%', padding:'18px', display:'flex', alignItems:'center', gap:12, justifyContent:'space-between', background:'transparent', border:'none', cursor:'pointer', textAlign:'left' }}>
-              <span style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:13, color: open===i?primary:'#0F2E63', lineHeight:1.4 }}>{f.q}</span>
-              <Icon.Chevron open={open===i} color={open===i?primary:'#6B7280'}/>
-            </button>
-            {open===i && (
-              <div style={{ padding:'0 18px 18px' }}>
-                <div style={{ height:1, background:'rgba(0,0,0,.05)', marginBottom:14 }}/>
-                <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:12.5, lineHeight:1.6, color:'#6B7280', margin:0, fontWeight:500 }}>{f.a}</p>
+      
+      <div className="accordion">
+        {faqs.map((f,i)=>{ 
+          const isOpen = active === i;
+          return (
+            <div key={i} className={`acc-item ${isOpen ? 'open' : ''}`} style={{ borderTop: i===0?'none':'1px solid var(--neutral-200)' }}>
+              <div className="acc-header" onClick={() => setActive(isOpen ? -1 : i)} style={{ padding: isOpen ? '20px 0 12px' : '18px 0' }}>
+                <span className="acc-title-txt" style={{ fontSize: '14px', color: isOpen ? primary : '#0F2E63' }}>{f.q}</span>
+                <span className="acc-arrow" style={{ fontSize: '20px' }}>+</span>
               </div>
-            )}
-          </div>
-        ))}
+              <div className="acc-body" style={{ padding: isOpen ? '0 0 20px 0' : '0' }}>
+                <p style={{ fontSize: '13px', color: '#6B7280' }}>{f.a}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

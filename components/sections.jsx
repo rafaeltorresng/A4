@@ -378,10 +378,24 @@ function QuemSomos({ primary, accent }) {
           <Icon.Pin size={14} color={accent}/> Recife, PE · Atendemos todo o Brasil
         </div>
 
-        <div className="about-legal" style={{ marginTop:24, paddingLeft:14, borderLeft:`2px solid ${accent}` }}>
-          <div style={{ fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:accent, marginBottom:2 }}>Suporte Jurídico - Direito Previdenciário</div>
-          <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:14, color:'#fff', lineHeight:1.2 }}>Dra. Carla Rocha Lemos</div>
-          <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,0.5)', marginTop:2 }}>OAB/PE - 27.103</div>
+        <div className="about-legal" style={{ marginTop:28, paddingLeft:16, borderLeft:`3px solid ${accent}` }}>
+          <div style={{ fontFamily:'DM Sans, sans-serif', fontWeight:800, fontSize:11, letterSpacing:'.1em', textTransform:'uppercase', color:accent, marginBottom:6 }}>Suporte Jurídico - Direito Previdenciário</div>
+          <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:16, color:'#fff', lineHeight:1.2 }}>Dra. Carla Rocha Lemos</div>
+          <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, color:'rgba(255,255,255,0.6)', marginTop:4 }}>OAB/PE - 27.103</div>
+          <div style={{ marginTop:14, display:'flex', flexWrap:'wrap', gap:'8px' }}>
+            {['Auxílio acidente','Auxílio doença','Auxílio maternidade','Aposentadoria','LOAS'].map((s,i)=>(
+              <span key={i} style={{ 
+                fontFamily:'Poppins, sans-serif', 
+                fontWeight:700, 
+                fontSize:11, 
+                color:'#0F2E63', 
+                background:accent, 
+                padding:'5px 12px', 
+                borderRadius:8, 
+                boxShadow:`0 4px 12px ${accent}33`
+              }}>{s}</span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -497,10 +511,13 @@ function Footer({ accent }) {
           </div>
           
           {/* Coluna 2: Suporte Jurídico (Responsável) */}
-          <div style={{ flex:'1 1 200px' }}>
+          <div style={{ flex:'1 1 250px' }}>
             <div style={{ fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:accent, marginBottom:10 }}>Suporte Jurídico - Direito Previdenciário</div>
             <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:14, color:'#fff', lineHeight:1.2 }}>Dra. Carla Rocha Lemos</div>
             <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,0.4)', marginTop:4 }}>OAB/PE - 27.103</div>
+            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,0.3)', marginTop:12, lineHeight:1.6, maxWidth:220 }}>
+              Especialista em Auxílio acidente, doença e maternidade, Aposentadoria e LOAS.
+            </p>
           </div>
 
           {/* Coluna 3: Redes Sociais */}

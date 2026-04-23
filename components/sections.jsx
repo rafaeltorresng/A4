@@ -288,45 +288,64 @@ function InstagramBanner({ primary = '#0F2E63' }) {
 }
 
 function InstagramProfilePreview() {
+  const instaUrl = "https://www.instagram.com/a4servicosdetransito";
   return (
-    <section style={{ padding: '0 22px 60px', background: '#F7F9FC', textAlign: 'center' }}>
-      <div style={{ 
+    <section style={{ padding: '0 22px 50px', background: '#F7F9FC', textAlign: 'center' }}>
+      <a href={instaUrl} target="_blank" rel="noopener noreferrer" className="insta-card" style={{ 
         position: 'relative', 
-        borderRadius: 32, 
-        background: 'rgba(255,255,255,0.3)',
-        backdropFilter: 'blur(12px)',
-        border: '1px solid rgba(255,255,255,0.5)',
-        padding: '12px',
-        boxShadow: '0 20px 50px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
-        maxWidth: 400,
+        borderRadius: 24, 
+        overflow: 'hidden', 
+        background: 'rgba(255,255,255,0.4)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255,255,255,0.6)',
+        padding: 10,
+        boxShadow: '0 12px 35px rgba(0,0,0,0.06)',
+        maxWidth: 440,
         margin: '0 auto'
       }}>
         <img 
           src="assets/insta-profile.png" 
-          style={{ width: '100%', height: 'auto', borderRadius: 22, display: 'block' }}
+          style={{ width: '100%', height: 'auto', borderRadius: 16, display: 'block' }}
         />
-        {/* Reflexo sutil de vidro */}
-        <div style={{ position: 'absolute', inset: 0, borderRadius: 32, background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)', pointerEvents: 'none' }}/>
-      </div>
+        
+        {/* Overlay Hover */}
+        <div className="insta-overlay" style={{ 
+          position: 'absolute', 
+          inset: 10, 
+          borderRadius: 16,
+          background: 'rgba(15, 46, 99, 0.2)',
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          backdropFilter: 'blur(2px)'
+        }}>
+          <div className="insta-glass-icon">
+            <Icon.ExternalLink size={24} color="#fff" />
+          </div>
+        </div>
+      </a>
       
-      <div style={{ marginTop: 20 }}>
+      <div style={{ marginTop: 26 }}>
         <h3 style={{ 
           fontFamily: 'Poppins, sans-serif', 
-          fontWeight: 700, 
-          fontSize: 19, 
-          color: '#0F2E63', 
-          letterSpacing: '-0.02em'
+          fontWeight: 800, 
+          fontSize: 20, 
+          margin: 0,
+          letterSpacing: '-0.02em',
+          lineHeight: 1.6
         }}>
-          Resultados reais no Instagram.
+          <span style={{ background: '#FFC431', color: '#0F2E63', padding: '6px 16px', borderRadius: 12 }}>Resultados Reais</span>
         </h3>
         <p style={{ 
           fontFamily: 'DM Sans, sans-serif', 
-          fontSize: 13, 
-          color: '#6B7280', 
-          marginTop: 6,
-          fontWeight: 500
+          fontSize: 14, 
+          color: '#1E4FA1', 
+          marginTop: 8,
+          fontWeight: 600,
+          letterSpacing: '-0.01em',
+          opacity: 0.9
         }}>
-          Siga @a4servicosdetransito
+          Acompanhe nosso trabalho diário no Instagram.
         </p>
       </div>
     </section>

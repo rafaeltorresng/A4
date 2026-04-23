@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ícones AQU4TRO – Fundo Branco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: ‘DM Sans’, sans-serif;
+            background: #ffffff;
+            color: #111;
+            padding: 48px 24px 80px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .page-header h1 {
+            font-family: ‘Syne’, sans-serif;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            color: #0f2275;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #888;
+            font-size: 0.92rem;
+        }
+
+        /* ─── section ─── */
+        .section {
+            margin-bottom: 72px;
+        }
+
+        .section-head {
+            margin-bottom: 28px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #0f2275;
+            border: 1.5px solid #c8d3f5;
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 1.15rem;
+            color: #0f2275;
+            font-weight: 800;
+        }
+
+        .section-desc {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .cards-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .tag-novo {
+            display: inline-block;
+            background: #f5a623;
+            color: #fff;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+
+        /* ═══════════════════════════════════════
+OPÇÃO A — Azul com acento amarelo
+═══════════════════════════════════════ */
+        .a-card {
+            background: #fff;
+            border: 1.5px solid #e4eaff;
+            border-radius: 20px;
+            padding: 22px 18px;
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            box-shadow: 0 4px 24px rgba(15, 34, 117, 0.07);
+            transition: box-shadow 0.25s, transform 0.25s;
+            cursor: default;
+        }
+
+        .a-card:hover {
+            box-shadow: 0 10px 36px rgba(15, 34, 117, 0.14);
+            transform: translateY(-4px);
+        }
+
+        .a-icon {
+            width: 50px;
+            height: 50px;
+            background: #0f2275;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .a-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+        }
+
+        .a-icon .dot {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 12px;
+            height: 12px;
+            background: #f5a623;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .a-card .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #0f2275;
+            line-height: 1.35;
+        }
+
+        /* ═══════════════════════════════════════
+OPÇÃO B — Amarelo dominante
+═══════════════════════════════════════ */
+        .b-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 22px 18px;
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            box-shadow: 0 4px 24px rgba(15, 34, 117, 0.07);
+            border: 1.5px solid #fdeac8;
+            transition: box-shadow 0.25s, transform 0.25s;
+            cursor: default;
+        }
+
+        .b-card:hover {
+            box-shadow: 0 10px 36px rgba(245, 166, 35, 0.18);
+            transform: translateY(-4px);
+        }
+
+        .b-icon {
+            width: 50px;
+            height: 50px;
+            background: #f5a623;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .b-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+        }
+
+        .b-icon .dot {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 12px;
+            height: 12px;
+            background: #0f2275;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .b-card .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #0f2275;
+            line-height: 1.35;
+        }
+
+        /* ═══════════════════════════════════════
+OPÇÃO C — Split bicolor
+═══════════════════════════════════════ */
+        .c-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 22px 18px;
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            box-shadow: 0 4px 24px rgba(15, 34, 117, 0.07);
+            border: 1.5px solid #e4eaff;
+            transition: box-shadow 0.25s, transform 0.25s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .c-card::before {
+            content: ‘’;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 48px;
+            height: 48px;
+            background: #f5a623;
+            border-radius: 0 20px 0 40px;
+            opacity: 0.15;
+            transition: opacity 0.25s;
+        }
+
+        .c-card:hover::before {
+            opacity: 0.28;
+        }
+
+        .c-card:hover {
+            box-shadow: 0 10px 36px rgba(15, 34, 117, 0.14);
+            transform: translateY(-4px);
+        }
+
+        .c-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0f2275 60%, #f5a623 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .c-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+        }
+
+        .c-card .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #0f2275;
+            line-height: 1.35;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════
+OPÇÃO D — Glassmorphism Azul
+═══════════════════════════════════════ */
+        .glass-bg-blue {
+            background: linear-gradient(135deg, #0f2275 0%, #1d49d4 60%, #2563eb 100%);
+            border-radius: 28px;
+            padding: 32px 24px;
+            display: inline-flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-bg-blue::before {
+            content: ‘’;
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: rgba(245, 166, 35, 0.18);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .glass-bg-blue::after {
+            content: ‘’;
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            width: 160px;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+
+        .d-card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 18px;
+            padding: 20px 16px;
+            width: 148px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: background 0.25s, transform 0.25s;
+            cursor: default;
+            position: relative;
+            z-index: 1;
+        }
+
+        .d-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .d-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(245, 166, 35, 0.3);
+            border: 1px solid rgba(245, 166, 35, 0.5);
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #f5a623;
+        }
+
+        .d-card .label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.35;
+        }
+
+        /* ═══════════════════════════════════════
+OPÇÃO E — Glassmorphism Amarelo
+═══════════════════════════════════════ */
+        .glass-bg-yellow {
+            background: linear-gradient(135deg, #f5a623 0%, #f7c948 50%, #fde68a 100%);
+            border-radius: 28px;
+            padding: 32px 24px;
+            display: inline-flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-bg-yellow::before {
+            content: ‘’;
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 180px;
+            height: 180px;
+            background: rgba(15, 34, 117, 0.15);
+            border-radius: 50%;
+            filter: blur(35px);
+        }
+
+        .e-card {
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 18px;
+            padding: 20px 16px;
+            width: 148px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: background 0.25s, transform 0.25s;
+            cursor: default;
+            position: relative;
+            z-index: 1;
+        }
+
+        .e-card:hover {
+            background: rgba(255, 255, 255, 0.50);
+            transform: translateY(-4px);
+        }
+
+        .e-icon {
+            width: 48px;
+            height: 48px;
+            background: #0f2275;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .e-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #fff;
+        }
+
+        .e-card .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #0f2275;
+            line-height: 1.35;
+        }
+
+        /* ═══════════════════════════════════════
+OPÇÃO F — Glassmorphism Misto (fundo branco com blur)
+═══════════════════════════════════════ */
+        .glass-bg-mixed {
+            background: #fff;
+            border-radius: 28px;
+            padding: 32px 24px;
+            display: inline-flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+            border: 1.5px solid #e4eaff;
+            box-shadow: 0 8px 40px rgba(15, 34, 117, 0.08);
+        }
+
+        .glass-bg-mixed::before {
+            content: ‘’;
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .glass-bg-mixed::after {
+            content: ‘’;
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(15, 34, 117, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .f-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            padding: 20px 16px;
+            width: 148px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(15, 34, 117, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: box-shadow 0.25s, transform 0.25s;
+            cursor: default;
+            position: relative;
+            z-index: 1;
+        }
+
+        .f-card:hover {
+            box-shadow: 0 12px 36px rgba(15, 34, 117, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transform: translateY(-4px);
+        }
+
+        .f-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0f2275, #1d49d4);
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(15, 34, 117, 0.35);
+        }
+
+        .f-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #fff;
+        }
+
+        .f-icon .dot {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 11px;
+            height: 11px;
+            background: #f5a623;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .f-icon-wrap {
+            position: relative;
+            width: fit-content;
+        }
+
+        .f-card .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #0f2275;
+            line-height: 1.35;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eef0f8;
+            margin: 0 0 72px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page-header">
+        <h1>Opções de Ícones – AQU4TRO</h1>
+        <p>Variações com fundo branco, azul, amarelo e glassmorphism</p>
+    </div>
+
+    <!-- OPÇÃO A -->
+
+    <div class="section">
+        <div class="section-head">
+            <span class="section-tag">Opção A</span>
+            <p class="section-title">Azul sólido + ponto amarelo</p>
+            <p class="section-desc">Ícone azul escuro com badge amarelo de destaque. Limpo e direto.</p>
+        </div>
+        <div class="cards-row">
+            <div class="a-card">
+                <span class="tag-novo">NOVO</span>
+                <div class="a-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 7h6M9 11h6M9 15h4" />
+                    </svg>
+                    <span class="dot"></span>
+                </div>
+                <span class="label">Indenização via App</span>
+            </div>
+            <div class="a-card">
+                <div class="a-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <span class="label">Processos contra Terceiros</span>
+            </div>
+            <div class="a-card">
+                <div class="a-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span class="label">Seguro de Passageiro</span>
+            </div>
+            <div class="a-card">
+                <div class="a-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <span class="label">Casos DPVAT (Legado)</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- OPÇÃO B -->
+
+    <div class="section">
+        <div class="section-head">
+            <span class="section-tag">Opção B</span>
+            <p class="section-title">Amarelo dominante + ponto azul</p>
+            <p class="section-desc">Ícone amarelo com badge azul. Energético e confiante.</p>
+        </div>
+        <div class="cards-row">
+            <div class="b-card">
+                <span class="tag-novo">NOVO</span>
+                <div class="b-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 7h6M9 11h6M9 15h4" />
+                    </svg>
+                    <span class="dot"></span>
+                </div>
+                <span class="label">Indenização via App</span>
+            </div>
+            <div class="b-card">
+                <div class="b-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <span class="label">Processos contra Terceiros</span>
+            </div>
+            <div class="b-card">
+                <div class="b-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span class="label">Seguro de Passageiro</span>
+            </div>
+            <div class="b-card">
+                <div class="b-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <span class="label">Casos DPVAT (Legado)</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- OPÇÃO C -->
+
+    <div class="section">
+        <div class="section-head">
+            <span class="section-tag">Opção C</span>
+            <p class="section-title">Gradiente diagonal azul → amarelo</p>
+            <p class="section-desc">Ícone com gradiente que une as duas cores. Sofisticado e único.</p>
+        </div>
+        <div class="cards-row">
+            <div class="c-card">
+                <span class="tag-novo">NOVO</span>
+                <div class="c-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 7h6M9 11h6M9 15h4" />
+                    </svg>
+                </div>
+                <span class="label">Indenização via App</span>
+            </div>
+            <div class="c-card">
+                <div class="c-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <span class="label">Processos contra Terceiros</span>
+            </div>
+            <div class="c-card">
+                <div class="c-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span class="label">Seguro de Passageiro</span>
+            </div>
+            <div class="c-card">
+                <div class="c-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <span class="label">Casos DPVAT (Legado)</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- OPÇÃO D -->
+
+    <div class="section">
+        <div class="section-head">
+            <span class="section-tag">Opção D</span>
+            <p class="section-title">Glassmorphism – fundo azul</p>
+            <p class="section-desc">Cards translúcidos sobre gradiente azul. Ícones em amarelo, premium e marcante.</p>
+        </div>
+        <div class="glass-bg-blue">
+            <div class="d-card">
+                <span class="tag-novo">NOVO</span>
+                <div class="d-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 7h6M9 11h6M9 15h4" />
+                    </svg>
+                </div>
+                <span class="label">Indenização via App</span>
+            </div>
+            <div class="d-card">
+                <div class="d-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <span class="label">Processos contra Terceiros</span>
+            </div>
+            <div class="d-card">
+                <div class="d-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span class="label">Seguro de Passageiro</span>
+            </div>
+            <div class="d-card">
+                <div class="d-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <span class="label">Casos DPVAT (Legado)</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:48px"></div>
+
+    <!-- OPÇÃO E -->
+
+    <div class="section">
+        <div class="section-head">
+            <span class="section-tag">Opção E</span>
+            <p class="section-title">Glassmorphism – fundo amarelo</p>
+            <p class="section-desc">Cards translúcidos sobre gradiente dourado. Ícones em azul escuro para contraste.
+            </p>
+        </div>
+        <div class="glass-bg-yellow">
+            <div class="e-card">
+                <span class="tag-novo">NOVO</span>
+                <div class="e-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 7h6M9 11h6M9 15h4" />
+                    </svg>
+                </div>
+                <span class="label">Indenização via App</span>
+            </div>
+            <div class="e-card">
+                <div class="e-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <span class="label">Processos contra Terceiros</span>
+            </div>
+            <div class="e-card">
+                <div class="e-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span class="label">Seguro de Passageiro</span>
+            </div>
+            <div class="e-card">
+                <div class="e-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <span class="label">Casos DPVAT (Legado)</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:8px"></div>
+    <hr>
+
+    <!-- OPÇÃO F -->
+
+    <div class="section">
+        <div class="section-head">
+            <span class="section-tag">Opção F</span>
+            <p class="section-title">Glassmorphism – fundo branco puro</p>
+            <p class="section-desc">Cards com blur sobre fundo branco com halos coloridos. Mantém o padrão atual mas
+                eleva o acabamento visual.</p>
+        </div>
+        <div class="glass-bg-mixed">
+            <div class="f-card">
+                <span class="tag-novo">NOVO</span>
+                <div class="f-icon-wrap">
+                    <div class="f-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" />
+                            <path d="M9 7h6M9 11h6M9 15h4" />
+                        </svg>
+                    </div>
+                    <span class="dot"></span>
+                </div>
+                <span class="label">Indenização via App</span>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <span class="label">Processos contra Terceiros</span>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span class="label">Seguro de Passageiro</span>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <span class="label">Casos DPVAT (Legado)</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

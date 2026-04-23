@@ -66,8 +66,8 @@ function Problema({ primary }) {
       </h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 18 }}>
         {items.map((t, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '16px', borderRadius: 16, background: 'rgba(247, 249, 252, 0.4)', border: '1px solid rgba(229, 231, 235, 0.6)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-            <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 9, background: '#fff', border: '1px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: primary }}>{i + 1}</div>
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '16px', borderRadius: 16, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+            <div style={{ flexShrink: 0, width: 32, height: 32, borderRadius: 10, background: primary, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: '#fff', boxShadow: '0 4px 10px rgba(15,46,99,.15)' }}>{i + 1}</div>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.5, color: '#1F2937', margin: 0, fontWeight: 500 }}>"{t}"</p>
           </div>
         ))}
@@ -107,18 +107,49 @@ function Especialidades({ primary, accent }) {
     { icon: Icon.Legacy,     t:'Casos DPVAT (Legado)', d:'Atendimentos para acidentes ocorridos antes da mudança na legislação de 2025.' },
   ];
   return (
-    <section style={{ padding:'38px 22px 30px', background:'#f5f5f5' }}>
+    <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
       <SectionLabel label="Especialidades" primary={primary}/>
       <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
         Onde nossa equipe<br/><span style={{ color:primary }}>pode te ajudar.</span>
       </h2>
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
         {services.map((s,i)=>{ const I = s.icon; return (
-          <div key={i} style={{ position:'relative', padding:'20px 16px', borderRadius:18, background:'rgba(247,249,252,.8)', border:'1px solid #E5E7EB', minHeight: s.brandStrip ? undefined : 160, display:'flex', flexDirection:'column', boxShadow:'0 4px 20px rgba(0,0,0,.03)' }}>
-            {s.tag && <span style={{ position:'absolute', top:12, right:12, fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:8, letterSpacing:'.12em', padding:'3px 7px', borderRadius:6, background:accent, color:'#0F2E63' }}>{s.tag}</span>}
-            <div style={{ width:44, height:44, borderRadius:12, background:'#fff', border:'1px solid #E5E7EB', display:'flex', alignItems:'center', justifyContent:'center', marginBottom:12, boxShadow:'0 2px 8px rgba(0,0,0,.05)' }}><I color={primary}/></div>
-            <h3 style={{ fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:13, color:'#0F2E63', margin:0 }}>{s.t}</h3>
-            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, lineHeight:1.45, color:'#6B7280', margin:'6px 0 0' }}>{s.d}</p>
+          <div key={i} className="card-premium" style={{ 
+            position:'relative', 
+            padding:'22px 16px', 
+            borderRadius:20, 
+            background:'#fff', 
+            border:'1.5px solid #e4eaff', 
+            minHeight: s.brandStrip ? undefined : 160, 
+            display:'flex', 
+            flexDirection:'column', 
+            boxShadow:'0 4px 24px rgba(15, 34, 117, 0.07)',
+          }}>
+            {s.tag && <span style={{ position:'absolute', top:12, right:12, fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:8, letterSpacing:'.12em', padding:'3px 8px', borderRadius:6, background:accent, color:'#0F2E63' }}>{s.tag}</span>}
+            
+            <div className="icon-box-premium" style={{ 
+              width:50, height:50, 
+              background:primary, 
+              borderRadius:14, 
+              display:'flex', 
+              alignItems:'center', 
+              justifyContent:'center', 
+              marginBottom:16, 
+              position:'relative'
+            }}>
+              <I color="#fff" size={24}/>
+              <span style={{ 
+                position:'absolute', 
+                top:-4, right:-4, 
+                width:12, height:12, 
+                background:accent, 
+                borderRadius:999, 
+                border:'2px solid #fff' 
+              }}/>
+            </div>
+            
+            <h3 style={{ fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:13, color:'#0F2E63', margin:0, lineHeight: 1.35 }}>{s.t}</h3>
+            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, lineHeight:1.45, color:'#6B7280', margin:'8px 0 0' }}>{s.d}</p>
             {s.brandStrip && <PartnerBrandStrip/>}
           </div>
         );})}
@@ -128,11 +159,12 @@ function Especialidades({ primary, accent }) {
 }
 
 function ComoFunciona({ primary, accent }) {
+  const [active, setActive] = React.useState(0);
   const steps = [
-    { n:'01', t:'Você conta o que aconteceu', d:'Pelo WhatsApp, em minutos. Tudo online, sem sair de casa.', icon: Icon.Whatsapp },
-    { n:'02', t:'Analisamos seu caso', d:'Um especialista avalia gratuitamente se você tem direito.', icon: Icon.CaseReview },
-    { n:'03', t:'Cuidamos de toda burocracia', d:'Documentos, laudos, protocolos — fazemos tudo por você.', icon: Icon.PaperworkStack },
-    { n:'04', t:'Você recebe sua indenização', d:'Acompanhamento do início ao fim, com transparência total.', icon: Icon.PayoutReceived },
+    { n:'01', t:'Você conta o que aconteceu', d:'Pelo WhatsApp, em minutos. Tudo online, sem sair de casa. Sem papelada, sem filas.', icon: Icon.Whatsapp, pill: 'Online e rápido' },
+    { n:'02', t:'Analisamos seu caso', d:'Um especialista avalia gratuitamente se você tem direito. Sem compromisso, sem custo.', icon: Icon.CaseReview, pill: '100% gratuito' },
+    { n:'03', t:'Cuidamos de toda burocracia', d:'Documentos, laudos, protocolos — nossa equipe resolve tudo por você.', icon: Icon.PaperworkStack, pill: 'Sem esforço' },
+    { n:'04', t:'Você recebe sua indenização', d:'Acompanhamento do início ao fim, com transparência total em cada etapa.', icon: Icon.PayoutReceived, pill: 'Transparência total' },
   ];
   return (
     <section style={{ padding:'40px 22px 36px', background:'#F7F9FC' }}>
@@ -142,20 +174,31 @@ function ComoFunciona({ primary, accent }) {
           Sua jornada para<br/><span style={{ color:primary }}>a indenização.</span>
         </h2>
       </div>
-      <div style={{ position:'relative' }}>
-        <div style={{ position:'absolute', left:24, top:20, bottom:20, width:3, background:`linear-gradient(to bottom, ${primary}10, ${primary}, ${accent}, ${primary}10)`, borderRadius:4 }}/>
-        {steps.map((s,i)=>{ const I = s.icon; return (
-          <div key={i} style={{ display:'flex', gap:24, marginBottom: i===steps.length-1?0:24, position:'relative' }}>
-            <div style={{ flexShrink:0, width:50, height:50, borderRadius:16, background:'#fff', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 8px 20px rgba(15,46,99,.08)', border:'1px solid #E5E7EB', zIndex:2, position:'relative' }}>
-              <div style={{ position:'absolute', left:-5, top:-5, width:20, height:20, borderRadius:999, background:primary, color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:10, fontWeight:800, fontFamily:'Poppins', border:'2px solid #F7F9FC' }}>{s.n}</div>
-              <I color={primary} size={24}/>
+      
+      <div className="accordion">
+        {steps.map((s,i)=>{ 
+          const I = s.icon; 
+          const isOpen = active === i;
+          return (
+            <div key={i} className={`acc-item ${isOpen ? 'open' : ''}`}>
+              <div className="acc-header" onClick={() => setActive(isOpen ? -1 : i)}>
+                <span className="acc-num">{s.n}</span>
+                <div className="acc-icon-box">
+                  <I color={isOpen ? "#fff" : primary} size={22}/>
+                </div>
+                <span className="acc-title-txt">{s.t}</span>
+                <span className="acc-arrow">+</span>
+              </div>
+              <div className="acc-body">
+                <p>{s.d}</p>
+                <span className="acc-pill">
+                  <span style={{ width:5, height:5, borderRadius:999, background:primary }}/>
+                  {s.pill}
+                </span>
+              </div>
             </div>
-            <div style={{ flex:1, background:'rgba(255,255,255,0.4)', padding:'16px 20px', borderRadius:20, border:'1px solid rgba(255,255,255,0.6)', backdropFilter:'blur(10px)' }}>
-              <h3 style={{ fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, color:'#0F2E63', margin:0 }}>{s.t}</h3>
-              <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, lineHeight:1.55, color:'#6B7280', margin:'8px 0 0' }}>{s.d}</p>
-            </div>
-          </div>
-        );})}
+          );
+        })}
       </div>
     </section>
   );

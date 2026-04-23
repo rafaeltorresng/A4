@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada – Variações Modernas</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0f2275;
+            --blue-mid: #1d49d4;
+            --yellow: #f5a623;
+            --yellow-light: #fef3dc;
+            --white: #ffffff;
+            --off: #f4f5fa;
+            --gray: #888;
+            --border: #e4eaff;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fff;
+        }
+
+        /* ── NAV ── */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: #fff;
+            border-bottom: 1px solid var(–border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 1rem;
+            color: var(–blue);
+            line-height: 1;
+        }
+
+        .logo span {
+            color: var(–yellow);
+        }
+
+        .logo small {
+            display: block;
+            font-size: 0.42rem;
+            letter-spacing: 0.14em;
+            color: #bbb;
+            margin-top: 2px;
+        }
+
+        .btn-wa {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ── SECTION WRAPPER ── */
+        .proposal {
+            padding: 64px 24px 80px;
+            border-bottom: 8px solid var(–off);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(–blue);
+            border: 1.5px solid var(–border);
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin-bottom: 10px;
+        }
+
+        .chip::before {
+            content: ’’;
+            width: 5px;
+            height: 5px;
+            background: var(–yellow);
+            border-radius: 50%;
+        }
+
+        .pname {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.9rem;
+            color: var(–blue);
+            font-weight: 800;
+        }
+
+        .pdesc {
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 2px;
+            margin-bottom: 44px;
+        }
+
+        /* ═══════════════════════════
+V1 — BENTO ASSIMÉTRICO
+═══════════════════════════ */
+        .v1-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(–yellow);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .v1-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(2rem, 8vw, 3rem);
+            color: var(–blue);
+            line-height: 1.05;
+            margin-bottom: 40px;
+            font-weight: 900;
+        }
+
+        .v1-h em {
+            font-style: italic;
+            color: var(–yellow);
+        }
+
+        .bento {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 10px;
+        }
+
+        .bento-card {
+            border-radius: 22px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 32px;
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(.22, .68, 0, 1.2);
+        }
+
+        .bento-card:hover {
+            transform: scale(1.02);
+        }
+
+        .bento-card.span2 {
+            grid-column: span 2;
+            min-height: 140px;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .bc-blue {
+            background: var(–blue);
+        }
+
+        .bc-yellow {
+            background: var(–yellow);
+        }
+
+        .bc-off {
+            background: var(–off);
+            border: 1.5px solid var(–border);
+        }
+
+        .bc-white {
+            background: #fff;
+            border: 1.5px solid var(–border);
+            box-shadow: 0 2px 20px rgba(15, 34, 117, 0.06);
+        }
+
+        .bento-num {
+            font-family: ‘Fraunces’, serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            position: absolute;
+            bottom: -8px;
+            right: 12px;
+            opacity: 0.12;
+        }
+
+        .bc-blue .bento-num,
+        .bc-yellow .bento-num {
+            color: #fff;
+        }
+
+        .bc-off .bento-num,
+        .bc-white .bento-num {
+            color: var(–blue);
+        }
+
+        .bento-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .bc-blue .bento-icon {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .bc-blue .bento-icon svg {
+            stroke: #fff;
+        }
+
+        .bc-yellow .bento-icon {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .bc-yellow .bento-icon svg {
+            stroke: #fff;
+        }
+
+        .bc-off .bento-icon,
+        .bc-white .bento-icon {
+            background: var(–blue);
+        }
+
+        .bc-off .bento-icon svg,
+        .bc-white .bento-icon svg {
+            stroke: #fff;
+        }
+
+        .bento-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .bento-body {}
+
+        .bento-tag {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .bc-blue .bento-tag {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .bc-yellow .bento-tag {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .bc-off .bento-tag,
+        .bc-white .bento-tag {
+            color: #bbb;
+        }
+
+        .bento-title {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .bc-blue .bento-title {
+            color: #fff;
+        }
+
+        .bc-yellow .bento-title {
+            color: #fff;
+        }
+
+        .bc-off .bento-title,
+        .bc-white .bento-title {
+            color: var(–blue);
+        }
+
+        .bento-text {
+            font-size: 0.74rem;
+            line-height: 1.6;
+            margin-top: 4px;
+        }
+
+        .bc-blue .bento-text {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .bc-yellow .bento-text {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .bc-off .bento-text,
+        .bc-white .bento-text {
+            color: #999;
+        }
+
+        /* ═══════════════════════════
+V2 — ACCORDION INTERATIVO
+═══════════════════════════ */
+        .v2-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        .v2-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.9rem, 7vw, 2.8rem);
+            color: var(–blue);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            font-weight: 900;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .acc-item {
+            border-top: 1px solid var(–border);
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .acc-item:last-child {
+            border-bottom: 1px solid var(–border);
+        }
+
+        .acc-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 0;
+            cursor: pointer;
+            user-select: none;
+            transition: padding 0.3s;
+        }
+
+        .acc-item.open .acc-header {
+            padding: 22px 0 12px;
+        }
+
+        .acc-num {
+            font-family: ‘Fraunces’, serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(–border);
+            transition: color 0.3s;
+            flex-shrink: 0;
+            width: 28px;
+        }
+
+        .acc-item.open .acc-num {
+            color: var(–yellow);
+        }
+
+        .acc-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
+            background: var(–off);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.3s;
+        }
+
+        .acc-item.open .acc-icon-box {
+            background: var(–blue);
+        }
+
+        .acc-icon-box svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(–blue);
+            transition: stroke 0.3s;
+        }
+
+        .acc-item.open .acc-icon-box svg {
+            stroke: #fff;
+        }
+
+        .acc-title-txt {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(–blue);
+            flex: 1;
+        }
+
+        .acc-arrow {
+            font-size: 1.1rem;
+            color: var(–border);
+            transition: transform 0.3s, color 0.3s;
+            margin-left: auto;
+        }
+
+        .acc-item.open .acc-arrow {
+            transform: rotate(45deg);
+            color: var(–yellow);
+        }
+
+        .acc-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(.4, 0, .2, 1), padding 0.3s;
+            padding: 0 0 0 44px;
+        }
+
+        .acc-item.open .acc-body {
+            max-height: 200px;
+            padding: 0 0 20px 44px;
+        }
+
+        .acc-body p {
+            font-size: 0.82rem;
+            color: var(–gray);
+            line-height: 1.7;
+        }
+
+        .acc-pill {
+            display: inline-block;
+            background: var(–yellow-light);
+            color: var(–yellow);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* ═══════════════════════════
+V3 — PROGRESS HORIZONTAL
+═══════════════════════════ */
+        .v3-bg {
+            background: var(–blue);
+            border-radius: 28px;
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v3-bg::before {
+            content: ’’;
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .v3-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 10px;
+        }
+
+        .v3-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.7rem, 6vw, 2.5rem);
+            color: #fff;
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 36px;
+        }
+
+        .v3-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .progress-track {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .progress-track::before {
+            content: ’’;
+            position: absolute;
+            left: 19px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 19px;
+            top: 20px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(–yellow), rgba(245, 166, 35, 0.3));
+            z-index: 1;
+            transition: height 0.8s ease;
+            animation: fillDown 2s ease forwards;
+        }
+
+        @keyframes fillDown {
+            from {
+                height: 0
+            }
+
+            to {
+                height: calc(100% - 40px)
+            }
+        }
+
+        .prog-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 16px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .prog-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 800;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: var(–blue);
+            transition: all 0.3s;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .prog-step.active .prog-dot {
+            background: var(–yellow);
+            border-color: var(–yellow);
+            color: #fff;
+            box-shadow: 0 0 0 6px rgba(245, 166, 35, 0.2);
+        }
+
+        .prog-step.done .prog-dot {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .prog-content {}
+
+        .prog-step-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 3px;
+        }
+
+        .prog-step.active .prog-step-label {
+            color: var(–yellow);
+        }
+
+        .prog-title {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 4px;
+        }
+
+        .prog-step.active .prog-title {
+            color: #fff;
+        }
+
+        .prog-text {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.3);
+            line-height: 1.6;
+        }
+
+        .prog-step.active .prog-text {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .v3-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 28px;
+            justify-content: center;
+        }
+
+        .v3-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .v3-dot.on {
+            background: var(–yellow);
+            width: 20px;
+            border-radius: 3px;
+        }
+
+        /* ═══════════════════════════
+V4 — MAGAZINE / EDITORIAL BOLD
+═══════════════════════════ */
+        .v4-top {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            gap: 12px;
+        }
+
+        .v4-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(2.2rem, 9vw, 3.5rem);
+            color: var(–blue);
+            line-height: 0.95;
+            font-weight: 900;
+            flex: 1;
+        }
+
+        .v4-h em {
+            color: var(–yellow);
+            font-style: italic;
+            display: block;
+        }
+
+        .v4-kicker {
+            font-size: 0.68rem;
+            color: #bbb;
+            text-align: right;
+            max-width: 100px;
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .v4-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .v4-row {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(–border);
+            transition: all 0.25s;
+            cursor: default;
+        }
+
+        .v4-row:first-child {
+            border-top: 2px solid var(–blue);
+        }
+
+        .v4-row:last-child {
+            border-bottom: 2px solid var(–blue);
+        }
+
+        .v4-row:hover {
+            padding-left: 8px;
+        }
+
+        .v4-counter {
+            font-family: ‘Fraunces’, serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(–border);
+            line-height: 1;
+            transition: color 0.25s;
+        }
+
+        .v4-row:hover .v4-counter {
+            color: var(–yellow);
+        }
+
+        .v4-mid {}
+
+        .v4-row-title {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(–blue);
+            margin-bottom: 3px;
+        }
+
+        .v4-row-text {
+            font-size: 0.75rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .v4-badge {
+            width: 44px;
+            height: 44px;
+            background: var(–blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .v4-row:hover .v4-badge {
+            background: var(–yellow);
+            transform: rotate(5deg);
+        }
+
+        .v4-badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: #fff;
+        }
+
+        /* ═══════════════════════════
+V5 — GLASSMORPHISM CARDS FLUTUANTES
+═══════════════════════════ */
+        .v5-scene {
+            background: linear-gradient(145deg, #0a1850 0%, #0f2275 45%, #1a3aad 100%);
+            border-radius: 28px;
+            padding: 40px 24px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v5-scene::before {
+            content: ’’;
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.25) 0%, transparent 65%);
+            pointer-events: none;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .v5-scene::after {
+            content: ’’;
+            position: absolute;
+            bottom: -80px;
+            left: -60px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1)
+            }
+        }
+
+        .v5-header {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 36px;
+        }
+
+        .v5-eyebrow {
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 8px;
+        }
+
+        .v5-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
+            color: #fff;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .v5-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .v5-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .v5-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 20px;
+            padding: 20px 18px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            animation: floatIn 0.6s ease both;
+        }
+
+        .v5-card:nth-child(1) {
+            animation-delay: 0.05s
+        }
+
+        .v5-card:nth-child(2) {
+            animation-delay: 0.15s
+        }
+
+        .v5-card:nth-child(3) {
+            animation-delay: 0.25s
+        }
+
+        .v5-card:nth-child(4) {
+            animation-delay: 0.35s
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .v5-card:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateX(6px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .v5-card.highlight {
+            background: rgba(245, 166, 35, 0.18);
+            border-color: rgba(245, 166, 35, 0.4);
+        }
+
+        .v5-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .v5-card.highlight .v5-icon {
+            background: rgba(245, 166, 35, 0.3);
+            border-color: rgba(245, 166, 35, 0.5);
+        }
+
+        .v5-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: rgba(255, 255, 255, 0.8);
+        }
+
+        .v5-card.highlight .v5-icon svg {
+            stroke: var(–yellow);
+        }
+
+        .v5-body {}
+
+        .v5-step {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 3px;
+        }
+
+        .v5-card.highlight .v5-step {
+            color: var(–yellow);
+            opacity: 0.8;
+        }
+
+        .v5-title {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .v5-text {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        .v5-card.highlight .v5-text {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .v5-num {
+            margin-left: auto;
+            font-family: ‘Fraunces’, serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.06);
+            flex-shrink: 0;
+            line-height: 1;
+            align-self: center;
+        }
+
+        /* ═══════════════════════════
+V6 — TICKER STEPS
+═══════════════════════════ */
+        .v6-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(2rem, 8vw, 3rem);
+            color: var(–blue);
+            line-height: 1.05;
+            font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+        .v6-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .v6-sub {
+            font-size: 0.8rem;
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
+        .v6-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .v6-item {
+            display: flex;
+            gap: 0;
+            border-radius: 16px;
+            transition: background 0.25s;
+            cursor: default;
+        }
+
+        .v6-item:hover {
+            background: var(–off);
+        }
+
+        .v6-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 20px 0 8px;
+            flex-shrink: 0;
+        }
+
+        .v6-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(–border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.62rem;
+            font-weight: 800;
+            color: var(–blue);
+            background: #fff;
+            flex-shrink: 0;
+            transition: all 0.25s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .v6-item:hover .v6-circle {
+            border-color: var(–blue);
+            background: var(–blue);
+            color: #fff;
+        }
+
+        .v6-item:nth-child(2):hover .v6-circle {
+            border-color: var(–yellow);
+            background: var(–yellow);
+        }
+
+        .v6-line {
+            flex: 1;
+            width: 2px;
+            background: var(–border);
+            margin: 4px 0;
+            min-height: 20px;
+        }
+
+        .v6-item:last-child .v6-line {
+            display: none;
+        }
+
+        .v6-right {
+            flex: 1;
+            padding: 14px 12px 28px 0;
+        }
+
+        .v6-icon-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .v6-icon-sm {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            background: var(–blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.25s;
+        }
+
+        .v6-item:nth-child(even):hover .v6-icon-sm {
+            background: var(–yellow);
+        }
+
+        .v6-item:hover .v6-icon-sm {
+            opacity: 1;
+        }
+
+        .v6-icon-sm svg {
+            width: 15px;
+            height: 15px;
+            stroke: #fff;
+        }
+
+        .v6-title {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(–blue);
+        }
+
+        .v6-text {
+            font-size: 0.78rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .v6-tag {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(–yellow-light);
+            color: var(–yellow);
+            border-radius: 20px;
+            padding: 2px 9px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">AQU<span>4</span>TRO<small>SERVIÇOS DE TRÂNSITO</small></div>
+        <button class="btn-wa">⬤ WhatsApp</button>
+    </nav>
+
+    <!-- ══════════ V1 — BENTO ══════════ -->
+
+    <section class="proposal">
+        <div class="chip">Variação 1</div>
+        <p class="pname">Bento Grid Assimétrico</p>
+        <p class="pdesc">Layout tipo bento com quadrantes de tamanhos mistos. Cada etapa vira um bloco visual único.</p>
+
+        <p class="v1-label">• Como funciona</p>
+        <h2 class="v1-h">Sua jornada<br>para a <em>indenização.</em></h2>
+
+        <div class="bento">
+            <div class="bento-card bc-blue">
+                <div>
+                    <p class="bento-tag">Passo 01</p>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></div>
+                </div>
+                <div class="bento-body">
+                    <p class="bento-title">Você conta o que aconteceu</p>
+                    <p class="bento-text">Pelo WhatsApp, em minutos.</p>
+                </div>
+                <span class="bento-num">01</span>
+            </div>
+
+            ```
+            <div class="bento-card bc-yellow">
+                <div>
+                    <p class="bento-tag">Passo 02</p>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg></div>
+                </div>
+                <div class="bento-body">
+                    <p class="bento-title">Analisamos seu caso</p>
+                    <p class="bento-text">Especialista avalia gratuitamente.</p>
+                </div>
+                <span class="bento-num">02</span>
+            </div>
+
+            <div class="bento-card bc-off span2">
+                <div class="bento-icon" style="width:52px;height:52px;"><svg viewBox="0 0 24 24" fill="none"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="9" y1="13" x2="15" y2="13" />
+                    </svg></div>
+                <div class="bento-body">
+                    <p class="bento-tag">Passo 03</p>
+                    <p class="bento-title">Cuidamos de toda burocracia</p>
+                    <p class="bento-text">Documentos, laudos, protocolos — fazemos tudo por você.</p>
+                </div>
+                <span class="bento-num"
+                    style="position:static;opacity:0.06;font-size:5rem;align-self:center;flex-shrink:0;">03</span>
+            </div>
+
+            <div class="bento-card bc-white span2"
+                style="min-height:120px; flex-direction:row; align-items:center; gap:20px;">
+                <div class="bento-icon" style="width:52px;height:52px; background:var(--yellow);"><svg
+                        viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                        <polyline points="17 6 23 6 23 12" />
+                    </svg></div>
+                <div class="bento-body" style="flex:1">
+                    <p class="bento-tag" style="color:#bbb;">Passo 04 — Final</p>
+                    <p class="bento-title" style="color:var(--blue); font-size:1rem;">Você recebe sua indenização</p>
+                    <p class="bento-text" style="color:#999;">Acompanhamento do início ao fim, com transparência total.
+                    </p>
+                </div>
+            </div>
+            ```
+
+        </div>
+    </section>
+
+    <!-- ══════════ V2 — ACCORDION ══════════ -->
+
+    <section class="proposal" style="background:var(--off);">
+        <div class="chip">Variação 2</div>
+        <p class="pname">Accordion Interativo</p>
+        <p class="pdesc">Cada etapa expande ao toque. Ícone e cor mudam no estado ativo. Ideal para mobile.</p>
+
+        <p class="v2-eyebrow">• Como funciona</p>
+        <h2 class="v2-h">Sua jornada para<br>a indenização.</h2>
+
+        <div class="accordion">
+            <div class="acc-item open">
+                <div class="acc-header" onclick="toggle(this)">
+                    <span class="acc-num">01</span>
+                    <div class="acc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></div>
+                    <span class="acc-title-txt">Você conta o que aconteceu</span>
+                    <span class="acc-arrow">+</span>
+                </div>
+                <div class="acc-body">
+                    <p>Pelo WhatsApp, em minutos. Tudo online, sem sair de casa. Sem papelada, sem filas.</p>
+                    <span class="acc-pill">⬤ Online e rápido</span>
+                </div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggle(this)">
+                    <span class="acc-num">02</span>
+                    <div class="acc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg></div>
+                    <span class="acc-title-txt">Analisamos seu caso</span>
+                    <span class="acc-arrow">+</span>
+                </div>
+                <div class="acc-body">
+                    <p>Um especialista avalia gratuitamente se você tem direito. Sem compromisso, sem custo.</p>
+                    <span class="acc-pill">⬤ 100% gratuito</span>
+                </div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggle(this)">
+                    <span class="acc-num">03</span>
+                    <div class="acc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg></div>
+                    <span class="acc-title-txt">Cuidamos de toda burocracia</span>
+                    <span class="acc-arrow">+</span>
+                </div>
+                <div class="acc-body">
+                    <p>Documentos, laudos, protocolos — nossa equipe resolve tudo por você.</p>
+                    <span class="acc-pill">⬤ Sem esforço</span>
+                </div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggle(this)">
+                    <span class="acc-num">04</span>
+                    <div class="acc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                        </svg></div>
+                    <span class="acc-title-txt">Você recebe sua indenização</span>
+                    <span class="acc-arrow">+</span>
+                </div>
+                <div class="acc-body">
+                    <p>Acompanhamento do início ao fim, com transparência total em cada etapa.</p>
+                    <span class="acc-pill">⬤ Transparência total</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ V3 — PROGRESS DARK ══════════ -->
+
+    <section class="proposal">
+        <div class="chip">Variação 3</div>
+        <p class="pname">Progress Step — Dark</p>
+        <p class="pdesc">Fundo azul profundo com trilha de progresso animada e step ativo destacado em amarelo.</p>
+
+        <div class="v3-bg">
+            <p class="v3-label">• Como funciona</p>
+            <h2 class="v3-h">Sua jornada para<br>a <em>indenização.</em></h2>
+
+            ```
+            <div class="progress-track">
+                <div class="progress-fill" style="height:calc(100% - 40px)"></div>
+
+                <div class="prog-step done">
+                    <div class="prog-dot">01</div>
+                    <div class="prog-content">
+                        <p class="prog-step-label">Passo 01</p>
+                        <p class="prog-title">Você conta o que aconteceu</p>
+                        <p class="prog-text">Pelo WhatsApp, em minutos. Tudo online.</p>
+                    </div>
+                </div>
+                <div class="prog-step active">
+                    <div class="prog-dot">02</div>
+                    <div class="prog-content">
+                        <p class="prog-step-label">Passo 02 — Em andamento</p>
+                        <p class="prog-title">Analisamos seu caso</p>
+                        <p class="prog-text">Um especialista avalia gratuitamente se você tem direito.</p>
+                    </div>
+                </div>
+                <div class="prog-step">
+                    <div class="prog-dot">03</div>
+                    <div class="prog-content">
+                        <p class="prog-step-label">Passo 03</p>
+                        <p class="prog-title">Cuidamos de toda burocracia</p>
+                        <p class="prog-text">Documentos, laudos, protocolos.</p>
+                    </div>
+                </div>
+                <div class="prog-step">
+                    <div class="prog-dot">04</div>
+                    <div class="prog-content">
+                        <p class="prog-step-label">Passo 04</p>
+                        <p class="prog-title">Você recebe sua indenização</p>
+                        <p class="prog-text">Do início ao fim, com transparência total.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="v3-dots">
+                <div class="v3-dot"></div>
+                <div class="v3-dot on"></div>
+                <div class="v3-dot"></div>
+                <div class="v3-dot"></div>
+            </div>
+            ```
+
+        </div>
+    </section>
+
+    <!-- ══════════ V4 — MAGAZINE ══════════ -->
+
+    <section class="proposal" style="background:var(--off);">
+        <div class="chip">Variação 4</div>
+        <p class="pname">Editorial Magazine</p>
+        <p class="pdesc">Tipografia Fraunces grande, estrutura em linhas tipo tabela editorial. Ícone vira badge com
+            micro-rotação no hover.</p>
+
+        <div class="v4-top">
+            <h2 class="v4-h">Sua<br>jornada<br><em>para a<br>indeni&shy;zação.</em></h2>
+            <p class="v4-kicker">como funciona em 4 passos simples</p>
+        </div>
+
+        <div class="v4-strip">
+            <div class="v4-row">
+                <span class="v4-counter">01</span>
+                <div class="v4-mid">
+                    <p class="v4-row-title">Você conta o que aconteceu</p>
+                    <p class="v4-row-text">Pelo WhatsApp, em minutos. Sem sair de casa.</p>
+                </div>
+                <div class="v4-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg></div>
+            </div>
+            <div class="v4-row">
+                <span class="v4-counter">02</span>
+                <div class="v4-mid">
+                    <p class="v4-row-title">Analisamos seu caso</p>
+                    <p class="v4-row-text">Especialista avalia gratuitamente se você tem direito.</p>
+                </div>
+                <div class="v4-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M9 11l3 3L22 4" />
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg></div>
+            </div>
+            <div class="v4-row">
+                <span class="v4-counter">03</span>
+                <div class="v4-mid">
+                    <p class="v4-row-title">Cuidamos de toda burocracia</p>
+                    <p class="v4-row-text">Documentos, laudos e protocolos por você.</p>
+                </div>
+                <div class="v4-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg></div>
+            </div>
+            <div class="v4-row">
+                <span class="v4-counter">04</span>
+                <div class="v4-mid">
+                    <p class="v4-row-title">Você recebe sua indenização</p>
+                    <p class="v4-row-text">Do início ao fim, com transparência total.</p>
+                </div>
+                <div class="v4-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                        <polyline points="17 6 23 6 23 12" />
+                    </svg></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ V5 — GLASSMORPHISM ══════════ -->
+
+    <section class="proposal">
+        <div class="chip">Variação 5</div>
+        <p class="pname">Glass Cards Flutuantes</p>
+        <p class="pdesc">Cards com backdrop-filter blur em gradiente azul profundo. O step ativo brilha em âmbar. Hover
+            desloca para direita.</p>
+
+        <div class="v5-scene">
+            <div class="v5-header">
+                <p class="v5-eyebrow">• Como funciona</p>
+                <h2 class="v5-h">Sua jornada para<br>a <em>indenização.</em></h2>
+            </div>
+            <div class="v5-cards">
+                <div class="v5-card">
+                    <div class="v5-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></div>
+                    <div class="v5-body">
+                        <p class="v5-step">Passo 01</p>
+                        <p class="v5-title">Você conta o que aconteceu</p>
+                        <p class="v5-text">Pelo WhatsApp, em minutos.</p>
+                    </div>
+                    <span class="v5-num">01</span>
+                </div>
+                <div class="v5-card highlight">
+                    <div class="v5-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg></div>
+                    <div class="v5-body">
+                        <p class="v5-step">Passo 02 — Agora</p>
+                        <p class="v5-title">Analisamos seu caso</p>
+                        <p class="v5-text">Especialista avalia gratuitamente se você tem direito.</p>
+                    </div>
+                    <span class="v5-num">02</span>
+                </div>
+                <div class="v5-card">
+                    <div class="v5-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg></div>
+                    <div class="v5-body">
+                        <p class="v5-step">Passo 03</p>
+                        <p class="v5-title">Cuidamos de toda burocracia</p>
+                        <p class="v5-text">Documentos e laudos por você.</p>
+                    </div>
+                    <span class="v5-num">03</span>
+                </div>
+                <div class="v5-card">
+                    <div class="v5-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            <polyline points="17 6 23 6 23 12" />
+                        </svg></div>
+                    <div class="v5-body">
+                        <p class="v5-step">Passo 04</p>
+                        <p class="v5-title">Você recebe sua indenização</p>
+                        <p class="v5-text">Do início ao fim, com transparência total.</p>
+                    </div>
+                    <span class="v5-num">04</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ V6 — TICKER STEPS ══════════ -->
+
+    <section class="proposal" style="background:var(--off); padding-bottom:80px;">
+        <div class="chip">Variação 6</div>
+        <p class="pname">Connector Steps</p>
+        <p class="pdesc">Círculos numerados conectados por linha vertical. Ícone pequeno + título inline. Cores
+            alternadas azul/amarelo nos hovers.</p>
+
+        <h2 class="v6-h">Sua jornada para<br>a <em>indenização.</em></h2>
+        <p class="v6-sub">• Como funciona — 4 passos simples</p>
+
+        <div class="v6-list">
+            <div class="v6-item">
+                <div class="v6-left">
+                    <div class="v6-circle">01</div>
+                    <div class="v6-line"></div>
+                </div>
+                <div class="v6-right">
+                    <div class="v6-icon-row">
+                        <div class="v6-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                            </svg></div>
+                        <span class="v6-title">Você conta o que aconteceu</span>
+                    </div>
+                    <p class="v6-text">Pelo WhatsApp, em minutos. Tudo online, sem sair de casa.</p>
+                </div>
+            </div>
+            <div class="v6-item">
+                <div class="v6-left">
+                    <div class="v6-circle">02</div>
+                    <div class="v6-line"></div>
+                </div>
+                <div class="v6-right">
+                    <div class="v6-icon-row">
+                        <div class="v6-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 11l3 3L22 4" />
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                            </svg></div>
+                        <span class="v6-title">Analisamos seu caso</span>
+                    </div>
+                    <p class="v6-text">Um especialista avalia gratuitamente se você tem direito.</p>
+                    <span class="v6-tag">Grátis</span>
+                </div>
+            </div>
+            <div class="v6-item">
+                <div class="v6-left">
+                    <div class="v6-circle">03</div>
+                    <div class="v6-line"></div>
+                </div>
+                <div class="v6-right">
+                    <div class="v6-icon-row">
+                        <div class="v6-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg></div>
+                        <span class="v6-title">Cuidamos de toda burocracia</span>
+                    </div>
+                    <p class="v6-text">Documentos, laudos, protocolos — fazemos tudo por você.</p>
+                </div>
+            </div>
+            <div class="v6-item">
+                <div class="v6-left">
+                    <div class="v6-circle">04</div>
+                    <div class="v6-line"></div>
+                </div>
+                <div class="v6-right">
+                    <div class="v6-icon-row">
+                        <div class="v6-icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                <polyline points="17 6 23 6 23 12" />
+                            </svg></div>
+                        <span class="v6-title">Você recebe sua indenização</span>
+                    </div>
+                    <p class="v6-text">Acompanhamento do início ao fim, com transparência total.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggle(header) {
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        }
+    </script>
+
+</body>
+
+</html>

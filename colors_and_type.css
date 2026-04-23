@@ -34,4 +34,144 @@
   --shadow-sm: 0 4px 15px rgba(0,0,0,.04);
   --shadow-lg: 0 10px 30px rgba(15,46,99,.08);
   --shadow-cta: 0 10px 24px rgba(37,211,102,.35);
+
+  /* Hover Effects */
+  --transition-main: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-premium {
+  transition: var(--transition-main);
+}
+
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 34, 117, 0.12) !important;
+}
+
+.icon-box-premium {
+  transition: var(--transition-main);
+}
+
+.icon-box-premium:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Accordion Styles */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.acc-item {
+  border-top: 1px solid var(--neutral-200);
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.acc-item:last-child {
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.acc-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  user-select: none;
+  transition: padding 0.3s;
+}
+
+.acc-item.open .acc-header {
+  padding: 22px 0 12px;
+}
+
+.acc-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--neutral-200);
+  transition: color 0.3s;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.acc-item.open .acc-num {
+  color: var(--brand-yellow);
+}
+
+.acc-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--brand-blue-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.acc-item.open .acc-icon-box {
+  background: var(--brand-blue);
+  transform: scale(1.05);
+}
+
+.acc-icon-box svg {
+  transition: stroke 0.3s;
+}
+
+.acc-title-txt {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brand-blue-deep);
+  flex: 1;
+}
+
+.acc-arrow {
+  font-size: 1.1rem;
+  color: var(--neutral-200);
+  transition: transform 0.3s, color 0.3s;
+  margin-left: auto;
+}
+
+.acc-item.open .acc-arrow {
+  transform: rotate(45deg);
+  color: var(--brand-yellow);
+}
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(.4, 0, .2, 1), padding 0.3s;
+  padding: 0 0 0 44px;
+}
+
+.acc-item.open .acc-body {
+  max-height: 200px;
+  padding: 0 0 20px 44px;
+}
+
+.acc-body p {
+  font-size: 0.85rem;
+  color: var(--neutral-500);
+  line-height: 1.7;
+}
+
+.acc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--brand-yellow);
+  color: var(--brand-blue-deep);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-top: 12px;
+  text-transform: uppercase;
 }

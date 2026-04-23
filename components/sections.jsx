@@ -377,6 +377,12 @@ function QuemSomos({ primary, accent }) {
         <div className="about-pin" style={{ marginTop:18, display:'flex', alignItems:'center', gap:8, fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,.8)' }}>
           <Icon.Pin size={14} color={accent}/> Recife, PE · Atendemos todo o Brasil
         </div>
+
+        <div className="about-legal" style={{ marginTop:24, paddingLeft:14, borderLeft:`2px solid ${accent}` }}>
+          <div style={{ fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:accent, marginBottom:2 }}>Suporte Jurídico - Direito Previdenciário</div>
+          <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:14, color:'#fff', lineHeight:1.2 }}>Dra. Carla Rocha Lemos</div>
+          <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,0.5)', marginTop:2 }}>OAB/PE - 27.103</div>
+        </div>
       </div>
     </section>
   );
@@ -469,28 +475,55 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
 function Footer({ accent }) {
   return (
     <footer style={{ 
-      padding:'40px 22px calc(60px + env(safe-area-inset-bottom))', 
+      padding:'60px 0 calc(60px + env(safe-area-inset-bottom))', 
       background:'#0A1F45', 
       color:'rgba(255,255,255,.7)' 
     }}>
-      <div style={{ display:'flex', alignItems:'center', gap:18, marginBottom:22 }}>
-        <Logo size={18} color="#fff" accent={accent} variant="reduced"/>
-        <div style={{ display:'flex', alignItems:'center', gap:14, borderLeft:'1px solid rgba(255,255,255,.15)', paddingLeft:16 }}>
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none' }}>
-            <Icon.Whatsapp size={18} color="rgba(255,255,255,.7)"/>
-          </a>
-          <a href="https://www.instagram.com/a4servicosdetransito" target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none' }}>
-            <Icon.Instagram size={18} color="rgba(255,255,255,.7)"/>
-          </a>
+      <div className="container-desktop" style={{ padding: '0 22px' }}>
+        <div style={{ 
+          display:'flex', 
+          flexWrap:'wrap', 
+          justifyContent:'space-between', 
+          alignItems:'flex-start', 
+          gap:'40px 30px', 
+          marginBottom:40 
+        }}>
+          {/* Coluna 1: Logo e Descrição */}
+          <div style={{ flex:'1 1 300px' }}>
+            <Logo size={20} color="#fff" accent={accent} variant="reduced"/>
+            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, lineHeight:1.6, margin:'16px 0 0', color:'rgba(255,255,255,.4)', maxWidth:400 }}>
+              Assessoria técnica independente especializada em indenizações por acidente de trânsito. Transformamos burocracia em resultados.
+            </p>
+          </div>
+          
+          {/* Coluna 2: Suporte Jurídico (Responsável) */}
+          <div style={{ flex:'1 1 200px' }}>
+            <div style={{ fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:accent, marginBottom:10 }}>Suporte Jurídico - Direito Previdenciário</div>
+            <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:14, color:'#fff', lineHeight:1.2 }}>Dra. Carla Rocha Lemos</div>
+            <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,0.4)', marginTop:4 }}>OAB/PE - 27.103</div>
+          </div>
+
+          {/* Coluna 3: Redes Sociais */}
+          <div style={{ display:'flex', alignItems:'center', gap:12 }}>
+            <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{ width:44, height:44, borderRadius:12, background:'rgba(255,255,255,0.05)', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', transition:'all 0.3s', border:'1px solid rgba(255,255,255,0.1)' }}>
+              <Icon.Whatsapp size={20}/>
+            </a>
+            <a href="https://www.instagram.com/a4servicosdetransito" target="_blank" rel="noopener noreferrer" style={{ width:44, height:44, borderRadius:12, background:'rgba(255,255,255,0.05)', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', transition:'all 0.3s', border:'1px solid rgba(255,255,255,0.1)' }}>
+              <Icon.Instagram size={20}/>
+            </a>
+          </div>
         </div>
-      </div>
-      
-      <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:12, lineHeight:1.6, margin:0, color:'rgba(255,255,255,.5)' }}>
-        A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
-      </p>
-      
-      <div style={{ marginTop:24, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.3)', borderTop:'1px solid rgba(255,255,255,.05)', paddingTop:16 }}>
-        © 2026 A QU4TRO. Todos os direitos reservados.
+
+        {/* Linha Final: Copyright e Disclaimer */}
+        <div style={{ borderTop:'1px solid rgba(255,255,255,.05)', paddingTop:24, display:'flex', flexWrap:'wrap', justifyContent:'space-between', alignItems:'center', gap:16 }}>
+          <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.3)', margin:0 }}>
+            © 2026 A QU4TRO · Todos os direitos reservados. Não somos seguradora nem órgão público.
+          </p>
+          <div style={{ display:'flex', gap:20, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.2)' }}>
+            <span>Recife, PE</span>
+            <span>Atendimento Brasil</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

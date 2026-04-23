@@ -358,15 +358,33 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
 function Footer({ accent }) {
   return (
     <footer style={{ 
-      padding:'40px 22px calc(80px + env(safe-area-inset-bottom))', 
+      padding:'60px 0 calc(60px + env(safe-area-inset-bottom))', 
       background:'#0A1F45', 
       color:'rgba(255,255,255,.7)' 
     }}>
-      <Logo size={18} color="#fff" accent={accent} variant="reduced"/>
-      <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11.5, lineHeight:1.5, margin:'14px 0 0', color:'rgba(255,255,255,.6)' }}>
-        A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
-      </p>
-      <div style={{ marginTop:14, fontFamily:'DM Sans, sans-serif', fontSize:10, color:'rgba(255,255,255,.4)' }}>© 2026 A QU4TRO.</div>
+      <div className="container">
+        <div className="grid-2" style={{ alignItems: 'start', gap: 40 }}>
+          <div>
+            <div style={{ display:'flex', alignItems:'center', gap:24, marginBottom:24 }}>
+              <Logo size={20} color="#fff" accent={accent} variant="reduced"/>
+              <div style={{ display:'flex', alignItems:'center', gap:16, borderLeft:'1px solid rgba(255,255,255,.15)', paddingLeft:16 }}>
+                <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none', transition:'color .2s' }}>
+                  <Icon.Whatsapp size={20} color="rgba(255,255,255,.7)"/>
+                </a>
+                <a href="https://www.instagram.com/a4servicosdetransito" target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none', transition:'color .2s' }}>
+                  <Icon.Instagram size={20} color="rgba(255,255,255,.7)"/>
+                </a>
+              </div>
+            </div>
+            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, lineHeight:1.6, margin:0, color:'rgba(255,255,255,.5)', maxWidth: 400 }}>
+              A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
+            </p>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ marginTop:14, fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,.4)' }}>© 2026 A QU4TRO. Todos os direitos reservados.</div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

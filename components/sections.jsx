@@ -271,7 +271,7 @@ function ComoFunciona({ primary, accent }) {
 
 function InstagramBanner({ primary = '#0F2E63' }) {
   return (
-    <section style={{ padding: '0 22px 42px', textAlign: 'center', background: '#F7F9FC' }}>
+    <section style={{ padding: '0 22px 32px', textAlign: 'center', background: '#F7F9FC' }}>
       <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{ display: 'inline-flex', alignItems: 'center', gap: 14, padding: '16px 26px', borderRadius: 999, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', textDecoration: 'none', boxShadow: '0 6px 20px rgba(0,0,0,0.06)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Icon.Instagram size={24} color={primary}/>
@@ -283,6 +283,52 @@ function InstagramBanner({ primary = '#0F2E63' }) {
         </div>
         <Icon.ExternalLink size={16} color="#FFC431"/>
       </a>
+    </section>
+  );
+}
+
+function InstagramProfilePreview() {
+  return (
+    <section style={{ padding: '0 22px 60px', background: '#F7F9FC', textAlign: 'center' }}>
+      <div style={{ 
+        position: 'relative', 
+        borderRadius: 32, 
+        background: 'rgba(255,255,255,0.3)',
+        backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255,255,255,0.5)',
+        padding: '12px',
+        boxShadow: '0 20px 50px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
+        maxWidth: 400,
+        margin: '0 auto'
+      }}>
+        <img 
+          src="assets/insta-profile.png" 
+          style={{ width: '100%', height: 'auto', borderRadius: 22, display: 'block' }}
+        />
+        {/* Reflexo sutil de vidro */}
+        <div style={{ position: 'absolute', inset: 0, borderRadius: 32, background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)', pointerEvents: 'none' }}/>
+      </div>
+      
+      <div style={{ marginTop: 20 }}>
+        <h3 style={{ 
+          fontFamily: 'Poppins, sans-serif', 
+          fontWeight: 700, 
+          fontSize: 19, 
+          color: '#0F2E63', 
+          letterSpacing: '-0.02em'
+        }}>
+          Resultados reais no Instagram.
+        </h3>
+        <p style={{ 
+          fontFamily: 'DM Sans, sans-serif', 
+          fontSize: 13, 
+          color: '#6B7280', 
+          marginTop: 6,
+          fontWeight: 500
+        }}>
+          Siga @a4servicosdetransito
+        </p>
+      </div>
     </section>
   );
 }
@@ -441,4 +487,4 @@ function FloatingCTA() {
   );
 }
 
-Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, InstagramBanner, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });
+Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, InstagramBanner, InstagramProfilePreview, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });

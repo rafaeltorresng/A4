@@ -352,6 +352,67 @@ function InstagramProfilePreview() {
   );
 }
 
+function FounderProfile({ primary, accent }) {
+  return (
+    <section className="section-founder" style={{ padding: '60px 0 40px', overflow: 'hidden' }}>
+      <div className="container-desktop founder-content" style={{ padding: '0 22px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
+        
+        {/* Foto */}
+        <div className="founder-image-wrapper" style={{ position: 'relative', width: '100%', maxWidth: '340px', margin: '0 auto' }}>
+          <div style={{ position: 'absolute', inset: '-12px', background: accent, borderRadius: '24px', opacity: 0.3, transform: 'rotate(-4deg)' }}></div>
+          <div style={{ position: 'absolute', inset: '-12px', border: `2px solid ${primary}`, borderRadius: '24px', opacity: 0.15, transform: 'rotate(3deg)' }}></div>
+          <img 
+            src="assets/aurea.jpg" 
+            alt="Áurea - Fundadora" 
+            style={{ width: '100%', height: 'auto', borderRadius: '20px', position: 'relative', zIndex: 1, boxShadow: '0 20px 40px rgba(15, 46, 99, 0.15)', display: 'block', objectFit: 'cover', aspectRatio: '4/5' }}
+          />
+        </div>
+
+        {/* Texto */}
+        <div className="founder-text" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 32, lineHeight: 1.1, color: '#0F2E63', margin: '0 0 8px', letterSpacing: '-0.02em' }}>
+            Prazer, Áurea.
+          </h2>
+          <div style={{ 
+            fontFamily: 'DM Sans, sans-serif', 
+            fontWeight: 800, 
+            fontSize: 10, 
+            letterSpacing: '.12em', 
+            textTransform: 'uppercase', 
+            color: '#0F2E63', 
+            background: accent,
+            padding: '6px 16px',
+            borderRadius: 999,
+            width: 'fit-content',
+            margin: '0 auto 24px',
+            boxShadow: `0 4px 12px ${accent}33`
+          }}>
+            Diretora & Especialista
+          </div>
+          
+          <div style={{ position: 'relative', maxWidth: '480px', margin: '0 auto' }}>
+            <div style={{ position: 'absolute', top: -30, left: -20, opacity: 0.08, zIndex: 0 }}>
+              <Icon.Quote color={primary} />
+            </div>
+            <p style={{ 
+              fontFamily: 'DM Sans, sans-serif', 
+              fontSize: 17, 
+              lineHeight: 1.8, 
+              color: '#4B5563', 
+              margin: '0', 
+              position: 'relative', 
+              zIndex: 1,
+              fontStyle: 'italic'
+            }}>
+              "Sou eu quem acompanha a operação de perto. Minha missão é garantir que você não seja enrolado pela burocracia e receba cada centavo do que é seu por direito. Aqui, tratamos seu caso com <span style={{ color: primary, fontWeight: 700 }}>máxima transparência e prioridade</span>."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function QuemSomos({ primary, accent }) {
   const values = ['Sem custos adiantados','Atendimento 100% digital','Transparência total','Acompanhamento até o pagamento'];
   return (
@@ -558,4 +619,4 @@ function FloatingCTA() {
   );
 }
 
-Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, InstagramBanner, InstagramProfilePreview, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });
+Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, InstagramBanner, InstagramProfilePreview, FounderProfile, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });

@@ -30,16 +30,16 @@ function Hero({ primary, accent }) {
           <span style={{ color:accent }}>Você tem direito</span><br/>à indenização.
         </h1>
         <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
-          Cuidamos de tudo, do início ao fim. Sem burocracia, sem custo adiantado — só você recebendo o que é seu por direito.
+          Resolvemos toda a burocracia para você receber o valor máximo da sua indenização, sem custos adiantados.
         </p>
         <a href={WA_URL} className="btn-shine" style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
           <Icon.Whatsapp size={22}/> Falar com um especialista
         </a>
         <div style={{ marginTop:10, display:'flex', alignItems:'center', justifyContent:'center', gap:6, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.75)' }}>
-          <span className="pulse-dot" style={{ width:6, height:6, borderRadius:999, background:'#4ADE80' }}/> Atendimento agora · Resposta em minutos
+          <span className="pulse-dot" style={{ width:6, height:6, borderRadius:999, background:'#4ADE80' }}/> Especialistas on-line agora
         </div>
         <div style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
-          {[['14','anos de\nexperiência'],['+5mil','vítimas\nindenizadas'],['100%','atendimento\non-line']].map(([b,s],i)=>(
+          {[['14','anos de\nexperiência'],['+5mil','vítimas\npagas'],['100%','atendimento\ndigital']].map(([b,s],i)=>(
             <div key={i} style={{ padding:'12px 8px', textAlign:'center', borderRight: i<2?'1px solid rgba(255,255,255,.12)':'none' }}>
               <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:22, color:accent }}><Counter target={b}/></div>
               <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:10, lineHeight:1.25, color:'rgba(255,255,255,.85)', whiteSpace:'pre-line', marginTop:2 }}>{s}</div>
@@ -68,12 +68,12 @@ function Ticker({ items }) {
 
 function Problema({ primary }) {
   const chatMessages = [
-    { type: 'user', text: 'Não sei se tenho direito a alguma indenização...' },
-    { type: 'a4', text: 'Muitas pessoas pensam assim. A verdade é que quase todo acidente gera algum tipo de reparação.' },
-    { type: 'user', text: 'Mas ouvi dizer que a burocracia é grande demais.' },
-    { type: 'a4', text: 'Para quem está sozinho, sim. Mas nós cuidamos de toda a papelada para você.' },
-    { type: 'user', text: 'Tenho medo de ser enganado ou pagar algo adiantado.' },
-    { type: 'a4', text: 'Na A QU4TRO, você só paga se receber a sua indenização. Transparência total.' },
+    { type: 'user', text: 'Não sei se tenho direito a receber algo...' },
+    { type: 'a4', text: 'Essa é a dúvida de quase todos. A verdade é que a maioria dos acidentes gera algum tipo de reparação.' },
+    { type: 'user', text: 'Mas a burocracia parece grande demais.' },
+    { type: 'a4', text: 'Para quem está sozinho, sim. Nossa equipe cuida de toda a papelada para você.' },
+    { type: 'user', text: 'Tenho medo de pagar taxas sem ter garantia.' },
+    { type: 'a4', text: 'Aqui você só paga se a indenização cair na sua conta. Risco zero e transparência total.' },
   ];
 
   return (
@@ -81,17 +81,17 @@ function Problema({ primary }) {
       <Ticker items={[
         'Não sei se tenho direito', 
         'Perdi meus documentos', 
-        'A burocracia é grande', 
+        'Burocracia excessiva', 
         'Não fiz boletim de ocorrência',
         'A culpa foi minha?',
         'O prazo já passou?',
-        'O carro não tinha seguro'
+        'O veículo não tinha seguro'
       ]} />
       
       <div style={{ padding: '38px 22px 0' }}>
-        <SectionLabel label="Entendemos você" primary={primary}/>
+        <SectionLabel label="Dúvidas comuns" primary={primary}/>
         <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
-          Você não precisa passar<br/><span style={{ color: primary }}>por isso sozinho.</span>
+          Você não precisa lidar com<br/><span style={{ color: primary }}>isso sozinho.</span>
         </h2>
 
         <div className="chat-container">
@@ -142,16 +142,16 @@ function PartnerBrandStrip() {
 
 function Especialidades({ primary, accent }) {
   const services = [
-    { icon: Icon.Rideshare, t:'Indenização via App', d:'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas.', tag:'NOVO', brandStrip: true },
-    { icon: Icon.ThirdParty, t:'Processos contra Terceiros', d:'Danos materiais, morais e estéticos causados por outros condutores.' },
-    { icon: Icon.Passenger,  t:'Seguro de Passageiro (APP)', d:'Acionamento de apólices privadas para invalidez ou despesas médicas.' },
-    { icon: Icon.Legacy,     t:'Casos DPVAT (Legado)', d:'Atendimentos para casos ocorridos até 14/11/2023, devido à mudança na legislação.' },
+    { icon: Icon.Rideshare, t:'Indenização via App', d:'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas exclusivas.', tag:'NOVO', brandStrip: true },
+    { icon: Icon.ThirdParty, t:'Contra Terceiros', d:'Danos materiais, morais e estéticos causados por outros condutores.' },
+    { icon: Icon.Passenger,  t:'Seguro de Passageiro', d:'Acionamento de apólices privadas para invalidez ou despesas médicas.' },
+    { icon: Icon.Legacy,     t:'Casos DPVAT', d:'Atendimentos para casos ocorridos até 14/11/2023, devido à mudança na legislação.' },
   ];
   return (
     <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
       <SectionLabel label="Especialidades" primary={primary}/>
       <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-        Onde nossa equipe<br/><span style={{ color:primary }}>pode te ajudar.</span>
+        Como garantimos sua<br/><span style={{ color:primary }}>indenização.</span>
       </h2>
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
         {services.map((s,i)=>{ const I = s.icon; return (
@@ -202,17 +202,17 @@ function Especialidades({ primary, accent }) {
 function ComoFunciona({ primary, accent }) {
   const [active, setActive] = React.useState(0);
   const steps = [
-    { n:'01', t:'Você conta o que aconteceu', d:'Pelo WhatsApp, em minutos. Tudo online, sem sair de casa. Sem papelada, sem filas.', icon: Icon.Whatsapp, pill: 'Online e rápido' },
-    { n:'02', t:'Analisamos seu caso', d:'Um especialista avalia gratuitamente se você tem direito. Sem compromisso, sem custo.', icon: Icon.CaseReview, pill: '100% gratuito' },
-    { n:'03', t:'Cuidamos de toda burocracia', d:'Documentos, laudos, protocolos — nossa equipe resolve tudo por você.', icon: Icon.PaperworkStack, pill: 'Sem esforço' },
-    { n:'04', t:'Você recebe sua indenização', d:'Acompanhamento do início ao fim, com transparência total em cada etapa.', icon: Icon.PayoutReceived, pill: 'Transparência total' },
+    { n:'01', t:'Você conta o que aconteceu', d:'Pelo WhatsApp, em poucos minutos. Tudo 100% digital, sem sair de casa.', icon: Icon.Whatsapp, pill: 'Rápido e digital' },
+    { n:'02', t:'Analisamos seu caso', d:'Um especialista avalia gratuitamente se você tem direito. Sem compromisso.', icon: Icon.CaseReview, pill: 'Avaliação gratuita' },
+    { n:'03', t:'Resolvemos a burocracia', d:'Documentos, laudos e protocolos — nossa equipe resolve tudo por você.', icon: Icon.PaperworkStack, pill: 'Sem esforço' },
+    { n:'04', t:'Pagamento na sua conta', d:'Acompanhamento total até o recebimento do valor da sua indenização.', icon: Icon.PayoutReceived, pill: 'Transparência total' },
   ];
   return (
     <section style={{ padding:'40px 22px 36px', background:'#F7F9FC' }}>
       <div style={{ textAlign:'center', marginBottom:30 }}>
         <SectionLabel label="Como funciona" primary={primary}/>
         <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.05, margin:'14px 0 0', color:'#0F2E63', letterSpacing:'-0.01em' }}>
-          Sua jornada para<br/><span style={{ color:primary }}>a indenização.</span>
+          Como funciona<br/><span style={{ color:primary }}>o processo.</span>
         </h2>
       </div>
       
@@ -255,7 +255,7 @@ function InstagramBanner({ primary = '#0F2E63' }) {
         </div>
         <div style={{ textAlign: 'left' }}>
           <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: '#0F2E63', lineHeight: 1 }}>@a4servicosdetransito</div>
-          <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: 11, color: '#6B7280', marginTop: 3 }}>Casos reais atualizados hoje</div>
+          <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: 11, color: '#6B7280', marginTop: 3 }}>Acompanhe casos reais</div>
         </div>
         <Icon.ExternalLink size={16} color="#FFC431"/>
       </a>
@@ -264,7 +264,7 @@ function InstagramBanner({ primary = '#0F2E63' }) {
 }
 
 function QuemSomos({ primary, accent }) {
-  const values = ['Sem custo adiantado para você','Atendimento 100% online','Transparência em cada etapa','Acompanhamento até o pagamento'];
+  const values = ['Sem custos adiantados','Atendimento 100% digital','Transparência total','Acompanhamento até o pagamento'];
   return (
     <section style={{ padding:0, background:primary, color:'#fff', position:'relative', overflow:'hidden' }}>
       <div style={{ width:'100%', height:240, position:'relative' }}>
@@ -277,10 +277,10 @@ function QuemSomos({ primary, accent }) {
         </div>
         <SectionLabel label="Quem somos" primary={accent}/>
         <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-0.01em' }}>
-          14 anos lutando pelo<br/><span style={{ color:accent }}>seu direito.</span>
+          14 anos de experiência<br/><span style={{ color:accent }}>em indenizações.</span>
         </h2>
         <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13.5, lineHeight:1.55, color:'rgba(255,255,255,.85)', margin:'14px 0 0' }}>
-          Nascemos em Recife com uma missão: transformar a dor de um acidente em reparação justa. Somos uma equipe especializada em indenizações, não uma seguradora nem um órgão público.
+          Especialistas em transformar a complexidade de um acidente em uma reparação justa. Somos uma assessoria técnica independente, não uma seguradora nem um órgão público.
         </p>
         <div style={{ marginTop:20, padding:'16px', background:'rgba(255,255,255,.08)', borderRadius:12, border:'1px solid rgba(255,255,255,.14)' }}>
           {values.map((v,i)=>(
@@ -301,10 +301,10 @@ function QuemSomos({ primary, accent }) {
 function FAQ({ primary }) {
   const [active, setActive] = React.useState(0);
   const faqs = [
-    { q:'Preciso pagar algo adiantado?', a:'Não. Nosso trabalho é remunerado só quando você recebe. Sem taxa de cadastro, sem mensalidade, sem pegadinha.' },
-    { q:'Quanto tempo demora?', a:'Depende do tipo de caso. Indenizações via seguro de aplicativo costumam sair em poucos meses.' },
-    { q:'Posso receber mesmo se a culpa foi minha?', a:'Em muitos casos, sim — especialmente em acidentes envolvendo aplicativos, onde passageiros e motoristas têm coberturas específicas.' },
-    { q:'Atendem fora de Recife?', a:'Atendemos em todo o Brasil, 100% online. Já representamos clientes em todos os estados.' },
+    { q:'Preciso pagar algo adiantado?', a:'Não. Cobramos apenas uma porcentagem do valor que você efetivamente receber. Sem taxas de cadastro ou mensalidades.' },
+    { q:'Quanto tempo demora?', a:'Varia conforme o caso. Indenizações via seguro de aplicativo costumam ser processadas em poucos meses.' },
+    { q:'Posso receber mesmo se a culpa foi minha?', a:'Sim. Passageiros de apps e motoristas (em certas coberturas) têm direito independente da culpa no acidente.' },
+    { q:'Atendem fora de Recife?', a:'Atendemos em todo o Brasil. O processo é 100% digital e seguro.' },
   ];
   return (
     <section style={{ padding:'38px 22px 30px', background:'#fff' }}>
@@ -338,14 +338,14 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
     <section style={{ padding:'50px 22px 40px', background:primary, color:'#fff', position:'relative', overflow:'hidden', textAlign:'center' }}>
       <div style={{ marginBottom:20 }}><Logo size={22} stacked={false} color="#fff" accent={accent}/></div>
       <h2 style={{ fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.1, margin:'0 auto 16px', letterSpacing:'-0.02em', maxWidth:280 }}>
-        Seu direito,<br/><span style={{ color:accent }}>nossa prioridade.</span>
+        Não deixe seu direito<br/><span style={{ color:accent }}>expirar.</span>
       </h2>
       <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:15, lineHeight:1.6, color:'rgba(255,255,255,.7)', margin:'0 auto 28px', maxWidth:300 }}>
-        Conte sua história agora. Em poucos minutos você sabe se tem direito.
+        Fale com um especialista agora e descubra em poucos minutos se você tem direito.
       </p>
       <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16 }}>
         <a href={WA_URL} className="btn-shine" style={{ width:'100%', maxWidth:280, display:'flex', alignItems:'center', justifyContent:'center', gap:10, padding:'18px 24px', background:'#25D366', color:'#fff', borderRadius:16, textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 12px 24px rgba(37,211,102,0.25)' }}>
-          <Icon.Whatsapp size={22}/> Falar com especialista
+          <Icon.Whatsapp size={22}/> Iniciar atendimento
         </a>
         <a href="tel:+5581997140111" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'rgba(255,255,255,.6)', textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:14 }}>
           <Icon.Phone size={16} color="rgba(255,255,255,0.4)"/> Ou ligue: (81) 99714-0111

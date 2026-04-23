@@ -51,26 +51,67 @@ function Hero({ primary, accent }) {
   );
 }
 
-function Problema({ primary }) {
-  const items = [
-    'Não sei se tenho direito a alguma indenização.',
-    'Ouvi dizer que a burocracia é grande demais.',
-    'Tenho medo de ser enganado ou pagar algo adiantado.',
-    'Perdi documentos ou não fiz boletim de ocorrência.',
-  ];
+function Ticker({ items }) {
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
-      <SectionLabel label="O que você está sentindo" primary={primary}/>
-      <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
-        Dúvidas comuns após<br/><span style={{ color: primary }}>um acidente.</span>
-      </h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 18 }}>
-        {items.map((t, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '16px', borderRadius: 16, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-            <div style={{ flexShrink: 0, width: 32, height: 32, borderRadius: 10, background: primary, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: '#fff', boxShadow: '0 4px 10px rgba(15,46,99,.15)' }}>{i + 1}</div>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.5, color: '#1F2937', margin: 0, fontWeight: 500 }}>"{t}"</p>
+    <div className="ticker-wrap">
+      <div className="ticker-track">
+        {[...items, ...items].map((text, i) => (
+          <div key={i} className="ticker-item">
+            <span>{text}</span>
+            <span className="ticker-sep">|</span>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function Problema({ primary }) {
+  const chatMessages = [
+    { type: 'user', text: 'Não sei se tenho direito a alguma indenização...' },
+    { type: 'a4', text: 'Muitas pessoas pensam assim. A verdade é que quase todo acidente gera algum tipo de reparação.' },
+    { type: 'user', text: 'Mas ouvi dizer que a burocracia é grande demais.' },
+    { type: 'a4', text: 'Para quem está sozinho, sim. Mas nós cuidamos de toda a papelada para você.' },
+    { type: 'user', text: 'Tenho medo de ser enganado ou pagar algo adiantado.' },
+    { type: 'a4', text: 'Na A QU4TRO, você só paga se receber a sua indenização. Transparência total.' },
+  ];
+
+  return (
+    <section style={{ padding: '0 0 40px', background: '#fff', overflow: 'hidden' }}>
+      <Ticker items={[
+        'Não sei se tenho direito', 
+        'Perdi meus documentos', 
+        'A burocracia é grande', 
+        'Não fiz boletim de ocorrência',
+        'A culpa foi minha?',
+        'O prazo já passou?',
+        'O carro não tinha seguro'
+      ]} />
+      
+      <div style={{ padding: '38px 22px 0' }}>
+        <SectionLabel label="Entendemos você" primary={primary}/>
+        <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
+          Você não precisa passar<br/><span style={{ color: primary }}>por isso sozinho.</span>
+        </h2>
+
+        <div className="chat-container">
+          {chatMessages.map((msg, i) => (
+            <div key={i} className={`chat-row ${msg.type}`} style={{ animation: `slideUp 0.5s ease both ${i * 0.2}s` }}>
+              <div className="chat-avatar">
+                {msg.type === 'a4' ? (
+                  <LogoMark size={32} />
+                ) : (
+                  <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#F3F4F6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                )}
+              </div>
+              <div className={`chat-bubble ${msg.type}`}>
+                {msg.text}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

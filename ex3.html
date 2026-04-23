@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dúvidas – Variações Modernas</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,900&family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0f2275;
+            --blue-mid: #1d49d4;
+            --yellow: #f5a623;
+            --yellow-pale: #fef3dc;
+            --white: #fff;
+            --off: #f4f5fa;
+            --border: #e4eaff;
+            --gray: #888;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fff;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: #fff;
+            border-bottom: 1px solid var(–border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 1rem;
+            color: var(–blue);
+            line-height: 1;
+        }
+
+        .logo span {
+            color: var(–yellow);
+        }
+
+        .logo small {
+            display: block;
+            font-size: 0.42rem;
+            letter-spacing: 0.14em;
+            color: #bbb;
+            margin-top: 2px;
+        }
+
+        .btn-wa {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* shared */
+        .proposal {
+            padding: 64px 24px 80px;
+            border-bottom: 8px solid var(–off);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(–blue);
+            border: 1.5px solid var(–border);
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin-bottom: 10px;
+        }
+
+        .chip::before {
+            content: ’’;
+            width: 5px;
+            height: 5px;
+            background: var(–yellow);
+            border-radius: 50%;
+        }
+
+        .pname {
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.9rem;
+            color: var(–blue);
+            font-weight: 800;
+        }
+
+        .pdesc {
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 2px;
+            margin-bottom: 44px;
+        }
+
+        /* ═══════════════════════════════
+V1 — CHAT BUBBLES
+═══════════════════════════════ */
+        .v1-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(–yellow);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .v1-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.9rem, 7vw, 2.8rem);
+            color: var(–blue);
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 36px;
+        }
+
+        .v1-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .chat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bubble-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            animation: slideUp 0.5s ease both;
+        }
+
+        .bubble-row:nth-child(1) {
+            animation-delay: 0.05s
+        }
+
+        .bubble-row:nth-child(2) {
+            animation-delay: 0.15s;
+            justify-content: flex-end;
+        }
+
+        .bubble-row:nth-child(3) {
+            animation-delay: 0.25s;
+        }
+
+        .bubble-row:nth-child(4) {
+            animation-delay: 0.35s;
+            justify-content: flex-end;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .av-blue {
+            background: var(–blue);
+        }
+
+        .av-yellow {
+            background: var(–yellow);
+        }
+
+        .bubble {
+            max-width: 80%;
+            border-radius: 18px;
+            padding: 14px 18px;
+            font-size: 0.85rem;
+            line-height: 1.55;
+            position: relative;
+        }
+
+        .bubble-left {
+            background: var(–off);
+            color: var(–blue);
+            border-radius: 4px 18px 18px 18px;
+        }
+
+        .bubble-right {
+            background: var(–blue);
+            color: #fff;
+            border-radius: 18px 4px 18px 18px;
+            font-style: italic;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .bubble-left::before {
+            content: ’”’;
+            font-family: ‘Fraunces’, serif;
+            font-size: 2rem;
+            color: var(–yellow);
+            position: absolute;
+            top: -8px;
+            left: 12px;
+            line-height: 1;
+        }
+
+        .bubble-meta {
+            font-size: 0.6rem;
+            color: #bbb;
+            margin-top: 6px;
+            letter-spacing: 0.06em;
+        }
+
+        .bubble-right .bubble-meta {
+            color: rgba(255, 255, 255, 0.4);
+            text-align: right;
+        }
+
+        /* ═══════════════════════════════
+V2 — CARDS COM EMOJI / EMOÇÃO
+═══════════════════════════════ */
+        .v2-header {
+            margin-bottom: 36px;
+        }
+
+        .v2-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        .v2-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.9rem, 7vw, 2.8rem);
+            color: var(–blue);
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .v2-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .emotion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .em-card {
+            border-radius: 20px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.3s cubic-bezier(.22, .68, 0, 1.2), box-shadow 0.3s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .em-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 40px rgba(15, 34, 117, 0.14);
+        }
+
+        .em-card.ec-a {
+            background: var(–off);
+            border: 1.5px solid var(–border);
+        }
+
+        .em-card.ec-b {
+            background: var(–blue);
+        }
+
+        .em-card.ec-c {
+            background: var(–yellow);
+        }
+
+        .em-card.ec-d {
+            background: var(–off);
+            border: 1.5px solid var(–border);
+        }
+
+        .em-emoji {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .em-quote {
+            font-size: 0.8rem;
+            line-height: 1.55;
+            font-style: italic;
+        }
+
+        .ec-a .em-quote,
+        .ec-d .em-quote {
+            color: var(–blue);
+        }
+
+        .ec-b .em-quote {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .ec-c .em-quote {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .em-tag {
+            display: inline-block;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 9px;
+            align-self: flex-start;
+        }
+
+        .ec-a .em-tag,
+        .ec-d .em-tag {
+            background: var(–yellow-pale);
+            color: var(–yellow);
+        }
+
+        .ec-b .em-tag {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .ec-c .em-tag {
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .em-num {
+            position: absolute;
+            bottom: -10px;
+            right: 8px;
+            font-family: ‘Fraunces’, serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            opacity: 0.07;
+        }
+
+        .ec-b .em-num,
+        .ec-c .em-num {
+            color: #fff;
+        }
+
+        .ec-a .em-num,
+        .ec-d .em-num {
+            color: var(–blue);
+        }
+
+        /* ═══════════════════════════════
+V3 — DARK REVEAL (fundo azul, texto aparece)
+═══════════════════════════════ */
+        .v3-scene {
+            background: var(–blue);
+            border-radius: 28px;
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v3-scene::before {
+            content: ’’;
+            position: absolute;
+            top: -100px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.22) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .v3-scene::after {
+            content: ’’;
+            position: absolute;
+            bottom: -80px;
+            left: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .v3-eyebrow {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 10px;
+        }
+
+        .v3-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
+            color: #fff;
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 32px;
+        }
+
+        .v3-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .fear-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fear-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 16px 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background 0.3s, transform 0.3s;
+            cursor: default;
+        }
+
+        .fear-item:hover {
+            background: rgba(255, 255, 255, 0.13);
+            transform: translateX(6px);
+        }
+
+        .fear-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.62rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s;
+        }
+
+        .fear-item:hover .fear-num {
+            border-color: var(–yellow);
+            color: var(–yellow);
+        }
+
+        .fear-text {
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            font-style: italic;
+            padding-top: 4px;
+        }
+
+        .fear-item:hover .fear-text {
+            color: #fff;
+        }
+
+        /* ═══════════════════════════════
+V4 — HIGHLIGHT QUOTES EDITORIAL
+═══════════════════════════════ */
+        .v4-row-top {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 36px;
+            gap: 16px;
+        }
+
+        .v4-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(2rem, 8vw, 3rem);
+            color: var(–blue);
+            line-height: 1;
+            font-weight: 900;
+            flex: 1;
+        }
+
+        .v4-h em {
+            color: var(–yellow);
+            font-style: italic;
+            display: block;
+        }
+
+        .v4-kicker {
+            font-size: 0.68rem;
+            color: #ccc;
+            text-align: right;
+            line-height: 1.6;
+            max-width: 90px;
+            flex-shrink: 0;
+        }
+
+        .quote-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .q-item {
+            display: flex;
+            gap: 16px;
+            align-items: stretch;
+            border-bottom: 1px solid var(–border);
+            padding: 20px 0;
+            transition: padding-left 0.25s;
+            cursor: default;
+        }
+
+        .q-item:first-child {
+            border-top: 2px solid var(–blue);
+        }
+
+        .q-item:last-child {
+            border-bottom: 2px solid var(–yellow);
+        }
+
+        .q-item:hover {
+            padding-left: 6px;
+        }
+
+        .q-mark {
+            font-family: ‘Fraunces’, serif;
+            font-size: 3.5rem;
+            color: var(–border);
+            line-height: 0.8;
+            flex-shrink: 0;
+            padding-top: 8px;
+            transition: color 0.25s;
+        }
+
+        .q-item:hover .q-mark {
+            color: var(–yellow);
+        }
+
+        .q-body {
+            flex: 1;
+        }
+
+        .q-text {
+            font-size: 0.9rem;
+            color: var(–blue);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .q-resolve {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(–yellow);
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: all 0.25s;
+        }
+
+        .q-item:hover .q-resolve {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .q-resolve::after {
+            content: ‘→’;
+        }
+
+        .q-n {
+            font-family: ‘Fraunces’, serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(–border);
+            align-self: flex-end;
+            line-height: 1;
+            flex-shrink: 0;
+            transition: color 0.25s;
+        }
+
+        .q-item:hover .q-n {
+            color: var(–blue);
+        }
+
+        /* ═══════════════════════════════
+V5 — TICKER / MARQUEE ESTILO
+═══════════════════════════════ */
+        .v5-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.9rem, 7vw, 2.8rem);
+            color: var(–blue);
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .v5-h em {
+            color: var(–yellow);
+            font-style: italic;
+        }
+
+        .v5-sub {
+            font-size: 0.78rem;
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
+        .ticker-wrap {
+            overflow: hidden;
+            margin: 0 -24px;
+            padding: 0;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 0;
+            width: max-content;
+            animation: ticker 18s linear infinite;
+        }
+
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .ticker-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            padding: 10px 20px;
+            border-right: 1px solid var(–border);
+            font-size: 0.78rem;
+            color: var(–blue);
+            font-style: italic;
+            background: #fff;
+        }
+
+        .ticker-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(–yellow);
+            flex-shrink: 0;
+        }
+
+        .concern-cards {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cc-card {
+            background: var(–off);
+            border: 1.5px solid var(–border);
+            border-radius: 18px;
+            padding: 18px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+            cursor: default;
+        }
+
+        .cc-card:hover {
+            border-color: var(–blue);
+            box-shadow: 0 6px 24px rgba(15, 34, 117, 0.1);
+            transform: translateX(4px);
+        }
+
+        .cc-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(–blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+            transition: background 0.25s;
+        }
+
+        .cc-card:hover .cc-icon {
+            background: var(–yellow);
+        }
+
+        .cc-body {}
+
+        .cc-quote {
+            font-size: 0.83rem;
+            color: var(–blue);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .cc-answer {
+            font-size: 0.72rem;
+            color: var(–yellow);
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: all 0.25s;
+        }
+
+        .cc-card:hover .cc-answer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════
+V6 — GLASSMORPHISM AMARELO
+═══════════════════════════════ */
+        .v6-scene {
+            background: linear-gradient(145deg, #f5a623 0%, #f7c44a 50%, #fde68a 100%);
+            border-radius: 28px;
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v6-scene::before {
+            content: ’’;
+            position: absolute;
+            bottom: -100px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(15, 34, 117, 0.18) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .v6-eyebrow {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 10px;
+        }
+
+        .v6-h {
+            font-family: ‘Fraunces’, serif;
+            font-size: clamp(1.8rem, 7vw, 2.6rem);
+            color: #fff;
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 32px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .glass-fears {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gf-card {
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 18px;
+            padding: 18px 16px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            transition: background 0.3s, transform 0.3s;
+            cursor: default;
+        }
+
+        .gf-card:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateX(6px);
+        }
+
+        .gf-num {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(–blue);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ‘Syne’, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .gf-text {
+            font-size: 0.83rem;
+            color: var(–blue);
+            line-height: 1.6;
+            font-style: italic;
+            font-weight: 500;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">AQU<span>4</span>TRO<small>SERVIÇOS DE TRÂNSITO</small></div>
+        <button class="btn-wa">⬤ WhatsApp</button>
+    </nav>
+
+    <!-- ══════ V1 — CHAT BUBBLES ══════ -->
+
+    <section class="proposal">
+        <div class="chip">Variação 1</div>
+        <p class="pname">Chat Bubbles</p>
+        <p class="pdesc">As dúvidas viram mensagens de WhatsApp. A AQU4TRO responde em azul. Cria conexão emocional
+            imediata.</p>
+
+        <p class="v1-eyebrow">• O que você está sentindo</p>
+        <h2 class="v1-h">Dúvidas comuns após<br>um <em>acidente.</em></h2>
+
+        <div class="chat-list">
+            <div class="bubble-row">
+                <div class="avatar av-blue">U</div>
+                <div class="bubble bubble-left">
+                    Não sei se tenho direito a alguma indenização.
+                    <p class="bubble-meta">Você · agora</p>
+                </div>
+            </div>
+            <div class="bubble-row">
+                <div class="bubble bubble-right">
+                    Avaliamos seu caso gratuitamente. Sem surpresas.
+                    <p class="bubble-meta">AQU4TRO · agora</p>
+                </div>
+                <div class="avatar av-yellow"
+                    style="background:var(--blue); font-family:'Syne',sans-serif; font-size:0.55rem;">A4</div>
+            </div>
+            <div class="bubble-row">
+                <div class="avatar av-blue">U</div>
+                <div class="bubble bubble-left">
+                    Ouvi dizer que a burocracia é grande demais.
+                    <p class="bubble-meta">Você · agora</p>
+                </div>
+            </div>
+            <div class="bubble-row">
+                <div class="bubble bubble-right">
+                    Nossa equipe cuida de tudo. Você não move um dedo.
+                    <p class="bubble-meta">AQU4TRO · agora</p>
+                </div>
+                <div class="avatar av-yellow"
+                    style="background:var(--blue); font-family:'Syne',sans-serif; font-size:0.55rem;">A4</div>
+            </div>
+            <div class="bubble-row">
+                <div class="avatar av-blue">U</div>
+                <div class="bubble bubble-left">
+                    Tenho medo de ser enganado ou pagar algo adiantado.
+                    <p class="bubble-meta">Você · agora</p>
+                </div>
+            </div>
+            <div class="bubble-row">
+                <div class="bubble bubble-right">
+                    Cobramos só se você ganhar. Zero risco pra você.
+                    <p class="bubble-meta">AQU4TRO · agora</p>
+                </div>
+                <div class="avatar av-yellow"
+                    style="background:var(--blue); font-family:'Syne',sans-serif; font-size:0.55rem;">A4</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ V2 — EMOTION GRID ══════ -->
+
+    <section class="proposal" style="background:var(--off);">
+        <div class="chip">Variação 2</div>
+        <p class="pname">Emotion Grid com Emoji</p>
+        <p class="pdesc">Grid 2×2 colorblock com emoji humanizando cada dúvida. Visual impactante e empático.</p>
+
+        <div class="v2-header">
+            <p class="v2-eyebrow">• O que você está sentindo</p>
+            <h2 class="v2-h">Dúvidas comuns após<br>um <em>acidente.</em></h2>
+        </div>
+
+        <div class="emotion-grid">
+            <div class="em-card ec-a">
+                <span class="em-emoji">🤔</span>
+                <p class="em-quote">"Não sei se tenho direito a alguma indenização."</p>
+                <span class="em-tag">Dúvida #1</span>
+                <span class="em-num">1</span>
+            </div>
+            <div class="em-card ec-b">
+                <span class="em-emoji">😤</span>
+                <p class="em-quote">"Ouvi dizer que a burocracia é grande demais."</p>
+                <span class="em-tag">Dúvida #2</span>
+                <span class="em-num">2</span>
+            </div>
+            <div class="em-card ec-c">
+                <span class="em-emoji">😰</span>
+                <p class="em-quote">"Tenho medo de ser enganado ou pagar adiantado."</p>
+                <span class="em-tag">Dúvida #3</span>
+                <span class="em-num">3</span>
+            </div>
+            <div class="em-card ec-d">
+                <span class="em-emoji">📋</span>
+                <p class="em-quote">"Perdi documentos ou não fiz boletim de ocorrência."</p>
+                <span class="em-tag">Dúvida #4</span>
+                <span class="em-num">4</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ V3 — DARK GLASS ══════ -->
+
+    <section class="proposal">
+        <div class="chip">Variação 3</div>
+        <p class="pname">Dark Glass — Fundo Azul</p>
+        <p class="pdesc">Cards translúcidos sobre fundo azul profundo. Hover revela texto e ilumina o número em amarelo.
+        </p>
+
+        <div class="v3-scene">
+            <p class="v3-eyebrow">• O que você está sentindo</p>
+            <h2 class="v3-h">Dúvidas comuns após<br>um <em>acidente.</em></h2>
+
+            ```
+            <div class="fear-list">
+                <div class="fear-item">
+                    <div class="fear-num">01</div>
+                    <p class="fear-text">"Não sei se tenho direito a alguma indenização."</p>
+                </div>
+                <div class="fear-item">
+                    <div class="fear-num">02</div>
+                    <p class="fear-text">"Ouvi dizer que a burocracia é grande demais."</p>
+                </div>
+                <div class="fear-item">
+                    <div class="fear-num">03</div>
+                    <p class="fear-text">"Tenho medo de ser enganado ou pagar algo adiantado."</p>
+                </div>
+                <div class="fear-item">
+                    <div class="fear-num">04</div>
+                    <p class="fear-text">"Perdi documentos ou não fiz boletim de ocorrência."</p>
+                </div>
+            </div>
+            ```
+
+        </div>
+    </section>
+
+    <!-- ══════ V4 — EDITORIAL QUOTES ══════ -->
+
+    <section class="proposal" style="background:var(--off);">
+        <div class="chip">Variação 4</div>
+        <p class="pname">Editorial Quotes</p>
+        <p class="pdesc">Aspas tipográficas gigantes, linhas estilo tabela. Hover revela "Temos a resposta →" em
+            amarelo.</p>
+
+        <div class="v4-row-top">
+            <h2 class="v4-h">Dúvidas<br>comuns após<br><em>um acidente.</em></h2>
+            <p class="v4-kicker">o que você está sentindo</p>
+        </div>
+
+        <div class="quote-stack">
+            <div class="q-item">
+                <span class="q-mark">"</span>
+                <div class="q-body">
+                    <p class="q-text">Não sei se tenho direito a alguma indenização.</p>
+                    <span class="q-resolve">Temos a resposta</span>
+                </div>
+                <span class="q-n">01</span>
+            </div>
+            <div class="q-item">
+                <span class="q-mark">"</span>
+                <div class="q-body">
+                    <p class="q-text">Ouvi dizer que a burocracia é grande demais.</p>
+                    <span class="q-resolve">Resolvemos por você</span>
+                </div>
+                <span class="q-n">02</span>
+            </div>
+            <div class="q-item">
+                <span class="q-mark">"</span>
+                <div class="q-body">
+                    <p class="q-text">Tenho medo de ser enganado ou pagar algo adiantado.</p>
+                    <span class="q-resolve">Zero risco, zero custo</span>
+                </div>
+                <span class="q-n">03</span>
+            </div>
+            <div class="q-item">
+                <span class="q-mark">"</span>
+                <div class="q-body">
+                    <p class="q-text">Perdi documentos ou não fiz boletim de ocorrência.</p>
+                    <span class="q-resolve">Sem problema nenhum</span>
+                </div>
+                <span class="q-n">04</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ V5 — TICKER + CARDS COM RESPOSTA ══════ -->
+
+    <section class="proposal">
+        <div class="chip">Variação 5</div>
+        <p class="pname">Ticker + Resposta no Hover</p>
+        <p class="pdesc">Faixa rolante com as dúvidas. Cards abaixo revelam a solução no hover. Dois níveis de leitura.
+        </p>
+
+        <h2 class="v5-h">Dúvidas comuns após<br><em>um acidente.</em></h2>
+        <p class="v5-sub">• O que você está sentindo</p>
+
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Tenho direito?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"E a burocracia?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Vou pagar adiantado?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Perdi meus docs."</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"É confiável?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Quanto demora?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Tenho direito?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"E a burocracia?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Vou pagar adiantado?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Perdi meus docs."</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"É confiável?"</div>
+                <div class="ticker-pill"><span class="ticker-dot"></span>"Quanto demora?"</div>
+            </div>
+        </div>
+
+        <div class="concern-cards">
+            <div class="cc-card">
+                <div class="cc-icon">🤔</div>
+                <div class="cc-body">
+                    <p class="cc-quote">"Não sei se tenho direito a alguma indenização."</p>
+                    <p class="cc-answer">Avaliamos grátis — descubra agora →</p>
+                </div>
+            </div>
+            <div class="cc-card">
+                <div class="cc-icon">😤</div>
+                <div class="cc-body">
+                    <p class="cc-quote">"Ouvi dizer que a burocracia é grande demais."</p>
+                    <p class="cc-answer">Nossa equipe resolve tudo por você →</p>
+                </div>
+            </div>
+            <div class="cc-card">
+                <div class="cc-icon">😰</div>
+                <div class="cc-body">
+                    <p class="cc-quote">"Tenho medo de ser enganado ou pagar adiantado."</p>
+                    <p class="cc-answer">Cobramos só se você ganhar →</p>
+                </div>
+            </div>
+            <div class="cc-card">
+                <div class="cc-icon">📋</div>
+                <div class="cc-body">
+                    <p class="cc-quote">"Perdi documentos ou não fiz boletim de ocorrência."</p>
+                    <p class="cc-answer">Trabalhamos com o que você tem →</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ V6 — GLASSMORPHISM AMARELO ══════ -->
+
+    <section class="proposal" style="padding-bottom:80px;">
+        <div class="chip">Variação 6</div>
+        <p class="pname">Glass — Fundo Amarelo</p>
+        <p class="pdesc">Gradiente dourado com cards brancos translúcidos e números azuis. Quente, confiante, elegante.
+        </p>
+
+        <div class="v6-scene">
+            <p class="v6-eyebrow">• O que você está sentindo</p>
+            <h2 class="v6-h">Dúvidas comuns após um acidente.</h2>
+
+            ```
+            <div class="glass-fears">
+                <div class="gf-card">
+                    <div class="gf-num">01</div>
+                    <p class="gf-text">"Não sei se tenho direito a alguma indenização."</p>
+                </div>
+                <div class="gf-card">
+                    <div class="gf-num">02</div>
+                    <p class="gf-text">"Ouvi dizer que a burocracia é grande demais."</p>
+                </div>
+                <div class="gf-card">
+                    <div class="gf-num">03</div>
+                    <p class="gf-text">"Tenho medo de ser enganado ou pagar algo adiantado."</p>
+                </div>
+                <div class="gf-card">
+                    <div class="gf-num">04</div>
+                    <p class="gf-text">"Perdi documentos ou não fiz boletim de ocorrência."</p>
+                </div>
+            </div>
+            ```
+
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -358,32 +358,28 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
 function Footer({ accent }) {
   return (
     <footer style={{ 
-      padding:'60px 0 calc(60px + env(safe-area-inset-bottom))', 
+      padding:'40px 22px calc(60px + env(safe-area-inset-bottom))', 
       background:'#0A1F45', 
       color:'rgba(255,255,255,.7)' 
     }}>
-      <div className="container">
-        <div className="grid-2" style={{ alignItems: 'start', gap: 40 }}>
-          <div>
-            <div style={{ display:'flex', alignItems:'center', gap:24, marginBottom:24 }}>
-              <Logo size={20} color="#fff" accent={accent} variant="reduced"/>
-              <div style={{ display:'flex', alignItems:'center', gap:16, borderLeft:'1px solid rgba(255,255,255,.15)', paddingLeft:16 }}>
-                <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none', transition:'color .2s' }}>
-                  <Icon.Whatsapp size={20} color="rgba(255,255,255,.7)"/>
-                </a>
-                <a href="https://www.instagram.com/a4servicosdetransito" target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none', transition:'color .2s' }}>
-                  <Icon.Instagram size={20} color="rgba(255,255,255,.7)"/>
-                </a>
-              </div>
-            </div>
-            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, lineHeight:1.6, margin:0, color:'rgba(255,255,255,.5)', maxWidth: 400 }}>
-              A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
-            </p>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ marginTop:14, fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,.4)' }}>© 2026 A QU4TRO. Todos os direitos reservados.</div>
-          </div>
+      <div style={{ display:'flex', alignItems:'center', gap:18, marginBottom:22 }}>
+        <Logo size={18} color="#fff" accent={accent} variant="reduced"/>
+        <div style={{ display:'flex', alignItems:'center', gap:14, borderLeft:'1px solid rgba(255,255,255,.15)', paddingLeft:16 }}>
+          <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none' }}>
+            <Icon.Whatsapp size={18} color="rgba(255,255,255,.7)"/>
+          </a>
+          <a href="https://www.instagram.com/a4servicosdetransito" target="_blank" rel="noopener noreferrer" style={{ display:'flex', color:'rgba(255,255,255,.5)', textDecoration:'none' }}>
+            <Icon.Instagram size={18} color="rgba(255,255,255,.7)"/>
+          </a>
         </div>
+      </div>
+      
+      <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:12, lineHeight:1.6, margin:0, color:'rgba(255,255,255,.5)' }}>
+        A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
+      </p>
+      
+      <div style={{ marginTop:24, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.3)', borderTop:'1px solid rgba(255,255,255,.05)', paddingTop:16 }}>
+        © 2026 A QU4TRO. Todos os direitos reservados.
       </div>
     </footer>
   );

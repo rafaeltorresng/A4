@@ -346,21 +346,41 @@ function FAQ({ primary }) {
 
 function CTAFinal({ primary = '#0F2E63', accent }) {
   return (
-    <section style={{ padding:'50px 22px 40px', background:primary, color:'#fff', position:'relative', overflow:'hidden', textAlign:'center' }}>
-      <div style={{ marginBottom:20 }}><Logo size={22} stacked={false} color="#fff" accent={accent}/></div>
-      <h2 style={{ fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.1, margin:'0 auto 16px', letterSpacing:'-0.02em', maxWidth:280 }}>
-        Não deixe seu direito<br/><span style={{ color:accent }}>expirar.</span>
-      </h2>
-      <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:15, lineHeight:1.6, color:'rgba(255,255,255,.7)', margin:'0 auto 28px', maxWidth:300 }}>
-        Fale com um especialista agora e descubra em poucos minutos se você tem direito.
-      </p>
-      <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16 }}>
-        <a href={WA_URL} className="btn-shine" style={{ width:'100%', maxWidth:280, display:'flex', alignItems:'center', justifyContent:'center', gap:10, padding:'18px 24px', background:'#25D366', color:'#fff', borderRadius:16, textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 12px 24px rgba(37,211,102,0.25)' }}>
-          <Icon.Whatsapp size={22}/> Iniciar atendimento
-        </a>
-        <a href="tel:+5581997140111" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'rgba(255,255,255,.6)', textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:14 }}>
-          <Icon.Phone size={16} color="rgba(255,255,255,0.4)"/> Ou ligue: (81) 99714-0111
-        </a>
+    <section style={{ padding:'20px 18px 60px', background:'#fff' }}>
+      <div style={{ 
+        maxWidth: 440, 
+        margin: '0 auto',
+        padding:'48px 24px', 
+        background: primary, 
+        color:'#fff', 
+        borderRadius: 32,
+        position:'relative', 
+        overflow:'hidden', 
+        textAlign:'center',
+        boxShadow: '0 20px 50px rgba(15, 46, 99, 0.2)'
+      }}>
+        {/* Aura decorativa de fundo */}
+        <div style={{ position:'absolute', top:'-10%', right:'-10%', width:180, height:180, background:accent, borderRadius:'50%', opacity:0.12, filter:'blur(40px)', pointerEvents:'none' }}/>
+        <div style={{ position:'absolute', bottom:'-5%', left:'-5%', width:120, height:120, background:accent, borderRadius:'50%', opacity:0.06, filter:'blur(30px)', pointerEvents:'none' }}/>
+        
+        <div style={{ position:'relative', zIndex: 1 }}>
+          <div style={{ marginBottom:20 }}><Logo size={20} stacked={false} color="#fff" accent={accent}/></div>
+          <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:28, lineHeight:1.1, margin:'0 auto 16px', letterSpacing:'-0.02em' }}>
+            Não deixe seu direito<br/><span style={{ color:accent }}>expirar.</span>
+          </h2>
+          <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.6, color:'rgba(255,255,255,.7)', margin:'0 auto 28px', maxWidth:280 }}>
+            Fale com um especialista agora e descubra se você tem direito.
+          </p>
+          
+          <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16 }}>
+            <a href={WA_URL} className="btn-shine" style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'center', gap:10, padding:'18px 24px', background:'#25D366', color:'#fff', borderRadius:16, textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:16, boxShadow: '0 10px 24px rgba(37,211,102,0.3)' }}>
+              <Icon.Whatsapp size={22}/> Iniciar atendimento
+            </a>
+            <a href="tel:+5581997140111" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'rgba(255,255,255,.5)', textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:13 }}>
+              <Icon.Phone size={14} color="rgba(255,255,255,0.3)"/> Ou ligue: (81) 99714-0111
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

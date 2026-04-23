@@ -87,8 +87,8 @@ const Icon = {
 function Logo({ size = 20, stacked = true, color = '#1E4FA1', accent = '#FFC431', variant = 'full' }) {
   if (variant === 'mark') return <LogoMark size={size * 2} color={color} accent={accent}/>;
   
-  const text = variant === 'reduced' ? 'AQ4TRO' : 'AQU4TRO';
-  const parts = variant === 'reduced' ? [['A', accent], ['Q', color], ['4', accent], ['TRO', color]] : [['A', accent], ['QU', color], ['4', accent], ['TRO', color]];
+  const text = variant === 'reduced' ? 'AQU4TRO' : 'AQU4TRO';
+  const parts = variant === 'reduced' ? [['A', '#fff'], ['QU', color], ['4', accent], ['TRO', color]] : [['A', accent], ['QU', color], ['4', accent], ['TRO', color]];
 
   return (
     <div style={{ display:'inline-flex', flexDirection:'column', alignItems:'flex-start', lineHeight:1 }}>
@@ -111,7 +111,7 @@ function LogoMark({ size = 44, color = '#1E4FA1', accent = '#FFC431' }) {
       letterSpacing: '-0.02em', lineHeight: 1, color: '#fff',
       boxShadow: '0 4px 12px rgba(15,46,99,0.15)'
     }}>
-      <span style={{ color: accent }}>A</span>Q<span style={{ color: accent }}>4</span>
+      <span style={{ color: '#fff' }}>A</span><span style={{ color: accent }}>4</span>
     </div>
   );
 }

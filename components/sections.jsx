@@ -223,9 +223,12 @@ function QuemSomos({ primary, accent }) {
     <section style={{ padding:0, background:primary, color:'#fff', position:'relative', overflow:'hidden' }}>
       <div style={{ width:'100%', height:240, position:'relative' }}>
         <img src="assets/about-us.png" style={{ width:'100%', height:'100%', objectFit:'cover' }}/>
-        <div style={{ position:'absolute', inset:0, background:`linear-gradient(0deg, ${primary} 0%, transparent 100%)` }}/>
+        <div style={{ position:'absolute', inset:0, background:`linear-gradient(0deg, ${primary} 10%, transparent 100%)` }}/>
       </div>
       <div style={{ padding:'0 22px 36px', position:'relative', marginTop:-40 }}>
+        <div style={{ position:'absolute', top:14, right:22, filter:'drop-shadow(0 8px 20px rgba(0,0,0,0.15))' }}>
+          <LogoMark size={54} color="#1E4FA1" accent={accent}/>
+        </div>
         <SectionLabel label="Quem somos" primary={accent}/>
         <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-0.01em' }}>
           14 anos lutando pelo<br/><span style={{ color:accent }}>seu direito.</span>
@@ -308,7 +311,7 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
 function Footer({ accent }) {
   return (
     <footer style={{ padding:'24px 22px 28px', background:'#0A1F45', color:'rgba(255,255,255,.7)' }}>
-      <Logo size={18} color="#fff" accent={accent}/>
+      <Logo size={18} color="#fff" accent={accent} variant="reduced"/>
       <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11.5, lineHeight:1.5, margin:'14px 0 0', color:'rgba(255,255,255,.6)' }}>
         A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
       </p>

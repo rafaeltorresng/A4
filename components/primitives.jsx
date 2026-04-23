@@ -62,15 +62,34 @@ const Icon = {
   ),
 };
 
-function Logo({ size = 20, stacked = true, color = '#1E4FA1', accent = '#FFC431' }) {
+function Logo({ size = 20, stacked = true, color = '#1E4FA1', accent = '#FFC431', variant = 'full' }) {
+  if (variant === 'mark') return <LogoMark size={size * 2} color={color} accent={accent}/>;
+  
+  const text = variant === 'reduced' ? 'AQ4TRO' : 'AQU4TRO';
+  const parts = variant === 'reduced' ? [['A', accent], ['Q', color], ['4', accent], ['TRO', color]] : [['A', accent], ['QU', color], ['4', accent], ['TRO', color]];
+
   return (
     <div style={{ display:'inline-flex', flexDirection:'column', alignItems:'flex-start', lineHeight:1 }}>
       <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:size, letterSpacing:'.02em', color }}>
-        <span style={{ color: accent }}>A</span>QU<span style={{ color: accent }}>4</span>TRO
+        {parts.map(([txt, clr], i) => <span key={i} style={{ color: clr }}>{txt}</span>)}
       </div>
-      {stacked && (
+      {stacked && variant === 'full' && (
         <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:size*0.32, letterSpacing:'.3em', color, marginTop:3 }}>SERVIÇOS DE TRÂNSITO</div>
       )}
+    </div>
+  );
+}
+
+function LogoMark({ size = 44, color = '#1E4FA1', accent = '#FFC431' }) {
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: '50%', background: color,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: size * 0.42,
+      letterSpacing: '-0.02em', lineHeight: 1, color: '#fff',
+      boxShadow: '0 4px 12px rgba(15,46,99,0.15)'
+    }}>
+      <span style={{ color: accent }}>A</span>Q<span style={{ color: accent }}>4</span>
     </div>
   );
 }
@@ -124,4 +143,4 @@ function Counter({ target, duration = 2000 }) {
   return <span ref={elementRef}>{prefix}{count}{suffix}</span>;
 }
 
-Object.assign(window, { WA_URL, Icon, Logo, SectionLabel, Counter });
+Object.assign(window, { WA_URL, Icon, Logo, LogoMark, SectionLabel, Counter });

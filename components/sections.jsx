@@ -35,8 +35,25 @@ function Hero({ primary, accent }) {
         <a href={WA_URL} className="btn-shine" style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
           <Icon.Whatsapp size={22}/> Falar com um especialista
         </a>
-        <div style={{ marginTop:10, display:'flex', alignItems:'center', justifyContent:'center', gap:6, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.75)' }}>
-          <span className="pulse-dot" style={{ width:6, height:6, borderRadius:999, background:'#4ADE80' }}/> Tire sua dúvida de graça agora
+        <div style={{ 
+          marginTop:14, 
+          display:'flex', 
+          alignItems:'center', 
+          justifyContent:'center', 
+          gap:8, 
+          fontFamily:'DM Sans, sans-serif', 
+          fontSize:12, 
+          fontWeight:700, 
+          color:'#fff',
+          background:'rgba(255,255,255,0.08)',
+          padding:'6px 16px',
+          borderRadius:999,
+          width:'fit-content',
+          margin:'14px auto 0',
+          border:'1px solid rgba(255,255,255,0.12)'
+        }}>
+          <span className="pulse-dot" style={{ width:7, height:7, borderRadius:999, background:'#4ADE80', boxShadow:'0 0 12px #4ADE80' }}/> 
+          Tire sua dúvida de graça agora
         </div>
         <div style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
           {[['14','anos de\nexperiência'],['+5mil','vítimas\npagas'],['100%','atendimento\ndigital']].map(([b,s],i)=>(

@@ -245,44 +245,6 @@ function ComoFunciona({ primary, accent }) {
   );
 }
 
-function ProvaSocial({ primary, accent }) {
-  const [active, setActive] = React.useState(0);
-  const depos = [
-    { name: 'Juliana M.', role: 'Passageira de Uber · Recife, PE', text: 'Fui atropelada em uma viagem de app e nem sabia que tinha direito a seguro. A equipe cuidou de tudo e recebi minha indenização em poucos meses.', stars: 5 },
-    { name: 'Carlos R.', role: 'Motorista · Olinda, PE', text: 'Tinha medo de burocracia por causa das mudanças na lei. Fui recebido com clareza, me explicaram o que ainda era possível e o que mudou.', stars: 5 },
-    { name: 'Dona Helena', role: 'Familiar de vítima · São Paulo, SP', text: 'Perdi meu irmão em um acidente antigo e não sabia como receber. A A QU4TRO me acolheu e garantiu o direito da nossa família.', stars: 5 },
-  ];
-  return (
-    <section style={{ padding: '38px 0 30px', background: '#F7F9FC' }}>
-      <div style={{ padding: '0 22px' }}>
-        <SectionLabel label="Quem confiou" primary={primary}/>
-        <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
-          Histórias reais de<br/><span style={{ color: primary }}>quem confiou.</span>
-        </h2>
-      </div>
-      <div style={{ padding: '0 22px', marginTop: 24 }}>
-        <div style={{ padding: '24px 22px 20px', background: 'rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(20px) saturate(180%)', borderRadius: 24, border: '1px solid rgba(255, 255, 255, 0.8)', position: 'relative', boxShadow: '0 10px 30px rgba(15,46,99,.08)' }}>
-          <div style={{ position: 'absolute', top: 16, right: 18 }}><Icon.Quote color={primary}/></div>
-          <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>{Array.from({ length: 5 }).map((_, i) => <Icon.Star key={i}/>)}</div>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.6, color: '#1F2937', margin: 0, fontWeight: 500 }}>{depos[active].text}</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 18, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,.05)' }}>
-            <div style={{ width: 40, height: 40, borderRadius: 14, background: `linear-gradient(135deg, ${primary}, #0F2E63)`, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14 }}>{depos[active].name[0]}</div>
-            <div>
-              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: '#0F2E63' }}>{depos[active].name}</div>
-              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#6B7280', fontWeight: 500 }}>{depos[active].role}</div>
-            </div>
-          </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 14 }}>
-          {depos.map((_, i) => (
-            <button key={i} onClick={() => setActive(i)} style={{ width: active === i ? 22 : 8, height: 8, borderRadius: 999, background: active === i ? primary : '#CBD5E1', border: 'none', padding: 0, cursor: 'pointer', transition: 'all .25s' }}/>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function InstagramBanner({ primary = '#0F2E63' }) {
   return (
     <section style={{ padding: '0 22px 38px', textAlign: 'center', background: '#F7F9FC' }}>
@@ -412,4 +374,4 @@ function FloatingCTA() {
   );
 }
 
-Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, ProvaSocial, InstagramBanner, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });
+Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, InstagramBanner, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });

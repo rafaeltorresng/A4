@@ -252,11 +252,13 @@ function ComoFunciona({ primary, accent }) {
                   <span className="acc-arrow">+</span>
                 </div>
                 <div className="acc-body">
-                  <p>{s.d}</p>
-                  <span className="acc-pill">
-                    <span style={{ width:5, height:5, borderRadius:999, background:primary }}/>
-                    {s.pill}
-                  </span>
+                  <div className="acc-body-inner">
+                    <p>{s.d}</p>
+                    <span className="acc-pill">
+                      <span style={{ width:5, height:5, borderRadius:999, background:primary }}/>
+                      {s.pill}
+                    </span>
+                  </div>
                 </div>
               </div>
             );
@@ -304,6 +306,8 @@ function InstagramProfilePreview() {
         }}>
           <img 
             src="assets/insta-profile.png" 
+            alt="Instagram Profile"
+            loading="lazy"
             style={{ width: '100%', height: 'auto', borderRadius: 16, display: 'block' }}
           />
           
@@ -364,6 +368,7 @@ function FounderProfile({ primary, accent }) {
           <img 
             src="assets/aurea.jpg" 
             alt="Áurea - Fundadora" 
+            loading="lazy"
             style={{ width: '100%', height: 'auto', borderRadius: '20px', position: 'relative', zIndex: 1, boxShadow: '0 20px 40px rgba(15, 46, 99, 0.15)', display: 'block', objectFit: 'cover', aspectRatio: '4/5' }}
           />
         </div>
@@ -491,8 +496,10 @@ function FAQ({ primary }) {
                   <span className="acc-title-txt" style={{ fontSize: '14px', color: isOpen ? primary : '#0F2E63' }}>{f.q}</span>
                   <span className="acc-arrow" style={{ fontSize: '20px' }}>+</span>
                 </div>
-                <div className="acc-body" style={{ padding: isOpen ? '0 0 20px 0' : '0' }}>
-                  <p style={{ fontSize: '13px', color: '#6B7280' }}>{f.a}</p>
+                <div className="acc-body">
+                  <div className="acc-body-inner" style={{ padding: isOpen ? '0 0 20px 0' : '0', transition: 'padding 0.3s ease' }}>
+                    <p style={{ fontSize: '13px', color: '#6B7280', margin: 0 }}>{f.a}</p>
+                  </div>
                 </div>
               </div>
             );

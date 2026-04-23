@@ -144,14 +144,21 @@
 }
 
 .acc-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(.4, 0, .2, 1), padding 0.3s;
-  padding: 0 0 0 44px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(.4, 0, .2, 1);
 }
 
 .acc-item.open .acc-body {
-  max-height: 200px;
+  grid-template-rows: 1fr;
+}
+
+.acc-body-inner {
+  overflow: hidden;
+  padding: 0 0 0 44px;
+}
+
+.acc-item.open .acc-body-inner {
   padding: 0 0 20px 44px;
 }
 

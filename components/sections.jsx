@@ -373,7 +373,7 @@ function CTAFinal({ primary = '#0F2E63', accent }) {
           </p>
           
           <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16 }}>
-            <a href={WA_URL} className="btn-shine" style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'center', gap:10, padding:'18px 24px', background:'#25D366', color:'#fff', borderRadius:16, textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:16, boxShadow: '0 10px 24px rgba(37,211,102,0.3)' }}>
+            <a href={WA_URL} className="btn-shine" style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', gap:10, padding:'18px 32px', background:'#25D366', color:'#fff', borderRadius:16, textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:16, boxShadow: '0 10px 24px rgba(37,211,102,0.3)' }}>
               <Icon.Whatsapp size={22}/> Iniciar atendimento
             </a>
             <a href="tel:+5581997140111" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'rgba(255,255,255,.5)', textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:13 }}>

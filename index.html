@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>A QU4TRO · Landing Page</title>
+<title>A QU4TRO · Especialistas em Indenização</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="colors_and_type.css">
 <style>
-  html, body { margin: 0; padding: 0; min-height: 100%; background: #EEF2F7; }
+  html, body { margin: 0; padding: 0; min-height: 100%; background: var(--neutral-200); }
   body {
     font-family: 'DM Sans', system-ui, sans-serif;
     min-height: 100dvh;
@@ -26,7 +26,7 @@
     background:
       radial-gradient(circle at 20% 10%, rgba(30,79,161,.06), transparent 55%),
       radial-gradient(circle at 85% 85%, rgba(255,196,49,.08), transparent 55%),
-      #EEF2F7;
+      var(--neutral-200);
     z-index: 0;
   }
   #root {
@@ -36,15 +36,10 @@
     margin: 0 auto;
     min-height: 100dvh;
     box-shadow: 0 0 0 1px rgba(0,0,0,.04);
+    background: var(--white);
   }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 10px 24px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.2); }
-    50% { transform: scale(1.06); box-shadow: 0 14px 32px rgba(37,211,102,.55), 0 2px 6px rgba(0,0,0,.2); }
-  }
-  /* Scrollbar dentro do iPhone */
-  .scroll-area::-webkit-scrollbar { width: 0; }
-  .scroll-area { scrollbar-width: none; }
-
+  
+  /* Animations & Effects */
   .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -94,46 +89,37 @@
   }
 
   .reveal strong {
-    color: #1E4FA1; /* Alinhado com o Brand Kit */
+    color: #1E4FA1;
     font-weight: 700;
   }
 
-  .footer-icon:hover {
-    background: rgba(255,255,255,0.15) !important;
-    transform: translateY(-2px);
-  }
-
-
-
-
-
-
+  /* Utility */
+  .scroll-area::-webkit-scrollbar { width: 0; }
+  .scroll-area { scrollbar-width: none; }
 
 </style>
 </head>
 <body>
 <div id="stage"><div id="root"></div></div>
 
-
-
 <script>
   const CONFIG = {
     primary: "#1E4FA1",
-    accent: "#FFC431",
-    heroTone: "human"
+    accent: "#FFC431"
   };
 </script>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/primitives.jsx"></script>
 <script type="text/babel" src="components/sections.jsx"></script>
 
 <script type="text/babel">
   const { useState, useEffect, useRef } = React;
 
   function App() {
-    const { primary, accent, heroTone } = CONFIG;
+    const { primary, accent } = CONFIG;
 
     useEffect(() => {
       const observer = new IntersectionObserver((entries) => {
@@ -149,30 +135,23 @@
     }, []);
 
     return (
-      <>
-        <div style={{
-          position: 'relative',
-          minHeight: '100dvh',
-          background: '#f5f5f5',
-          WebkitOverflowScrolling: 'touch',
-        }}>
-          <TopBar primary={primary}/>
-          <div data-screen-label="Landing">
-            <div className="reveal"><Hero primary={primary} accent={accent} heroTone={heroTone}/></div>
-            <div className="reveal"><Especialidades primary={primary} accent={accent}/></div>
-            <div className="reveal"><ComoFunciona primary={primary} accent={accent}/></div>
-            <div className="reveal"><ProvaSocial primary={primary} accent={accent}/></div>
-            <div className="reveal"><InstagramBanner primary={primary} accent={accent}/></div>
-            <div className="reveal"><Problema primary={primary}/></div>
-            <div className="reveal"><QuemSomos primary={primary} accent={accent}/></div>
-            <div className="reveal"><FAQ primary={primary}/></div>
-            <div className="reveal"><CTAFinal primary={primary} accent={accent}/></div>
-            <Footer primary={primary} accent={accent}/>
-          </div>
-          <div style={{ height: 96 }}/>
+      <div style={{ position: 'relative', minHeight: '100dvh', background: '#f5f5f5' }}>
+        <TopBar primary={primary}/>
+        <div data-screen-label="Landing">
+          <div className="reveal"><Hero primary={primary} accent={accent}/></div>
+          <div className="reveal"><Especialidades primary={primary} accent={accent}/></div>
+          <div className="reveal"><ComoFunciona primary={primary} accent={accent}/></div>
+          <div className="reveal"><ProvaSocial primary={primary} accent={accent}/></div>
+          <div className="reveal"><InstagramBanner primary={primary}/></div>
+          <div className="reveal"><Problema primary={primary}/></div>
+          <div className="reveal"><QuemSomos primary={primary} accent={accent}/></div>
+          <div className="reveal"><FAQ primary={primary}/></div>
+          <div className="reveal"><CTAFinal primary={primary} accent={accent}/></div>
+          <Footer accent={accent}/>
         </div>
+        <div style={{ height: 80 }}/>
         <FloatingCTA/>
-      </>
+      </div>
     );
   }
 

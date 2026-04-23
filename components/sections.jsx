@@ -1,403 +1,48 @@
-// AQU4TRO — Seções da landing page
+// AQU4TRO — Top-level sections (Refactored)
 
-const WHATSAPP_URL = 'https://wa.me/5581997140111?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista.';
-
-// ─── Ícones (outline, 24px) ─────────────────────────────────────
-const Icon = {
-  Whatsapp: ({ size = 22, color = '#fff' }) => (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill={color}>
-      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-    </svg>
-  ),
-  Phone: ({ size = 18, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z" stroke={color} strokeWidth="1.7" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Shield: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" stroke={color} strokeWidth="1.6" strokeLinejoin="round"/>
-      <path d="m9 12 2 2 4-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Car: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M5 17h14M5 17v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2M5 17l1.5-5.5A2 2 0 0 1 8.4 10h7.2a2 2 0 0 1 1.9 1.5L19 17M16 17v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="7.5" cy="14.5" r="1" fill={color}/>
-      <circle cx="16.5" cy="14.5" r="1" fill={color}/>
-    </svg>
-  ),
-  App: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <rect x="6" y="2.5" width="12" height="19" rx="2.5" stroke={color} strokeWidth="1.6"/>
-      <path d="M10 18h4" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
-      <path d="M9 6h6" stroke={color} strokeWidth="1.4" strokeLinecap="round" opacity=".5"/>
-    </svg>
-  ),
-  Doc: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke={color} strokeWidth="1.6" strokeLinejoin="round"/>
-      <path d="M14 2v6h6M9 14h6M9 17h4" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Check: ({ size = 20, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill={color} opacity=".12"/>
-      <path d="m8 12 3 3 5-6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Clock: ({ size = 22, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.6"/>
-      <path d="M12 7v5l3 2" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
-    </svg>
-  ),
-  Pin: ({ size = 18, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" stroke={color} strokeWidth="1.6"/>
-      <circle cx="12" cy="10" r="2.5" stroke={color} strokeWidth="1.6"/>
-    </svg>
-  ),
-  Chevron: ({ open, color = '#1E4FA1' }) => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .25s'}}>
-      <path d="m6 9 6 6 6-6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Star: ({ color = '#FFC431' }) => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill={color}><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
-  ),
-  Quote: ({ color = '#1E4FA1' }) => (
-    <svg width="28" height="22" viewBox="0 0 28 22" fill={color} opacity=".18">
-      <path d="M0 22V12C0 5 4 0 11 0v4c-3 0-5 2-5 5v1h5v12H0Zm17 0V12C17 5 21 0 28 0v4c-3 0-5 2-5 5v1h5v12H17Z"/>
-    </svg>
-  ),
-  Alert: ({ color = '#FFC431' }) => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2 1 21h22L12 2Z" fill={color}/>
-      <path d="M12 9v5M12 17.5v.5" stroke="#1E4FA1" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  Menu: ({ color = '#1E4FA1' }) => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M4 7h16M4 12h16M4 17h16" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  Search: ({ size = 20, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2"/>
-      <path d="m20 20-3-3" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  Award: ({ size = 20, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke={color} strokeWidth="2"/>
-      <path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Instagram: ({ size = 20, color = '#fff' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-    </svg>
-  ),
-  ExternalLink: ({ size = 14, color = '#9CA3AF' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-      <polyline points="15 3 21 3 21 9"/>
-      <line x1="10" y1="14" x2="21" y2="3"/>
-    </svg>
-  ),
-  /** Passo “Como funciona”: análise do caso (prontuário + conferido) — evita lupa genérica */
-  CaseReview: ({ size = 24, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path
-        d="M10.5 3h3a1 1 0 0 1 1 1v1.5h3.5a1 1 0 0 1 1 1V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6.5a1 1 0 0 1 1-1H9.5V4a1 1 0 0 1 1-1Z"
-        stroke={color} strokeWidth="1.55" strokeLinejoin="round"
-      />
-      <path d="M8.5 10.5h7M8.5 13.5h7M8.5 16.5h4.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.45"/>
-      <circle cx="17" cy="9.5" r="3.25" fill="#fff" stroke={color} strokeWidth="1.45"/>
-      <path d="m15.4 9.5 1.35 1.35 2.9-2.9" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  /** Passo 03: burocracia — pilha de processos + carimbo “ok” */
-  PaperworkStack: ({ size = 24, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path
-        d="M6.5 10.5h11a1.5 1.5 0 0 1 1.5 1.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19v-7a1.5 1.5 0 0 1 1.5-1.5Z"
-        stroke={color} strokeWidth="1.5" strokeLinejoin="round" opacity="0.35"
-      />
-      <path
-        d="M5.5 8.5h12A1.5 1.5 0 0 1 19 10v8.5A1.5 1.5 0 0 1 17.5 20h-12A1.5 1.5 0 0 1 4 18.5V10a1.5 1.5 0 0 1 1.5-1.5Z"
-        stroke={color} strokeWidth="1.55" strokeLinejoin="round"
-      />
-      <path d="M8 13h9M8 16h6" stroke={color} strokeWidth="1.45" strokeLinecap="round" opacity="0.4"/>
-      <circle cx="17" cy="12" r="3.5" fill={color}/>
-      <path d="m15.2 12 1.3 1.2 2.5-2.8" stroke="#fff" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  /** Passo 04: valor creditado — comprovante + seta de entrada */
-  PayoutReceived: ({ size = 24, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path
-        d="M4.5 11.5h15a1.25 1.25 0 0 1 1.25 1.25v6.5a1.25 1.25 0 0 1-1.25 1.25h-15A1.25 1.25 0 0 1 3.25 19.25v-6.5a1.25 1.25 0 0 1 1.25-1.25Z"
-        stroke={color} strokeWidth="1.5" strokeLinejoin="round"
-      />
-      <path d="M7 14.5h10M7 17h6" stroke={color} strokeWidth="1.35" strokeLinecap="round" opacity="0.38"/>
-      <path
-        d="M12 4.25v5.75M9.25 7.25 12 4.5l2.75 2.75"
-        stroke={color} strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round"
-      />
-      <path d="m9.25 19.75 2.25-2.25 3.25 3.25" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  /** Especialidade: indenização via app — celular + rota de corrida + cobertura ok */
-  RideshareClaim: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <rect x="6" y="3.25" width="11.5" height="17.5" rx="2.35" stroke={color} strokeWidth="1.45"/>
-      <path d="M9.25 6.25h5.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.32"/>
-      <path
-        d="M9.5 16.25c1.4-2.5 3.4-4 6.25-4.75"
-        stroke={color} strokeWidth="1.35" strokeLinecap="round" fill="none"
-      />
-      <circle cx="9.5" cy="16.25" r="1.25" fill={color}/>
-      <circle cx="15.75" cy="11.5" r="1.15" fill={color} opacity="0.55"/>
-      <circle cx="18.25" cy="5.75" r="2.4" fill="#fff" stroke={color} strokeWidth="1.35"/>
-      <path d="m16.85 5.75 1.05.95 1.9-1.85" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M9.75 18.75h4.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" opacity="0.42"/>
-    </svg>
-  ),
-  /** Especialidade: terceiros — dois veículos + ponto de conflito */
-  ThirdPartyCollision: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path
-        d="M3.5 17.2h6.2l.9-3.1a.85.85 0 01.8-.6h.9a.85.85 0 01.8.6l.9 3.1h1.4"
-        stroke={color} strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round"
-      />
-      <path d="M5.2 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
-      <path d="M8.8 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
-      <path
-        d="M14.1 17.2h6.2l.9-3.1a.85.85 0 01.8-.6h.9a.85.85 0 01.8.6l.9 3.1h1.35"
-        stroke={color} strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round"
-      />
-      <path d="M15.8 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
-      <path d="M19.4 17.2v.9a.55.55 0 00.55.55h.9a.55.55 0 00.55-.55v-.9" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
-      <path d="M11.2 11.5 12.8 13 14.4 11.5" stroke={color} strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="12.8" cy="9.8" r="1.15" fill={color}/>
-    </svg>
-  ),
-  /** Especialidade: seguro passageiro app — tela de viagem + cruz médica */
-  PassengerTripCover: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <rect x="4.75" y="5.25" width="14.5" height="13.5" rx="2.15" stroke={color} strokeWidth="1.45"/>
-      <path d="M7.75 9.25h8.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.35"/>
-      <circle cx="12" cy="12.35" r="2.35" stroke={color} strokeWidth="1.35" fill="none"/>
-      <path d="M12 10.6v3.5M10.25 12.35h3.5" stroke={color} strokeWidth="1.25" strokeLinecap="round"/>
-      <path d="M8.25 16.5h7.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.38"/>
-      <circle cx="18.35" cy="8.15" r="2.55" fill="#fff" stroke={color} strokeWidth="1.3"/>
-      <path d="M18.35 6.85v2.6M17.05 8.15h2.6" stroke={color} strokeWidth="1.15" strokeLinecap="round"/>
-    </svg>
-  ),
-  /** Especialidade: DPVAT legado — arquivo + tempo / legislação anterior */
-  LegacyPolicyArchive: ({ size = 26, color = '#1E4FA1' }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path
-        d="M5 6.5h5l1.2 1.4H19a1.2 1.2 0 011.2 1.2v9.6a1.2 1.2 0 01-1.2 1.2H5a1.2 1.2 0 01-1.2-1.2V7.7A1.2 1.2 0 015 6.5Z"
-        stroke={color} strokeWidth="1.45" strokeLinejoin="round"
-      />
-      <path d="M7.5 12h8M7.5 15h5.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" opacity="0.4"/>
-      <circle cx="17.2" cy="9.3" r="3.6" fill="#fff" stroke={color} strokeWidth="1.35"/>
-      <path d="M17.2 7.4v2.35l1.55.9" stroke={color} strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M14.8 18.2h4.8" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.35"/>
-    </svg>
-  ),
-};
-
-// ─── Logo AQU4TRO ──────────────────────────────────────────────
-function Logo({ size = 20, stacked = true, color = '#1E4FA1', accent = '#FFC431' }) {
-  return (
-    <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1 }}>
-      <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: size, letterSpacing: '.02em', color }}>
-        <span style={{ color: accent }}>A</span>QU<span>4</span>TRO
-      </div>
-      {stacked && (
-        <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: size * 0.32, letterSpacing: '.3em', color, marginTop: 3 }}>
-          SERVIÇOS DE TRÂNSITO
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Componente de Contador (Motion) ──────────────────────────
-function Counter({ target, duration = 2000 }) {
-  const [count, setCount] = React.useState(0);
-  const elementRef = React.useRef(null);
-  const hasAnimated = React.useRef(false);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !hasAnimated.current) {
-        hasAnimated.current = true;
-        let start = 0;
-        const endValue = parseInt(target.replace(/\D/g, ''));
-        if (isNaN(endValue)) {
-          setCount(target);
-          return;
-        }
-        const increment = endValue / (duration / 16);
-        const timer = setInterval(() => {
-          start += increment;
-          if (start >= endValue) {
-            setCount(endValue);
-            clearInterval(timer);
-          } else {
-            setCount(Math.floor(start));
-          }
-        }, 16);
-        // Ensure cleanup if component unmounts
-        return () => clearInterval(timer);
-      }
-    }, { threshold: 0.5 });
-
-    if (elementRef.current) observer.observe(elementRef.current);
-    return () => observer.disconnect();
-  }, [target, duration]);
-
-  const suffix = target.replace(/[0-9]/g, '').replace('+', '');
-  const prefix = target.startsWith('+') ? '+' : '';
-  
-  return <span ref={elementRef}>{prefix}{count}{suffix}</span>;
-}
-
-
-// ─── Top bar (fixa dentro do telefone) ─────────────────────────
 function TopBar({ primary }) {
   return (
-    <div style={{
-      position: 'sticky', top: 0, zIndex: 10,
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '12px 18px', background: 'rgba(255,255,255,.75)',
-      backdropFilter: 'blur(15px) saturate(160%)',
-      borderBottom: '1px solid rgba(229,231,235,.5)',
-    }}>
-      <Logo size={17} stacked={true} color={primary} />
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <a href={WHATSAPP_URL} className="btn-shine" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 6,
-          background: '#25D366', color: '#fff',
-          padding: '8px 14px', borderRadius: 999,
-          fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 11,
-          textDecoration: 'none', boxShadow: '0 4px 12px rgba(37,211,102,.25)',
-        }}>
-          <Icon.Whatsapp size={14} /> WhatsApp
-        </a>
-      </div>
+    <div style={{ position:'sticky', top:0, zIndex:10, display:'flex', alignItems:'center', justifyContent:'space-between', padding:'12px 18px', background:'rgba(255,255,255,.75)', backdropFilter:'blur(15px) saturate(160%)', borderBottom:'1px solid rgba(229,231,235,.5)' }}>
+      <Logo size={17} stacked color={primary} accent="#FFC431"/>
+      <a href={WA_URL} className="btn-shine" style={{ display:'inline-flex', alignItems:'center', gap:6, background:'#25D366', color:'#fff', padding:'8px 14px', borderRadius:999, fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:11, textDecoration:'none', boxShadow:'0 4px 12px rgba(37,211,102,.25)' }}>
+        <Icon.Whatsapp size={14}/> WhatsApp
+      </a>
     </div>
   );
 }
 
-// ─── Hero ─────────────────────────────────────────────────────
-function Hero({ primary, accent, heroTone }) {
-  // heroTone: 'road' | 'human'
+function Hero({ primary, accent }) {
   return (
-    <section style={{ position: 'relative', color: '#fff', overflow: 'hidden', minHeight: 480, display: 'flex', alignItems: 'center' }}>
-      {/* Background Image with Overlay */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'url("uploads/hero-bg.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: `linear-gradient(180deg, rgba(15, 46, 99, 0.7) 0%, ${primary}ee 100%)`,
-        }} />
+    <section style={{ position:'relative', color:'#fff', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center' }}>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url("assets/hero-bg.png")', backgroundSize:'cover', backgroundPosition:'center' }}>
+        <div style={{ position:'absolute', inset:0, background:`linear-gradient(180deg, rgba(15,46,99,0.7) 0%, ${primary}ee 100%)` }}/>
       </div>
-
-      {/* Modern curves overlay */}
-      <svg width="100%" height="100%" viewBox="0 0 390 560" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, opacity: .4, pointerEvents: 'none' }}>
+      <svg width="100%" height="100%" viewBox="0 0 390 560" preserveAspectRatio="none" style={{ position:'absolute', inset:0, opacity:.4, pointerEvents:'none' }}>
         <path d="M-20 560 Q 100 300, 200 250 T 410 60" stroke="#fff" strokeWidth="0.5" fill="none" opacity=".2"/>
         <path d="M-50 560 Q 120 320, 220 270 T 420 90" stroke={accent} strokeWidth="1" fill="none" opacity=".4"/>
       </svg>
-
-      <div style={{ position: 'relative', padding: '28px 22px 26px' }}>
-        {/* Eyebrow */}
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
-          padding: '6px 12px', borderRadius: 999,
-          background: 'rgba(255,255,255,.08)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,.12)',
-          fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 10,
-          letterSpacing: '.12em', textTransform: 'uppercase',
-          color: '#fff',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-        }}>
-          <span style={{ width: 6, height: 6, borderRadius: 999, background: accent, boxShadow: `0 0 10px ${accent}` }}/>
-          Especialistas em indenização
+      <div style={{ position:'relative', padding:'28px 22px 26px' }}>
+        <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'6px 12px', borderRadius:999, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.12)', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:10, letterSpacing:'.12em', textTransform:'uppercase', color:'#fff' }}>
+          <span style={{ width:6, height:6, borderRadius:999, background:accent, boxShadow:`0 0 10px ${accent}` }}/> Especialistas em indenização
         </div>
-
-        {/* Headline */}
-        <h1 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 800,
-          fontSize: 30, lineHeight: 1.1, margin: '14px 0 0',
-          letterSpacing: '-.01em',
-        }}>
+        <h1 style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-.01em' }}>
           Sofreu um acidente<br/>de trânsito?<br/>
-          <span style={{ color: accent }}>Você tem direito</span><br/>
-          à indenização.
+          <span style={{ color:accent }}>Você tem direito</span><br/>à indenização.
         </h1>
-
-        <p style={{
-          fontFamily: 'DM Sans, sans-serif', fontWeight: 400,
-          fontSize: 14, lineHeight: 1.55, margin: '14px 0 0',
-          color: 'rgba(255,255,255,.88)', maxWidth: 320,
-        }}>
+        <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
           Cuidamos de tudo, do início ao fim. Sem burocracia, sem custo adiantado — só você recebendo o que é seu por direito.
         </p>
-
-        {/* CTA principal */}
-        <a href={WHATSAPP_URL} className="btn-shine" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-          marginTop: 22, padding: '16px 20px',
-          background: '#25D366', color: '#fff',
-          borderRadius: 14, textDecoration: 'none',
-          fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16,
-          boxShadow: '0 10px 24px rgba(37,211,102,.35), 0 2px 6px rgba(0,0,0,.2)',
-        }}>
+        <a href={WA_URL} className="btn-shine" style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
           <Icon.Whatsapp size={22}/> Falar com um especialista
         </a>
-
-        <div style={{
-          marginTop: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-          fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'rgba(255,255,255,.75)',
-        }}>
-          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: 999, background: '#4ADE80' }}/>
-          Atendimento agora · Resposta em minutos
+        <div style={{ marginTop:10, display:'flex', alignItems:'center', justifyContent:'center', gap:6, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.75)' }}>
+          <span className="pulse-dot" style={{ width:6, height:6, borderRadius:999, background:'#4ADE80' }}/> Atendimento agora · Resposta em minutos
         </div>
-
-        {/* Stats bar */}
-        <div style={{
-          marginTop: 24, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
-          background: 'rgba(255,255,255,.08)', borderRadius: 14,
-          border: '1px solid rgba(255,255,255,.14)',
-          backdropFilter: 'blur(6px)',
-          overflow: 'hidden',
-        }}>
-          {[
-            ['14', 'anos de\nexperiência'],
-            ['+5mil', 'vítimas\nindenizadas'],
-            ['100%', 'atendimento\non-line'],
-          ].map(([big, small], i) => (
-            <div key={i} style={{
-              padding: '12px 8px', textAlign: 'center',
-              borderRight: i < 2 ? '1px solid rgba(255,255,255,.12)' : 'none',
-            }}>
-              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 22, color: accent }}>
-                <Counter target={big}/>
-              </div>
-              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, lineHeight: 1.25, color: 'rgba(255,255,255,.85)', whiteSpace: 'pre-line', marginTop: 2 }}>{small}</div>
+        <div style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
+          {[['14','anos de\nexperiência'],['+5mil','vítimas\nindenizadas'],['100%','atendimento\non-line']].map(([b,s],i)=>(
+            <div key={i} style={{ padding:'12px 8px', textAlign:'center', borderRight: i<2?'1px solid rgba(255,255,255,.12)':'none' }}>
+              <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:22, color:accent }}><Counter target={b}/></div>
+              <div style={{ fontFamily:'DM Sans, sans-serif', fontSize:10, lineHeight:1.25, color:'rgba(255,255,255,.85)', whiteSpace:'pre-line', marginTop:2 }}>{s}</div>
             </div>
           ))}
         </div>
@@ -406,7 +51,6 @@ function Hero({ primary, accent, heroTone }) {
   );
 }
 
-// ─── Problema ─────────────────────────────────────────────────
 function Problema({ primary }) {
   const items = [
     'Não sei se tenho direito a alguma indenização.',
@@ -417,161 +61,26 @@ function Problema({ primary }) {
   return (
     <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
       <SectionLabel label="O que você está sentindo" primary={primary}/>
-      <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-        fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63',
-        letterSpacing: '-0.01em',
-      }}>
+      <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
         Dúvidas comuns após<br/><span style={{ color: primary }}>um acidente.</span>
       </h2>
-      <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.55, color: '#4B5563', margin: '8px 0 18px' }}>
-        Você não está sozinho. Talvez esteja pensando:
-      </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 18 }}>
         {items.map((t, i) => (
-          <div key={i} style={{
-            display: 'flex', alignItems: 'flex-start', gap: 12,
-            padding: '16px 16px', borderRadius: 16,
-            background: 'rgba(247, 249, 252, 0.4)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(229, 231, 235, 0.6)',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
-          }}>
-            <div style={{
-              flexShrink: 0, width: 28, height: 28, borderRadius: 9,
-              background: '#fff', border: '1px solid #E5E7EB',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: primary,
-              boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
-            }}>{i + 1}</div>
-            <p style={{
-              fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.5,
-              color: '#1F2937', margin: 0, fontWeight: 500,
-            }}>"{t}"</p>
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '16px', borderRadius: 16, background: 'rgba(247, 249, 252, 0.4)', border: '1px solid rgba(229, 231, 235, 0.6)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+            <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 9, background: '#fff', border: '1px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13, color: primary }}>{i + 1}</div>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.5, color: '#1F2937', margin: 0, fontWeight: 500 }}>"{t}"</p>
           </div>
         ))}
       </div>
-
     </section>
   );
 }
-
-// ─── Como funciona ────────────────────────────────────────────
-function ComoFunciona({ primary, accent }) {
-  const steps = [
-    { n: '01', t: 'Você conta o que aconteceu', d: <>Pelo <strong>WhatsApp</strong>, em <strong>minutos</strong>. Tudo <strong>online</strong>, sem sair de casa.</>, icon: Icon.Whatsapp },
-    { n: '02', t: 'Analisamos seu caso', d: <>Um <strong>especialista</strong> avalia <strong>gratuitamente</strong> se você tem direito e qual o caminho.</>, icon: Icon.CaseReview },
-    { n: '03', t: 'Cuidamos de toda burocracia', d: <><strong>Documentos, laudos, protocolos</strong> — fazemos <strong>tudo por você</strong>.</>, icon: Icon.PaperworkStack },
-    { n: '04', t: 'Você recebe sua indenização', d: <>Acompanhamento do início ao fim, com <strong>transparência total</strong>.</>, icon: Icon.PayoutReceived },
-  ];
-  return (
-    <section style={{ padding: '40px 22px 36px', background: '#F7F9FC' }}>
-      <div style={{ textAlign: 'center', marginBottom: 30 }}>
-        <SectionLabel label="Como funciona" primary={primary}/>
-        <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-          fontSize: 32, lineHeight: 1.05, margin: '14px 0 0', color: '#0F2E63',
-          letterSpacing: '-0.01em',
-        }}>
-          Sua jornada para<br/><span style={{ color: primary }}>a indenização.</span>
-        </h2>
-      </div>
-
-      <div style={{ position: 'relative' }}>
-        {/* Glow Line Connector */}
-        <div style={{
-          position: 'absolute', left: 24, top: 20, bottom: 20,
-          width: 3, background: `linear-gradient(to bottom, ${primary}10, ${primary}, ${accent}, ${primary}10)`,
-          borderRadius: 4,
-          boxShadow: `0 0 15px ${primary}30`,
-        }}/>
-
-        {steps.map((s, i) => {
-          const StepIcon = s.icon;
-          return (
-            <div key={i} className="reveal" style={{ 
-              display: 'flex', gap: 24, marginBottom: i === steps.length - 1 ? 0 : 24, 
-              position: 'relative',
-              animationDelay: `${i * 0.15}s`
-            }}>
-              {/* Step Circle with Icon background */}
-              <div style={{
-                flexShrink: 0, width: 50, height: 50, borderRadius: 16,
-                background: '#fff', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 8px 20px rgba(15,46,99,.08)',
-                border: '1px solid #E5E7EB',
-                zIndex: 2,
-                position: 'relative',
-              }}>
-                <div style={{
-                  position: 'absolute', left: -5, right: -5, top: -5,
-                  width: 20, height: 20, borderRadius: 999,
-                  background: primary, color: '#fff',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 10, fontWeight: 800, fontFamily: 'Poppins',
-                  border: '2px solid #F7F9FC',
-                }}>{s.n}</div>
-                <StepIcon color={primary} size={24} />
-              </div>
-
-              {/* Step Card */}
-              <div style={{ 
-                flex: 1, paddingTop: 2, paddingBottom: 4,
-                background: 'rgba(255,255,255,0.4)',
-                padding: '16px 20px',
-                borderRadius: 20,
-                border: '1px solid rgba(255,255,255,0.6)',
-                backdropFilter: 'blur(10px)',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
-              }}>
-                <h3 style={{
-                  fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16,
-                  color: '#0F2E63', margin: 0, lineHeight: 1.3,
-                }}>{s.t}</h3>
-                <p style={{
-                  fontFamily: 'DM Sans, sans-serif', fontSize: 13, lineHeight: 1.55,
-                  color: '#6B7280', margin: '8px 0 0',
-                }}>{s.d}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
 
 // ─── Faixa de marcas (card Indenização via App) ───────────────
-/** Logos em `uploads/brands/` — ver README da pasta; substitua 99.svg pelo oficial quando tiver. */
-/** Marca 99: evita `<text>` em SVG externo (não renderiza em `<img>`). Troque pelo asset oficial da 99 quando tiver o kit. */
 function Brand99Mark({ height = 22 }) {
   const padX = Math.round(height * 0.36);
   return (
-    <span
-      role="img"
-      aria-label="99"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height,
-        minWidth: height * 1.45,
-        padding: `0 ${padX}px`,
-        borderRadius: Math.max(6, Math.round(height * 0.28)),
-        background: '#FFDD00',
-        boxSizing: 'border-box',
-        fontFamily: '"Poppins", system-ui, sans-serif',
-        fontWeight: 800,
-        fontSize: Math.round(height * 0.58),
-        lineHeight: 1,
-        letterSpacing: '-0.04em',
-        color: '#1A1A1A',
-      }}
-    >
-      99
-    </span>
+    <span role="img" aria-label="99" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height, minWidth: height * 1.45, padding: `0 ${padX}px`, borderRadius: Math.max(6, Math.round(height * 0.28)), background: '#FFDD00', boxSizing: 'border-box', fontFamily: '"Poppins", system-ui, sans-serif', fontWeight: 800, fontSize: Math.round(height * 0.58), lineHeight: 1, letterSpacing: '-0.04em', color: '#1A1A1A' }}>99</span>
   );
 }
 
@@ -580,177 +89,109 @@ function PartnerBrandStrip() {
   const img = { height: logoH, width: 'auto', display: 'block' };
   return (
     <div style={{ marginTop: 12 }}>
-      <div
-        style={{
-          display: 'flex', flexWrap: 'wrap', alignItems: 'center',
-          gap: 14, rowGap: 10,
-        }}
-        aria-label="Plataformas de mobilidade mencionadas no texto"
-      >
-        <img src="uploads/brands/uber.svg" alt="Uber" style={img} decoding="async" />
-        <Brand99Mark height={logoH} />
-        <img src="uploads/brands/ifood.svg" alt="iFood" style={img} decoding="async" />
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 14, rowGap: 10 }} aria-label="Plataformas de mobilidade">
+        <img src="assets/brands/uber.svg" alt="Uber" style={img}/>
+        <Brand99Mark height={logoH}/>
+        <img src="assets/brands/ifood.svg" alt="iFood" style={img}/>
       </div>
-      <p style={{
-        fontFamily: 'DM Sans, sans-serif', fontSize: 9, lineHeight: 1.35,
-        color: '#9CA3AF', margin: '8px 0 0',
-      }}>
-        Marcas exibidas pertencem aos respectivos titulares.
-      </p>
+      <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, lineHeight: 1.35, color: '#9CA3AF', margin: '8px 0 0' }}>Marcas exibidas pertencem aos respectivos titulares.</p>
     </div>
   );
 }
 
-// ─── Especialidades ───────────────────────────────────────────
 function Especialidades({ primary, accent }) {
   const services = [
-    { icon: Icon.RideshareClaim, t: 'Indenização via App', d: 'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas do aplicativo.', tag: 'NOVO', brandStrip: true },
-    { icon: Icon.ThirdPartyCollision, t: 'Processos contra Terceiros', d: 'Danos materiais, morais e estéticos causados por outros condutores. Cobrança direta ou judicial.' },
-    { icon: Icon.PassengerTripCover, t: 'Seguro de Passageiro (APP)', d: 'Acionamento de apólices privadas para invalidez ou despesas médicas em viagens de aplicativo.' },
-    { icon: Icon.LegacyPolicyArchive, t: 'Casos DPVAT (Legado)', d: 'Ainda atendemos indenizações para acidentes ocorridos antes da mudança na legislação de 2025.' },
+    { icon: Icon.Rideshare, t:'Indenização via App', d:'Motoristas e passageiros de Uber, 99 e iFood têm direito a coberturas específicas.', tag:'NOVO', brandStrip: true },
+    { icon: Icon.ThirdParty, t:'Processos contra Terceiros', d:'Danos materiais, morais e estéticos causados por outros condutores.' },
+    { icon: Icon.Passenger,  t:'Seguro de Passageiro (APP)', d:'Acionamento de apólices privadas para invalidez ou despesas médicas.' },
+    { icon: Icon.Legacy,     t:'Casos DPVAT (Legado)', d:'Atendimentos para acidentes ocorridos antes da mudança na legislação de 2025.' },
   ];
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
+    <section style={{ padding:'38px 22px 30px', background:'#f5f5f5' }}>
       <SectionLabel label="Especialidades" primary={primary}/>
-      <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-        fontSize: 28, lineHeight: 1.1, margin: '14px 0 24px', color: '#0F2E63',
-        letterSpacing: '-0.01em',
-      }}>
-        Onde nossa equipe<br/><span style={{ color: primary }}>pode te ajudar.</span>
+      <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 24px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+        Onde nossa equipe<br/><span style={{ color:primary }}>pode te ajudar.</span>
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, alignItems: 'start' }}>
-        {services.map((s, i) => {
-          const I = s.icon;
-          return (
-            <div key={i} style={{
-              position: 'relative',
-              padding: '20px 16px', borderRadius: 18,
-              background: 'rgba(247, 249, 252, 0.8)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid #E5E7EB',
-              minHeight: s.brandStrip ? undefined : 160,
-              display: 'flex', flexDirection: 'column',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-            }}>
-              {s.tag && (
-                <span style={{
-                  position: 'absolute', top: 12, right: 12,
-                  fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 8,
-                  letterSpacing: '.12em',
-                  padding: '3px 7px', borderRadius: 6,
-                  background: accent, color: '#0F2E63',
-                  boxShadow: `0 4px 10px ${accent}40`,
-                }}>{s.tag}</span>
-              )}
-              <div style={{
-                width: 44, height: 44, borderRadius: 12,
-                background: '#fff', border: '1px solid #E5E7EB',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: 12,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-              }}>
-                <I color={primary}/>
-              </div>
-              <h3 style={{
-                fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 13,
-                color: '#0F2E63', margin: 0, lineHeight: 1.25,
-              }}>{s.t}</h3>
-              <p style={{
-                fontFamily: 'DM Sans, sans-serif', fontSize: 11, lineHeight: 1.45,
-                color: '#6B7280', margin: '6px 0 0',
-              }}>{s.d}</p>
-              {s.brandStrip ? <PartnerBrandStrip/> : null}
-            </div>
-          );
-        })}
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+        {services.map((s,i)=>{ const I = s.icon; return (
+          <div key={i} style={{ position:'relative', padding:'20px 16px', borderRadius:18, background:'rgba(247,249,252,.8)', border:'1px solid #E5E7EB', minHeight: s.brandStrip ? undefined : 160, display:'flex', flexDirection:'column', boxShadow:'0 4px 20px rgba(0,0,0,.03)' }}>
+            {s.tag && <span style={{ position:'absolute', top:12, right:12, fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:8, letterSpacing:'.12em', padding:'3px 7px', borderRadius:6, background:accent, color:'#0F2E63' }}>{s.tag}</span>}
+            <div style={{ width:44, height:44, borderRadius:12, background:'#fff', border:'1px solid #E5E7EB', display:'flex', alignItems:'center', justifyContent:'center', marginBottom:12, boxShadow:'0 2px 8px rgba(0,0,0,.05)' }}><I color={primary}/></div>
+            <h3 style={{ fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:13, color:'#0F2E63', margin:0 }}>{s.t}</h3>
+            <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11, lineHeight:1.45, color:'#6B7280', margin:'6px 0 0' }}>{s.d}</p>
+            {s.brandStrip && <PartnerBrandStrip/>}
+          </div>
+        );})}
       </div>
     </section>
   );
 }
 
-// ─── Prova Social ─────────────────────────────────────────────
+function ComoFunciona({ primary, accent }) {
+  const steps = [
+    { n:'01', t:'Você conta o que aconteceu', d:'Pelo WhatsApp, em minutos. Tudo online, sem sair de casa.', icon: Icon.Whatsapp },
+    { n:'02', t:'Analisamos seu caso', d:'Um especialista avalia gratuitamente se você tem direito.', icon: Icon.CaseReview },
+    { n:'03', t:'Cuidamos de toda burocracia', d:'Documentos, laudos, protocolos — fazemos tudo por você.', icon: Icon.PaperworkStack },
+    { n:'04', t:'Você recebe sua indenização', d:'Acompanhamento do início ao fim, com transparência total.', icon: Icon.PayoutReceived },
+  ];
+  return (
+    <section style={{ padding:'40px 22px 36px', background:'#F7F9FC' }}>
+      <div style={{ textAlign:'center', marginBottom:30 }}>
+        <SectionLabel label="Como funciona" primary={primary}/>
+        <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.05, margin:'14px 0 0', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+          Sua jornada para<br/><span style={{ color:primary }}>a indenização.</span>
+        </h2>
+      </div>
+      <div style={{ position:'relative' }}>
+        <div style={{ position:'absolute', left:24, top:20, bottom:20, width:3, background:`linear-gradient(to bottom, ${primary}10, ${primary}, ${accent}, ${primary}10)`, borderRadius:4 }}/>
+        {steps.map((s,i)=>{ const I = s.icon; return (
+          <div key={i} style={{ display:'flex', gap:24, marginBottom: i===steps.length-1?0:24, position:'relative' }}>
+            <div style={{ flexShrink:0, width:50, height:50, borderRadius:16, background:'#fff', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 8px 20px rgba(15,46,99,.08)', border:'1px solid #E5E7EB', zIndex:2, position:'relative' }}>
+              <div style={{ position:'absolute', left:-5, top:-5, width:20, height:20, borderRadius:999, background:primary, color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:10, fontWeight:800, fontFamily:'Poppins', border:'2px solid #F7F9FC' }}>{s.n}</div>
+              <I color={primary} size={24}/>
+            </div>
+            <div style={{ flex:1, background:'rgba(255,255,255,0.4)', padding:'16px 20px', borderRadius:20, border:'1px solid rgba(255,255,255,0.6)', backdropFilter:'blur(10px)' }}>
+              <h3 style={{ fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, color:'#0F2E63', margin:0 }}>{s.t}</h3>
+              <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, lineHeight:1.55, color:'#6B7280', margin:'8px 0 0' }}>{s.d}</p>
+            </div>
+          </div>
+        );})}
+      </div>
+    </section>
+  );
+}
+
 function ProvaSocial({ primary, accent }) {
   const [active, setActive] = React.useState(0);
   const depos = [
     { name: 'Juliana M.', role: 'Passageira de Uber · Recife, PE', text: 'Fui atropelada em uma viagem de app e nem sabia que tinha direito a seguro. A equipe cuidou de tudo e recebi minha indenização em poucos meses.', stars: 5 },
-    { name: 'Carlos R.', role: 'Motorista · Olinda, PE', text: 'Tinha medo de burocracia por causa das mudanças na lei. Fui recebido com clareza, me explicaram o que ainda era possível e o que mudou. Nota dez!', stars: 5 },
-    { name: 'Dona Helena', role: 'Familiar de vítima · São Paulo, SP', text: 'Perdi meu irmão em um acidente antigo e não sabia como receber. A A QU4TRO me acolheu e garantiu o direito da nossa família mesmo anos depois.', stars: 5 },
+    { name: 'Carlos R.', role: 'Motorista · Olinda, PE', text: 'Tinha medo de burocracia por causa das mudanças na lei. Fui recebido com clareza, me explicaram o que ainda era possível e o que mudou.', stars: 5 },
+    { name: 'Dona Helena', role: 'Familiar de vítima · São Paulo, SP', text: 'Perdi meu irmão em um acidente antigo e não sabia como receber. A A QU4TRO me acolheu e garantiu o direito da nossa família.', stars: 5 },
   ];
   return (
     <section style={{ padding: '38px 0 30px', background: '#F7F9FC' }}>
       <div style={{ padding: '0 22px' }}>
         <SectionLabel label="Quem confiou" primary={primary}/>
-        <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-          fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63',
-          letterSpacing: '-0.01em',
-        }}>
+        <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: 28, lineHeight: 1.1, margin: '14px 0 6px', color: '#0F2E63', letterSpacing: '-0.01em' }}>
           Histórias reais de<br/><span style={{ color: primary }}>quem confiou.</span>
         </h2>
       </div>
-
-      {/* Barra de números */}
-      <div style={{
-        margin: '18px 22px 18px',
-        padding: '14px 14px',
-        background: '#0F2E63', borderRadius: 14,
-        color: '#fff',
-        display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8,
-      }}>
-        {[['4,4mil', 'seguidores'], ['423', 'casos no Insta'], ['98%', 'satisfação']].map(([b, s], i) => (
-          <div key={i} style={{ textAlign: 'center' }}>
-            <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 18, color: accent }}>{b}</div>
-            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, color: 'rgba(255,255,255,.75)', marginTop: 2 }}>{s}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Card de depoimento */}
-      <div style={{ padding: '0 22px' }}>
-        <div style={{
-          padding: '24px 22px 20px', 
-          background: 'rgba(255, 255, 255, 0.6)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          borderRadius: 24,
-          border: '1px solid rgba(255, 255, 255, 0.8)', 
-          position: 'relative',
-          boxShadow: '0 10px 30px rgba(15,46,99,.08)',
-        }}>
+      <div style={{ padding: '0 22px', marginTop: 24 }}>
+        <div style={{ padding: '24px 22px 20px', background: 'rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(20px) saturate(180%)', borderRadius: 24, border: '1px solid rgba(255, 255, 255, 0.8)', position: 'relative', boxShadow: '0 10px 30px rgba(15,46,99,.08)' }}>
           <div style={{ position: 'absolute', top: 16, right: 18 }}><Icon.Quote color={primary}/></div>
-          <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>
-            {Array.from({ length: depos[active].stars }).map((_, i) => <Icon.Star key={i}/>)}
-          </div>
-          <p style={{
-            fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.6,
-            color: '#1F2937', margin: 0, fontWeight: 500,
-          }}>
-            {depos[active].text}
-          </p>
+          <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>{Array.from({ length: 5 }).map((_, i) => <Icon.Star key={i}/>)}</div>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.6, color: '#1F2937', margin: 0, fontWeight: 500 }}>{depos[active].text}</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 18, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,.05)' }}>
-            <div style={{
-              width: 40, height: 40, borderRadius: 14,
-              background: `linear-gradient(135deg, ${primary}, #0F2E63)`,
-              color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14,
-              boxShadow: `0 4px 10px ${primary}40`,
-            }}>{depos[active].name[0]}</div>
+            <div style={{ width: 40, height: 40, borderRadius: 14, background: `linear-gradient(135deg, ${primary}, #0F2E63)`, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14 }}>{depos[active].name[0]}</div>
             <div>
               <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: '#0F2E63' }}>{depos[active].name}</div>
               <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#6B7280', fontWeight: 500 }}>{depos[active].role}</div>
             </div>
           </div>
         </div>
-        {/* Dots */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 14 }}>
           {depos.map((_, i) => (
-            <button key={i} onClick={() => setActive(i)} style={{
-              width: active === i ? 22 : 8, height: 8, borderRadius: 999,
-              background: active === i ? primary : '#CBD5E1',
-              border: 'none', padding: 0, cursor: 'pointer',
-              transition: 'all .25s',
-            }}/>
+            <button key={i} onClick={() => setActive(i)} style={{ width: active === i ? 22 : 8, height: 8, borderRadius: 999, background: active === i ? primary : '#CBD5E1', border: 'none', padding: 0, cursor: 'pointer', transition: 'all .25s' }}/>
           ))}
         </div>
       </div>
@@ -758,30 +199,17 @@ function ProvaSocial({ primary, accent }) {
   );
 }
 
-// ─── Instagram Banner (Minimalist) ────────────────────────────
-function InstagramBanner({ primary, accent }) {
+function InstagramBanner({ primary = '#0F2E63' }) {
   return (
     <section style={{ padding: '0 22px 38px', textAlign: 'center', background: '#F7F9FC' }}>
-      <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 10,
-        padding: '12px 20px', borderRadius: 999,
-        background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)',
-        textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
-      }}>
+      <a href="https://www.instagram.com/a4servicosdetransito" className="btn-shine" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '12px 20px', borderRadius: 999, background: '#fff', border: '1px solid rgba(229, 231, 235, 0.8)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <Icon.Instagram size={20} color="#0F2E63"/>
-          <span style={{ 
-            width: 6, height: 6, borderRadius: 999, 
-            background: '#4ADE80', boxShadow: '0 0 8px rgba(74, 222, 128, 0.4)'
-          }} className="pulse-dot"/>
+          <Icon.Instagram size={20} color={primary}/>
+          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: 999, background: '#4ADE80' }}/>
         </div>
         <div style={{ textAlign: 'left' }}>
-          <div style={{ 
-            fontFamily: 'DM Sans', fontWeight: 700, fontSize: 12, color: '#0F2E63', lineHeight: 1 
-          }}>@a4servicosdetransito</div>
-          <div style={{ 
-            fontFamily: 'DM Sans', fontWeight: 500, fontSize: 10, color: '#6B7280', marginTop: 2
-          }}>Casos reais atualizados hoje</div>
+          <div style={{ fontFamily: 'DM Sans', fontWeight: 700, fontSize: 12, color: '#0F2E63', lineHeight: 1 }}>@a4servicosdetransito</div>
+          <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: 10, color: '#6B7280', marginTop: 2 }}>Casos reais atualizados hoje</div>
         </div>
         <Icon.ExternalLink size={14} color="#9CA3AF"/>
       </a>
@@ -789,68 +217,31 @@ function InstagramBanner({ primary, accent }) {
   );
 }
 
-// ─── Quem somos ───────────────────────────────────────────────
 function QuemSomos({ primary, accent }) {
-  const values = [
-    'Sem custo adiantado para você',
-    'Atendimento 100% online',
-    'Transparência em cada etapa',
-    'Acompanhamento até o pagamento',
-  ];
+  const values = ['Sem custo adiantado para você','Atendimento 100% online','Transparência em cada etapa','Acompanhamento até o pagamento'];
   return (
-    <section style={{ padding: '0', background: primary, color: '#fff', position: 'relative', overflow: 'hidden' }}>
-      {/* Background Image with Overlay */}
-      <div style={{ width: '100%', height: 240, position: 'relative' }}>
-        <img src="uploads/about-us.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: `linear-gradient(0deg, ${primary} 0%, transparent 100%)`,
-        }} />
+    <section style={{ padding:0, background:primary, color:'#fff', position:'relative', overflow:'hidden' }}>
+      <div style={{ width:'100%', height:240, position:'relative' }}>
+        <img src="assets/about-us.png" style={{ width:'100%', height:'100%', objectFit:'cover' }}/>
+        <div style={{ position:'absolute', inset:0, background:`linear-gradient(0deg, ${primary} 0%, transparent 100%)` }}/>
       </div>
-
-      <div style={{ padding: '0 22px 36px', position: 'relative', marginTop: -40 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-          <span style={{ width: 4, height: 4, borderRadius: 999, background: accent }}/>
-          <div style={{
-            fontFamily: 'DM Sans, sans-serif', fontWeight: 600, fontSize: 10,
-            letterSpacing: '.25em', textTransform: 'uppercase',
-            color: accent,
-          }}>Quem somos</div>
-        </div>
-        <h2 style={{
-          fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-          fontSize: 30, lineHeight: 1.1, margin: '14px 0 0',
-          letterSpacing: '-0.01em',
-        }}>
-          14 anos lutando pelo<br/><span style={{ color: accent }}>seu direito.</span>
+      <div style={{ padding:'0 22px 36px', position:'relative', marginTop:-40 }}>
+        <SectionLabel label="Quem somos" primary={accent}/>
+        <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-0.01em' }}>
+          14 anos lutando pelo<br/><span style={{ color:accent }}>seu direito.</span>
         </h2>
-        <p style={{
-          fontFamily: 'DM Sans, sans-serif', fontSize: 13.5, lineHeight: 1.55,
-          color: 'rgba(255,255,255,.85)', margin: '14px 0 0',
-        }}>
-          Nascemos em Recife com uma missão: transformar a dor de um acidente em reparação justa. Somos uma equipe especializada em indenizações, não uma seguradora nem um órgão público. Trabalhamos por você, do primeiro contato até o dia em que o dinheiro entra na sua conta.
+        <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:13.5, lineHeight:1.55, color:'rgba(255,255,255,.85)', margin:'14px 0 0' }}>
+          Nascemos em Recife com uma missão: transformar a dor de um acidente em reparação justa. Somos uma equipe especializada em indenizações, não uma seguradora nem um órgão público.
         </p>
-
-        <div style={{
-          marginTop: 20, padding: '16px 16px',
-          background: 'rgba(255,255,255,.08)', borderRadius: 12,
-          border: '1px solid rgba(255,255,255,.14)',
-        }}>
-          {values.map((v, i) => (
-            <div key={i} style={{
-              display: 'flex', alignItems: 'center', gap: 10,
-              padding: '8px 0', borderBottom: i < values.length - 1 ? '1px solid rgba(255,255,255,.1)' : 'none',
-            }}>
+        <div style={{ marginTop:20, padding:'16px', background:'rgba(255,255,255,.08)', borderRadius:12, border:'1px solid rgba(255,255,255,.14)' }}>
+          {values.map((v,i)=>(
+            <div key={i} style={{ display:'flex', alignItems:'center', gap:10, padding:'8px 0', borderBottom: i<values.length-1?'1px solid rgba(255,255,255,.1)':'none' }}>
               <Icon.Check size={18} color={accent}/>
-              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: '#fff' }}>{v}</span>
+              <span style={{ fontFamily:'DM Sans, sans-serif', fontSize:13, color:'#fff' }}>{v}</span>
             </div>
           ))}
         </div>
-
-        <div style={{
-          marginTop: 18, display: 'flex', alignItems: 'center', gap: 8,
-          fontFamily: 'DM Sans, sans-serif', fontSize: 12, color: 'rgba(255,255,255,.8)',
-        }}>
+        <div style={{ marginTop:18, display:'flex', alignItems:'center', gap:8, fontFamily:'DM Sans, sans-serif', fontSize:12, color:'rgba(255,255,255,.8)' }}>
           <Icon.Pin size={14} color={accent}/> Recife, PE · Atendemos todo o Brasil
         </div>
       </div>
@@ -858,58 +249,31 @@ function QuemSomos({ primary, accent }) {
   );
 }
 
-// ─── FAQ ──────────────────────────────────────────────────────
 function FAQ({ primary }) {
   const [open, setOpen] = React.useState(0);
   const faqs = [
-    { q: 'Preciso pagar algo adiantado?', a: 'Não. Nosso trabalho é remunerado só quando você recebe. Sem taxa de cadastro, sem mensalidade, sem pegadinha.' },
-    { q: 'Quanto tempo demora?', a: 'Depende do tipo de caso. Indenizações via seguro de aplicativo costumam sair em poucos meses. Processos contra terceiros variam conforme a complexidade, mas você acompanha cada etapa em tempo real.' },
-    { q: 'Posso receber mesmo se a culpa foi minha?', a: 'Em muitos casos, sim — especialmente em acidentes envolvendo aplicativos (Uber, 99, iFood), onde passageiros e motoristas têm coberturas específicas independente da culpa. Analisamos seu caso gratuitamente para te dar uma resposta segura.' },
-    { q: 'E se eu não tiver boletim de ocorrência?', a: 'A gente ajuda a reconstruir. Laudo médico, testemunhas e registros de aplicativo também servem como prova.' },
-    { q: 'Passageiro de Uber/99 também tem direito?', a: 'Sim. Motoristas e passageiros de aplicativo têm cobertura específica — inclusive quando o acidente é culpa do condutor.' },
-    { q: 'Qual o valor da indenização?', a: 'Varia conforme o tipo de lesão, gravidade e caso. Já conseguimos valores de R$ 3 mil a mais de R$ 100 mil. Te damos uma estimativa realista logo no primeiro contato.' },
-    { q: 'DPVAT ainda existe?', a: 'Com a regulamentação de 2025, o seguro obrigatório mudou. Atualmente, focamos em indenizações via aplicativos e processos contra terceiros, mas ainda atendemos casos DPVAT para acidentes ocorridos antes da nova lei.' },
-    { q: 'Atendem fora de Recife?', a: 'Atendemos em todo o Brasil, 100% online. Já representamos clientes em todos os estados.' },
+    { q:'Preciso pagar algo adiantado?', a:'Não. Nosso trabalho é remunerado só quando você recebe. Sem taxa de cadastro, sem mensalidade, sem pegadinha.' },
+    { q:'Quanto tempo demora?', a:'Depende do tipo de caso. Indenizações via seguro de aplicativo costumam sair em poucos meses.' },
+    { q:'Posso receber mesmo se a culpa foi minha?', a:'Em muitos casos, sim — especialmente em acidentes envolvendo aplicativos, onde passageiros e motoristas têm coberturas específicas.' },
+    { q:'Atendem fora de Recife?', a:'Atendemos em todo o Brasil, 100% online. Já representamos clientes em todos os estados.' },
   ];
   return (
-    <section style={{ padding: '38px 22px 30px', background: '#f5f5f5' }}>
+    <section style={{ padding:'38px 22px 30px', background:'#f5f5f5' }}>
       <SectionLabel label="Dúvidas frequentes" primary={primary}/>
-      <h2 style={{
-        fontFamily: 'Poppins, sans-serif', fontWeight: 500,
-        fontSize: 28, lineHeight: 1.1, margin: '14px 0 22px', color: '#0F2E63',
-        letterSpacing: '-0.01em',
-      }}>
-        Perguntas que ouvimos<br/><span style={{ color: primary }}>todos os dias.</span>
+      <h2 style={{ fontFamily:'Poppins, sans-serif', fontWeight:500, fontSize:28, lineHeight:1.1, margin:'14px 0 22px', color:'#0F2E63', letterSpacing:'-0.01em' }}>
+        Perguntas que ouvimos<br/><span style={{ color:primary }}>todos os dias.</span>
       </h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {faqs.map((f, i) => (
-          <div key={i} style={{
-            borderRadius: 16, 
-            border: '1px solid rgba(229, 231, 235, 0.6)',
-            background: open === i ? 'rgba(247, 249, 252, 0.6)' : 'rgba(255, 255, 255, 0.4)',
-            backdropFilter: 'blur(10px)',
-            boxShadow: open === i ? '0 8px 25px rgba(0,0,0,0.05)' : 'none',
-            overflow: 'hidden', transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          }}>
-            <button onClick={() => setOpen(open === i ? -1 : i)} style={{
-              width: '100%', padding: '18px 18px',
-              display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between',
-              background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left',
-            }}>
-              <span style={{
-                fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: 13,
-                color: open === i ? primary : '#0F2E63', lineHeight: 1.4,
-                transition: 'color 0.3s ease',
-              }}>{f.q}</span>
-              <Icon.Chevron open={open === i} color={open === i ? primary : '#6B7280'}/>
+      <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
+        {faqs.map((f,i)=>(
+          <div key={i} style={{ borderRadius:16, border:'1px solid rgba(229,231,235,.6)', background: open===i?'rgba(247,249,252,.6)':'rgba(255,255,255,.4)', boxShadow: open===i?'0 8px 25px rgba(0,0,0,.05)':'none', overflow:'hidden', transition:'all .3s' }}>
+            <button onClick={()=>setOpen(open===i?-1:i)} style={{ width:'100%', padding:'18px', display:'flex', alignItems:'center', gap:12, justifyContent:'space-between', background:'transparent', border:'none', cursor:'pointer', textAlign:'left' }}>
+              <span style={{ fontFamily:'Poppins, sans-serif', fontWeight:600, fontSize:13, color: open===i?primary:'#0F2E63', lineHeight:1.4 }}>{f.q}</span>
+              <Icon.Chevron open={open===i} color={open===i?primary:'#6B7280'}/>
             </button>
-            {open === i && (
-              <div style={{ padding: '0 18px 18px' }}>
-                <div style={{ height: 1, background: 'rgba(0,0,0,0.05)', marginBottom: 14 }}/>
-                <p style={{
-                  fontFamily: 'DM Sans, sans-serif', fontSize: 12.5, lineHeight: 1.6,
-                  color: '#6B7280', margin: 0, fontWeight: 500,
-                }}>{f.a}</p>
+            {open===i && (
+              <div style={{ padding:'0 18px 18px' }}>
+                <div style={{ height:1, background:'rgba(0,0,0,.05)', marginBottom:14 }}/>
+                <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:12.5, lineHeight:1.6, color:'#6B7280', margin:0, fontWeight:500 }}>{f.a}</p>
               </div>
             )}
           </div>
@@ -919,150 +283,46 @@ function FAQ({ primary }) {
   );
 }
 
-// ─── CTA Final ────────────────────────────────────────────────
-function CTAFinal({ primary, accent }) {
+function CTAFinal({ primary = '#0F2E63', accent }) {
   return (
-    <section style={{
-      padding: '50px 22px 40px',
-      background: '#0F2E63',
-      color: '#fff', position: 'relative', overflow: 'hidden',
-      textAlign: 'center'
-    }}>
-      {/* Decorative subtle glow */}
-      <div style={{
-        position: 'absolute', top: '-20%', left: '50%', transform: 'translateX(-50%)',
-        width: '80%', height: '80%',
-        background: `radial-gradient(circle, ${primary}44 0%, transparent 70%)`,
-        pointerEvents: 'none'
-      }} />
-
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ marginBottom: 20 }}>
-          <Logo size={22} stacked={false} color="#fff" accent={accent} />
-        </div>
-
-        <h2 style={{
-          fontFamily: 'DM Sans, sans-serif', fontWeight: 500,
-          fontSize: 32, lineHeight: 1.1, margin: '0 auto 16px',
-          letterSpacing: '-0.02em', maxWidth: 280
-        }}>
-          Seu direito,<br/>
-          <span style={{ color: accent }}>nossa prioridade.</span>
-        </h2>
-
-        <p style={{
-          fontFamily: 'DM Sans, sans-serif', fontSize: 15, lineHeight: 1.6,
-          color: 'rgba(255,255,255,0.7)', margin: '0 auto 28px', maxWidth: 300,
-        }}>
-          Conte sua história agora. Em poucos minutos você sabe se tem direito — sem compromisso e sem custo.
-        </p>
-
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
-          <a href={WHATSAPP_URL} className="btn-shine" style={{
-            width: '100%', maxWidth: 280,
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-            padding: '18px 24px',
-            background: '#25D366', color: '#fff',
-            borderRadius: 16, textDecoration: 'none',
-            fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 16,
-            boxShadow: '0 12px 24px rgba(37,211,102,0.25)',
-          }}>
-            <Icon.Whatsapp size={22}/> Falar com especialista
-          </a>
-
-          <a href="tel:+5581997140111" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
-            fontFamily: 'DM Sans, sans-serif', fontWeight: 500, fontSize: 14,
-            transition: 'color 0.2s',
-          }}>
-            <Icon.Phone size={16} color="rgba(255,255,255,0.4)"/> Ou ligue: (81) 99714-0111
-          </a>
-        </div>
+    <section style={{ padding:'50px 22px 40px', background:primary, color:'#fff', position:'relative', overflow:'hidden', textAlign:'center' }}>
+      <div style={{ marginBottom:20 }}><Logo size={22} stacked={false} color="#fff" accent={accent}/></div>
+      <h2 style={{ fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:32, lineHeight:1.1, margin:'0 auto 16px', letterSpacing:'-0.02em', maxWidth:280 }}>
+        Seu direito,<br/><span style={{ color:accent }}>nossa prioridade.</span>
+      </h2>
+      <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:15, lineHeight:1.6, color:'rgba(255,255,255,.7)', margin:'0 auto 28px', maxWidth:300 }}>
+        Conte sua história agora. Em poucos minutos você sabe se tem direito.
+      </p>
+      <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16 }}>
+        <a href={WA_URL} className="btn-shine" style={{ width:'100%', maxWidth:280, display:'flex', alignItems:'center', justifyContent:'center', gap:10, padding:'18px 24px', background:'#25D366', color:'#fff', borderRadius:16, textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 12px 24px rgba(37,211,102,0.25)' }}>
+          <Icon.Whatsapp size={22}/> Falar com especialista
+        </a>
+        <a href="tel:+5581997140111" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'rgba(255,255,255,.6)', textDecoration:'none', fontFamily:'DM Sans, sans-serif', fontWeight:500, fontSize:14 }}>
+          <Icon.Phone size={16} color="rgba(255,255,255,0.4)"/> Ou ligue: (81) 99714-0111
+        </a>
       </div>
     </section>
   );
 }
 
-// ─── Footer ───────────────────────────────────────────────────
-function Footer({ primary, accent }) {
+function Footer({ accent }) {
   return (
-    <footer style={{ padding: '24px 22px 28px', background: '#0A1F45', color: 'rgba(255,255,255,.7)' }}>
+    <footer style={{ padding:'24px 22px 28px', background:'#0A1F45', color:'rgba(255,255,255,.7)' }}>
       <Logo size={18} color="#fff" accent={accent}/>
-      <p style={{
-        fontFamily: 'DM Sans, sans-serif', fontSize: 11.5, lineHeight: 1.5,
-        margin: '14px 0 0', color: 'rgba(255,255,255,.6)',
-      }}>
-        A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Atuamos como facilitadores entre você e os responsáveis pelo pagamento. Não somos seguradora nem órgão público.
+      <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:11.5, lineHeight:1.5, margin:'14px 0 0', color:'rgba(255,255,255,.6)' }}>
+        A QU4TRO Serviços de Trânsito · Assessoria especializada em indenizações por acidente. Não somos seguradora nem órgão público.
       </p>
-      <div style={{ marginTop: 20, display: 'flex', gap: 14, alignItems: 'center' }}>
-        <a href={WHATSAPP_URL} className="footer-icon" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          width: 32, height: 32, borderRadius: 8, background: 'rgba(255,255,255,.05)',
-          border: '1px solid rgba(255,255,255,.1)', transition: 'all 0.2s',
-        }}>
-          <Icon.Whatsapp size={18} color="#fff"/>
-        </a>
-        <a href="https://www.instagram.com/a4servicosdetransito" className="footer-icon" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          width: 32, height: 32, borderRadius: 8, background: 'rgba(255,255,255,.05)',
-          border: '1px solid rgba(255,255,255,.1)', transition: 'all 0.2s',
-        }}>
-          <Icon.Instagram size={18} color="#fff"/>
-        </a>
-        <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,.1)', margin: '0 4px' }}/>
-        <a href="#" style={linkStyle}>Política de Privacidade</a>
-      </div>
-      <div style={{
-        marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,.1)',
-        fontFamily: 'DM Sans, sans-serif', fontSize: 10.5, color: 'rgba(255,255,255,.45)',
-      }}>
-        © 2026 A QU4TRO. Todos os direitos reservados.
-      </div>
+      <div style={{ marginTop:14, fontFamily:'DM Sans, sans-serif', fontSize:10, color:'rgba(255,255,255,.4)' }}>© 2026 A QU4TRO.</div>
     </footer>
   );
 }
 
-const linkStyle = {
-  color: '#FFC431', textDecoration: 'none',
-  fontFamily: 'DM Sans, sans-serif', fontSize: 12, fontWeight: 600,
-};
-
-// ─── Helper: SectionLabel ─────────────────────────────────────
-function SectionLabel({ label, primary }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-      <div style={{
-        display: 'inline-flex', alignItems: 'center', gap: 6,
-        padding: '5px 10px', borderRadius: 6,
-        background: `${primary}08`,
-        border: `1px solid ${primary}15`,
-      }}>
-        <span style={{ width: 4, height: 4, borderRadius: 999, background: primary }}/>
-        <span style={{
-          fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 9,
-          letterSpacing: '.12em', textTransform: 'uppercase', color: primary,
-        }}>{label}</span>
-      </div>
-    </div>
-  );
-}
-
-// ─── Floating WhatsApp button ─────────────────────────────────
 function FloatingCTA() {
   return (
-    <a href={WHATSAPP_URL} className="btn-shine" style={{
-      position: 'fixed', right: 16, bottom: 24, zIndex: 30,
-      width: 54, height: 54, borderRadius: 999,
-      background: '#25D366',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      boxShadow: '0 10px 24px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.2)',
-      textDecoration: 'none',
-      animation: 'pulse 2s ease-in-out infinite',
-    }}>
+    <a href={WA_URL} className="btn-shine" style={{ position: 'fixed', right: 16, bottom: 24, zIndex: 30, width: 54, height: 54, borderRadius: 999, background: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.2)', textDecoration: 'none' }}>
       <Icon.Whatsapp size={26}/>
     </a>
   );
 }
 
-Object.assign(window, { Hero, Problema, ComoFunciona, Especialidades, ProvaSocial, QuemSomos, FAQ, CTAFinal, Footer, TopBar, FloatingCTA, InstagramBanner, Icon, Logo });
+Object.assign(window, { TopBar, Hero, Problema, Especialidades, ComoFunciona, ProvaSocial, InstagramBanner, QuemSomos, FAQ, CTAFinal, Footer, FloatingCTA });

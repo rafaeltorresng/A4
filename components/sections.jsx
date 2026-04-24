@@ -29,6 +29,44 @@ function Hero({ primary, accent }) {
         <p className="hero-description" style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
           Resolvemos toda a burocracia para você receber o valor máximo da sua indenização, sem custos adiantados.
         </p>
+        
+        <div className="reveal" style={{ 
+          marginTop: 18, 
+          background: 'rgba(255, 255, 255, 0.08)', 
+          border: `1.5px solid ${accent}`, 
+          borderRadius: 20, 
+          padding: '10px 16px 16px', 
+          maxWidth: 420, 
+          boxShadow: `0 15px 45px rgba(0, 0, 0, 0.4), 0 0 20px ${accent}22`, 
+          backdropFilter: 'blur(16px)', 
+          position: 'relative' 
+        }}>
+          {/* Brand Row - Perfectly Formatted Grid */}
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(6, 1fr)', 
+            alignItems: 'center', 
+            justifyItems: 'center', 
+            gap: 12, 
+            marginBottom: 14,
+            width: '100%'
+          }}>
+             <img src="assets/brands/uber.svg" alt="Uber" style={{ height: 24, width: 'auto', filter: 'brightness(0) invert(1)' }}/>
+             <img src="assets/brands/99-app.svg" alt="99" style={{ height: 24, width: 'auto', transform: 'translateX(-6px)' }}/>
+             <img src="assets/brands/ifood.svg" alt="iFood" style={{ height: 24, width: 'auto', transform: 'translateX(-6px)' }}/>
+             <img src="assets/brands/ze-delivery-2026-logo-2.svg" alt="Zé Delivery" style={{ height: 52, width: 'auto' }}/>
+             <img src="assets/brands/indrive-vertical-logo.svg" alt="InDrive" style={{ height: 32, width: 'auto', marginLeft: 10 }}/>
+             <img src="assets/brands/Keeta_Primary_Logo_RGB_AI_SVG.svg" alt="Keeta" style={{ height: 64, width: 'auto' }}/>
+          </div>
+
+          <div style={{ marginBottom: 4 }}>
+            <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 14, color: accent, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Indenização via App</span>
+          </div>
+          
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 14, lineHeight: 1.45, color: '#fff', margin: 0, opacity: 0.95 }}>
+            Motoristas e passageiros têm direito a <strong style={{ color: accent, fontWeight: 700 }}>coberturas exclusivas</strong>.
+          </p>
+        </div>
         <a href={WA_URL} className="btn-shine hero-cta" style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
           <Icon.Whatsapp size={22}/> Falar com um especialista
         </a>
@@ -146,14 +184,15 @@ function Brand99Mark({ height = 22 }) {
 }
 
 function PartnerBrandStrip() {
-  const logoH = 22;
-  const img = { height: logoH, width: 'auto', display: 'block' };
   return (
     <div style={{ marginTop: 12 }}>
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 14, rowGap: 10 }} aria-label="Plataformas de mobilidade">
-        <img src="assets/brands/uber.svg" alt="Uber" style={img}/>
-        <Brand99Mark height={logoH}/>
-        <img src="assets/brands/ifood.svg" alt="iFood" style={img}/>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12, rowGap: 8 }} aria-label="Plataformas de mobilidade">
+        <img src="assets/brands/uber.svg" alt="Uber" style={{ height: 18, width: 'auto' }}/>
+        <img src="assets/brands/99-app.svg" alt="99" style={{ height: 18, width: 'auto' }}/>
+        <img src="assets/brands/ifood.svg" alt="iFood" style={{ height: 18, width: 'auto' }}/>
+        <img src="assets/brands/ze-delivery-2026-logo-2.svg" alt="Zé Delivery" style={{ height: 33, width: 'auto' }}/>
+        <img src="assets/brands/indrive-vertical-logo.svg" alt="InDrive" style={{ height: 24, width: 'auto' }}/>
+        <img src="assets/brands/Keeta_Primary_Logo_RGB_AI_SVG.svg" alt="Keeta" style={{ height: 48, width: 'auto', transform: 'translateX(-8px)' }}/>
       </div>
       <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, lineHeight: 1.35, color: '#9CA3AF', margin: '8px 0 0' }}>Marcas exibidas pertencem aos respectivos titulares.</p>
     </div>

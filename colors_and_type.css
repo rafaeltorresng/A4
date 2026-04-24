@@ -388,8 +388,9 @@
     padding: 60px 40px !important;
     display: grid !important;
     grid-template-columns: 1.15fr 0.85fr !important;
-    grid-template-rows: max-content max-content max-content max-content 1fr !important;
+    grid-template-rows: 32px max-content max-content max-content max-content 1fr !important;
     grid-template-areas: 
+      ". appblock"
       "title appblock"
       "desc appblock"
       "cta stats"

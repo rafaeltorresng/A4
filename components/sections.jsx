@@ -30,7 +30,7 @@ function Hero({ primary, accent }) {
           Resolvemos toda a burocracia para você receber o valor máximo da sua indenização, sem custos adiantados.
         </p>
         
-        <div className="reveal" style={{ 
+        <div className="reveal hero-app-block" style={{ 
           marginTop: 18, 
           background: 'rgba(255, 255, 255, 0.08)', 
           border: `1.5px solid ${accent}`, 

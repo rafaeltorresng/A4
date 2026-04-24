@@ -395,14 +395,14 @@
       "badge stats" !important;
     gap: 0 60px !important;
     align-items: center !important;
-    text-align: left !important;
+    text-align: center !important;
   }
 
-  .hero-title { grid-area: title; font-size: 56px !important; line-height: 1.1 !important; margin-bottom: 20px !important; }
-  .hero-description { grid-area: desc; font-size: 18px !important; max-width: 500px !important; margin: 0 0 24px !important; }
+  .hero-title { grid-area: title; font-size: 56px !important; line-height: 1.1 !important; margin: 0 auto 20px !important; }
+  .hero-description { grid-area: desc; font-size: 18px !important; max-width: 500px !important; margin: 0 auto 24px !important; }
   .hero-app-block { grid-area: appblock; margin: 0 auto 24px !important; max-width: 100% !important; align-self: end !important; }
-  .hero-cta { grid-area: cta; width: fit-content !important; padding: 18px 36px !important; font-size: 17px !important; margin: 0 !important; }
-  .hero-badge { grid-area: badge; margin: 16px 0 0 !important; width: fit-content !important; }
+  .hero-cta { grid-area: cta; width: fit-content !important; padding: 18px 36px !important; font-size: 17px !important; margin: 0 auto !important; }
+  .hero-badge { grid-area: badge; margin: 16px auto 0 !important; width: fit-content !important; }
   .hero-stats { 
     grid-area: stats; 
     grid-template-columns: 1fr !important; 

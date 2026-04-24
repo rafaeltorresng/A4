@@ -12,32 +12,34 @@ function TopBar() {
 
 function Hero() {
   return (
-    <section style={{ position:'relative', color:'#fff', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center' }}>
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url("../assets/hero-bg.png")', backgroundSize:'cover', backgroundPosition:'center' }}>
+    <section className="section-hero-wrapper" style={{ position:'relative', color:'#fff', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center' }}>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url("../assets/hero-bg-4.png")', backgroundSize:'cover', backgroundPosition:'center' }}>
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(180deg, rgba(15,46,99,0.7) 0%, #1E4FA1ee 100%)' }}/>
       </div>
       <svg width="100%" height="100%" viewBox="0 0 390 560" preserveAspectRatio="none" style={{ position:'absolute', inset:0, opacity:.4, pointerEvents:'none' }}>
         <path d="M-20 560 Q 100 300, 200 250 T 410 60" stroke="#fff" strokeWidth="0.5" fill="none" opacity=".2"/>
         <path d="M-50 560 Q 120 320, 220 270 T 420 90" stroke="#FFC431" strokeWidth="1" fill="none" opacity=".4"/>
       </svg>
-      <div style={{ position:'relative', padding:'28px 22px 26px' }}>
-        <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'6px 12px', borderRadius:999, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.12)', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:10, letterSpacing:'.12em', textTransform:'uppercase', color:'#fff' }}>
+      <div className="hero-content container-desktop" style={{ position:'relative', padding:'28px 22px 26px', width: '100%', maxWidth: 1200, margin: '0 auto' }}>
+        <div className="hero-badge" style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'6px 12px', borderRadius:999, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.12)', fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:10, letterSpacing:'.12em', textTransform:'uppercase', color:'#fff' }}>
           <span style={{ width:6, height:6, borderRadius:999, background:'#FFC431', boxShadow:'0 0 10px #FFC431' }}/> Especialistas em indenização
         </div>
-        <h1 style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-.01em' }}>
+        <h1 className="hero-title" style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:30, lineHeight:1.1, margin:'14px 0 0', letterSpacing:'-.01em' }}>
           Sofreu um acidente<br/>de trânsito?<br/>
           <span style={{ color:'#FFC431' }}>Você tem direito</span><br/>à indenização.
         </h1>
-        <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
+        <p className="hero-description" style={{ fontFamily:'DM Sans, sans-serif', fontSize:14, lineHeight:1.55, margin:'14px 0 0', color:'rgba(255,255,255,.88)', maxWidth:320 }}>
           Cuidamos de tudo, do início ao fim. Sem burocracia, sem custo adiantado — só você recebendo o que é seu por direito.
         </p>
-        <a href={WA_URL} style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, marginTop:22, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
-          <Icon.Whatsapp size={22}/> Falar com um especialista
-        </a>
-        <div style={{ marginTop:10, display:'flex', alignItems:'center', justifyContent:'center', gap:6, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.75)' }}>
-          <span style={{ width:6, height:6, borderRadius:999, background:'#4ADE80' }}/> Atendimento agora · Resposta em minutos
+        <div className="hero-cta" style={{ marginTop:22 }}>
+          <a href={WA_URL} style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:10, padding:'16px 20px', background:'#25D366', color:'#fff', borderRadius:14, textDecoration:'none', fontFamily:'Poppins, sans-serif', fontWeight:700, fontSize:16, boxShadow:'0 10px 24px rgba(37,211,102,.35)' }}>
+            <Icon.Whatsapp size={22}/> Falar com um especialista
+          </a>
+          <div style={{ marginTop:10, display:'flex', alignItems:'center', justifyContent:'center', gap:6, fontFamily:'DM Sans, sans-serif', fontSize:11, color:'rgba(255,255,255,.75)' }}>
+            <span style={{ width:6, height:6, borderRadius:999, background:'#4ADE80' }}/> Atendimento agora · Resposta em minutos
+          </div>
         </div>
-        <div style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
+        <div className="hero-stats" style={{ marginTop:24, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', background:'rgba(255,255,255,.08)', borderRadius:14, border:'1px solid rgba(255,255,255,.14)', overflow:'hidden' }}>
           {[['14','anos de\nexperiência'],['+5mil','vítimas\nindenizadas'],['100%','atendimento\non-line']].map(([b,s],i)=>(
             <div key={i} style={{ padding:'12px 8px', textAlign:'center', borderRight: i<2?'1px solid rgba(255,255,255,.12)':'none' }}>
               <div style={{ fontFamily:'Poppins, sans-serif', fontWeight:800, fontSize:22, color:'#FFC431' }}>{b}</div>

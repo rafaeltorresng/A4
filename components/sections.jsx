@@ -14,7 +14,7 @@ function TopBar({ primary }) {
 function Hero({ primary, accent }) {
   return (
     <section className="section-hero-wrapper" style={{ position:'relative', color:'#fff', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center' }}>
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url("assets/hero-bg.png")', backgroundSize:'cover', backgroundPosition:'center' }}>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url("assets/hero-bg-4.png")', backgroundSize:'cover', backgroundPosition:'center' }}>
         <div style={{ position:'absolute', inset:0, background:`linear-gradient(180deg, rgba(15,46,99,0.7) 0%, ${primary}ee 100%)` }}/>
       </div>
       <svg width="100%" height="100%" viewBox="0 0 390 560" preserveAspectRatio="none" style={{ position:'absolute', inset:0, opacity:.4, pointerEvents:'none' }}>
@@ -32,13 +32,14 @@ function Hero({ primary, accent }) {
         
         <div className="reveal hero-app-block" style={{ 
           marginTop: 18, 
-          background: 'rgba(255, 255, 255, 0.08)', 
-          border: `1.5px solid ${accent}`, 
-          borderRadius: 20, 
-          padding: '10px 16px 16px', 
+          background: 'transparent', 
+          border: '1px solid rgba(255, 255, 255, 0.06)', 
+          borderRadius: 24, 
+          padding: '16px 20px 20px', 
           maxWidth: 420, 
-          boxShadow: `0 15px 45px rgba(0, 0, 0, 0.4), 0 0 20px ${accent}22`, 
-          backdropFilter: 'blur(16px)', 
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)', 
+          backdropFilter: 'blur(8px)', 
+          WebkitBackdropFilter: 'blur(8px)',
           position: 'relative' 
         }}>
           {/* Brand Row - Perfectly Formatted Grid */}

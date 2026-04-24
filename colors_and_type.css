@@ -349,6 +349,8 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
+.topbar-links { display: none; }
+
 /* ============================================================
    DESKTOP RESPONSIVENESS (1024px+)
    ============================================================ */
@@ -375,6 +377,27 @@
   /* TopBar */
   [style*="sticky"] {
     padding: 16px 60px !important;
+  }
+  .topbar-links {
+    display: flex !important;
+    align-items: center;
+    gap: 32px;
+  }
+  .topbar-links button {
+    background: transparent;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brand-blue-deep);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transition-main);
+  }
+  .topbar-links button:hover {
+    background: rgba(30, 79, 161, 0.05);
+    color: var(--brand-blue);
   }
 
   /* Section Hero */

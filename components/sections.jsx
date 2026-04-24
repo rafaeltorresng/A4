@@ -1,9 +1,24 @@
 // AQU4TRO — Top-level sections (Refactored)
 
 function TopBar({ primary }) {
+  const scroll = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
   return (
     <div style={{ position:'sticky', top:0, zIndex:10, display:'flex', alignItems:'center', justifyContent:'space-between', padding:'12px 18px', background:'rgba(255,255,255,.75)', backdropFilter:'blur(15px) saturate(160%)', borderBottom:'1px solid rgba(229,231,235,.5)' }}>
       <Logo size={17} stacked color={primary} accent="#FFC431"/>
+      
+      <div className="topbar-links">
+        <button onClick={() => scroll('trabalho')}>Nosso trabalho</button>
+        <button onClick={() => scroll('funcionamento')}>Funcionamento</button>
+        <button onClick={() => scroll('sobre')}>Sobre nós</button>
+        <button onClick={() => scroll('faq')}>FAQ</button>
+      </div>
+
       <a href={WA_URL} className="btn-shine" style={{ display:'inline-flex', alignItems:'center', gap:6, background:'#25D366', color:'#fff', padding:'8px 14px', borderRadius:999, fontFamily:'DM Sans, sans-serif', fontWeight:700, fontSize:11, textDecoration:'none', boxShadow:'0 4px 12px rgba(37,211,102,.25)' }}>
         <Icon.Whatsapp size={14}/> WhatsApp
       </a>
